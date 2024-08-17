@@ -1,2 +1,5 @@
-def classify_papers(headings: list[str], papers: list[str]) -> dict[str, list[str]]:
+from .models import Paper
+
+
+def classify_papers(headings: list[str], papers: list[Paper]) -> dict[str, list[Paper]]:
     ...

@@ -11,8 +11,11 @@ from typing import List, Dict
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import re
 
+from .models import Paper
+
 load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
 
 def generate_initial_categories(papers: List[Dict[str, str]], num_categories: int = 10) -> List[str]:
     prompt = f"""
@@ -174,7 +177,7 @@ def analyze_results(classifications: Dict[str, List[str]], papers: List[Dict[str
     except Exception as e:
         return f"Error analyzing results: {e}"
 
-def main(papers: List[Dict[str, str]]):
+def generate_headings(papers: List[Dict[str, str]]):
     try:
         # Step 1: Generate initial categories
         initial_categories = generate_initial_categories(papers)
@@ -208,65 +211,4 @@ def main(papers: List[Dict[str, str]]):
 
 if __name__ == "__main__":
     # Assume 'papers' is a list of dictionaries, each containing 'title' and 'abstract' keys
-    main(papers)
-
-# from openai import OpenAI
-# import json
-# from dotenv import load_dotenv
-# import os
-
-# load_dotenv()
-
-# client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-
-# def classify_paper(title, headings):
-#     prompt = f"""
-#     Task: Classify the given paper title into the most appropriate heading.
-
-#     Headings:
-#     {json.dumps(headings)}
-
-#     Paper Title: "{title}"
-
-#     Classify the paper title into the most appropriate heading. Respond with only the heading name.
-#     """
-
-#     response = client.chat.completions.create(
-#         model="gpt-3.5-turbo",
-#         messages=[
-#             {"role": "system", "content": "You are a helpful assistant that classifies academic paper titles into appropriate headings."},
-#             {"role": "user", "content": prompt}
-#         ],
-#         temperature=0.3,
-#         max_tokens=50
-#     )
-
-#     return response.choices[0].message.content.strip()
-
-# def main():
-#     headings = ["AI and Machine Learning", "Natural Language Processing", "Computer Vision"]
-#     paper_titles = [
-#         "Attention Is All You Need",
-#         "Deep Residual Learning for Image Recognition",
-#         "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding"
-#     ]
-
-#     classification_results = {}
-#     for title in paper_titles:
-#         classified_heading = classify_paper(title, headings)
-#         classification_results[title] = classified_heading
-
-#     print("Classification Results:")
-#     print(json.dumps(classification_results, indent=2))
-
-#     grouped_results = {}
-#     for title, heading in classification_results.items():
-#         if heading not in grouped_results:
-#             grouped_results[heading] = []
-#         grouped_results[heading].append(title)
-
-#     print("\nGrouped Results:")
-#     print(json.dumps(grouped_results, indent=2))
-
-# if __name__ == "__main__":
-#     main()
+    generate_headings(papers)
