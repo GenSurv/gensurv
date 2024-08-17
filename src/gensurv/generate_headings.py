@@ -5,7 +5,6 @@ import os
 import json
 import networkx as nx
 from typing import List, Dict, Optional
-from concurrent.futures import ThreadPoolExecutor, as_completed
 import re
 from dataclasses import dataclass, field
 
