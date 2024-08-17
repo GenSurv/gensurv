@@ -44,4 +44,4 @@ if __name__ == '__main__':
     overview = generate_overview(structured_papers)
 
     if args.generate_draft:
-        draft = generate_draft(overview)
+        generate_draft(overview)
