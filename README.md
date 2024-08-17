@@ -21,5 +21,5 @@ pip install -r requirements.txt
 ```
 ## Usage
 ```shell
-python src/main.py --title "Laboratory automation" --retrieve_papers --max_papers 5 --output_path data
+python src/main.py --title "Laboratory automation" --retrieve_papers --max_papers 5 --generate_headings --output_path data
 ```
