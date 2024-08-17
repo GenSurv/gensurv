@@ -1,14 +1,14 @@
 import os
 import subprocess
 import shutil
-from typing import Dict, List
+from typing import Dict
 from pydantic import BaseModel
 from aider.coders import Coder
 from aider.models import Model
 from aider.io import InputOutput
-from models import Paper, Author
 from typing import List
-from utils import format_bibtex
+from .models import Paper, Author
+from .utils import format_bibtex
 
 class Config(BaseModel):
     current_dir: str = os.path.dirname(os.path.abspath(__file__))
@@ -101,14 +101,14 @@ def compile_latex(cwd: str, pdf_file: str, timeout: int = 30) -> None:
     except Exception as e:
         print(f"Error moving PDF: {e}")
 
-def generate_draft(overview: Dict[str, str], papers: List[Paper], compile_latex: bool = False) -> None:
+def generate_draft(overview: Dict[str, str], papers: List[Paper], _compile_latex: bool = False) -> None:
     coder = setup_coder()
 
     add_bibtex_to_latex(coder, papers)
     for section_title, paragraph in overview.items():
         add_section_to_latex(coder, section_title, paragraph)
 
-    if compile_latex:
+    if _compile_latex:
         compile_latex(config.latex_dir, config.pdf_output)
 
 if __name__ == "__main__":

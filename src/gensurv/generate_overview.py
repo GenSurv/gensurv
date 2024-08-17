@@ -6,8 +6,8 @@ from openai import OpenAI
 from aider.coders import Coder
 from aider.models import Model
 from aider.io import InputOutput
-from models import Paper, Author
-from utils import format_bibtex
+from .models import Paper, Author
+from .utils import format_bibtex
 
 # Constants
 OPENAI_MODEL = "gpt-3.5-turbo"

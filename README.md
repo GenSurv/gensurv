@@ -29,7 +29,10 @@ pip install -r requirements.txt
 ## Usage
 Executing the script
 ```shell
-python src/main.py --title "Laboratory automation" --retrieve_papers --max_papers 5 --generate_headings --output_path data
+python src/main.py --title "Laboratory automation" \
+  --retrieve_papers --max_papers 5 \
+  --generate_headings \
+  --output_path data
 ```
 
 Launching the application (locally)

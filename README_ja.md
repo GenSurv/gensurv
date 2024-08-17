@@ -29,7 +29,10 @@ pip install -r requirements.txt
 ## Usage
 スクリプト実行
 ```shell
-python src/main.py --title "Laboratory automation" --retrieve_papers --max_papers 5 --generate_headings --output_path data
+python src/main.py --title "Laboratory automation" \
+  --retrieve_papers --max_papers 5 \
+  --generate_headings \
+  --output_path data
 ```
 
 アプリケーション起動（ローカル）
