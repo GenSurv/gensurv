@@ -1,11 +1,15 @@
-from pathlib import Path
+from datetime import datetime
 from dotenv import load_dotenv
-load_dotenv()
+from openai import OpenAI
+from pathlib import Path
 
 from gensurv import (
     generate_query, retrieve_papers, generate_headings, classify_papers, generate_overview,
     generate_draft, load_papers, load_headings
 )
+from gensurv.generate_overview import setup_coder
+
+load_dotenv()
 
 
 def parse_args():
@@ -24,8 +28,13 @@ def parse_args():
 
 if __name__ == "__main__":
     args = parse_args()
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    draft_name = f"{timestamp}_{args.title.replace(' ', '_')}"
 
     query = generate_query(args.title)
+    client = OpenAI()
+    coder = setup_coder(args.output_path / f"draft/{draft_name}.tex")
+
 
     if args.retrieve_papers:
         papers = retrieve_papers(
