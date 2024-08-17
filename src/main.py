@@ -1,3 +1,4 @@
+from pathlib import Path
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -20,7 +21,7 @@ def parse_args():
     parser.add_argument('--generate_headings', action='store_true')
     parser.add_argument('--headings_path', type=str)
     parser.add_argument('--generate_draft', action='store_true')
-    parser.add_argument('--output_path', type=str)
+    parser.add_argument('--output_path', type=Path)
     return parser.parse_args()
 
 
@@ -28,7 +29,10 @@ if __name__ == '__main__':
     args = parse_args()
 
     if args.retrieve_papers:
-        papers = retrieve_papers(args.title, args.max_papers)
+        papers = retrieve_papers(
+            args.title, args.max_papers,
+            args.output_path / 'semantic_scholar',
+        )
     else:
         papers = load_papers(args.papers_path)
 
