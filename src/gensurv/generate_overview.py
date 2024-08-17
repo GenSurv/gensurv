@@ -7,6 +7,7 @@ from aider.coders import Coder
 from aider.models import Model
 from aider.io import InputOutput
 from models import Paper, Author
+from utils import format_bibtex
 
 # Constants
 REVIEW_PAPER_THEME = "AI alignment"
@@ -67,13 +68,6 @@ def generate_paragraph(client: OpenAI, system_message: str, prompt: str) -> str:
     except Exception as e:
         print(f"Error generating paragraph: {e}")
         return ""
-    
-def format_bibtex(bibtex: str) -> str:
-    # Remove any newline characters and extra spaces
-    bibtex = ' '.join(bibtex.split())
-    # Escape any backslashes and double quotes
-    bibtex = bibtex.replace('\\', '\\\\').replace('"', '\\"')
-    return bibtex
 
 def generate_overview(client: OpenAI, structured_papers: Dict[str, List[Paper]]) -> ParagraphDict:
     system_message = f"""

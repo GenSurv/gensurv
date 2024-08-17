@@ -34,6 +34,34 @@
   year={2024}
 }
 
+@article{lee2023rlaif,
+  title={Rlaif: Scaling reinforcement learning from human feedback with ai feedback},
+  author={Lee, Harrison and Phatale, Samrat and Mansoor, Hassan and Lu, Kellie and Mesnard, Thomas and Bishop, Colton and Carbone, Victor and Rastogi, Abhinav},
+  journal={arXiv preprint arXiv:2309.00267},
+  year={2023}
+}
+
+@article{ouyang2022training,
+  title={Training language models to follow instructions with human feedback},
+  author={Ouyang, Long and Wu, Jeff and Jiang, Xu and Almeida, Diogo and Wainwright, Carroll L. and Mishkin, Pamela and Zhang, Chong and Agarwal, Sandhini and Slama, Katarina and Ray, Alex and Schulman, John and Hilton, Jacob and Kelton, Fraser and Miller, Luke and Simens, Maddie and Askell, Amanda and Welinder, Peter and Christiano, Paul and Leike, Jan and Lowe, Ryan},
+  journal={arXiv preprint arXiv:2203.02155},
+  year={2022}
+}
+
+@article{conmy2023towards,
+  title={Towards automated circuit discovery for mechanistic interpretability},
+  author={Conmy, Arthur and Mavor-Parker, Augustine N. and Lynch, Aengus and Heimersheim, Stefan and Garriga-Alonso, Adri{\'a}},
+  journal={arXiv preprint arXiv:2305.14617},
+  year={2023}
+}
+
+@article{zimmermann2023scale,
+  title={Scale alone does not improve mechanistic interpretability in vision models},
+  author={Zimmermann, Roland S. and Klein, Thomas and Brendel, Wieland},
+  journal={arXiv preprint arXiv:2305.14617},
+  year={2023}
+}
+
 \end{filecontents}
 
 \title{TITLE HERE}
@@ -54,6 +82,12 @@ University of LLMs\\
 ABSTRACT HERE
 \cite{lu2024aiscientist}
 \end{abstract}
+
+\section{Feedback}
+Feedback plays a crucial role in aligning AI systems with human preferences. The use of reinforcement learning from human feedback (RLHF) has shown effectiveness in aligning large language models (LLMs) with human preferences, albeit with the challenge of acquiring high-quality human preference labels. In contrast, reinforcement learning from AI feedback (RLAIF) presents a promising alternative proposed by Bai et al. RLAIF leverages an off-the-shelf LLM to generate preferences, eliminating the need for human annotators. RLAIF demonstrates comparable or superior performance to RLHF in tasks such as summarization, helpful dialogue generation, and harmless dialogue generation, as assessed by human evaluators. Additionally, RLAIF exhibits the capability to surpass a supervised fine-tuned baseline even when the LLM preference labeler is of the same size as the policy. Notably, prompting the LLM directly for reward scores outperforms the traditional RLAIF setup, where LLM preference labels are transformed into a reward model. These findings suggest that RLAIF holds promise in achieving human-level performance and addresses scalability limitations encountered in RLHF \cite{lee2023rlaif,ouyang2022training}.
+
+\section{Mechanistic Interpretability}
+Mechanistic interpretability in AI systems is crucial for understanding their internal information processing mechanisms. Recent research efforts have aimed to reverse-engineer complex behaviors of transformer models to gain insights into how neural networks operate. By systematically following the interpretability process, researchers select relevant metrics and datasets to elicit specific model behaviors, then utilize activation patching to identify the neural network units involved. The variation in datasets, metrics, and units under investigation allows for a comprehensive understanding of each component's functionality. Automation tools like the ACDC algorithm have been proposed to identify the circuits implementing desired behaviors in computational graphs, showcasing promising results in rediscovering component types within models like GPT-2 Small. However, studies like those by \cite{conmy2023towards} question whether the substantial scaling of neural networks in size and datasets leads to improved mechanistic interpretability. Surprisingly, findings suggest that neither model size nor dataset scale positively impacts interpretability, with the interpretability of modern vision models potentially regressing compared to older architectures. This highlights the critical need for developing interpretable AI models explicitly and refining interpretability methods to enhance our comprehension of neural networks at a fundamental level (\cite{zimmermann2023scale}).
 
 \bibliographystyle{iclr2024_conference}
 \bibliography{references}
