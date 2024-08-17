@@ -15,9 +15,11 @@ cp .env.sample .env  # APIキーなどを自分のものに書き換える
 
 Python環境
 ```shell
+python -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
 ```
 ## Usage
 ```shell
-python src/main.py --title "Laboratory automation" --retrieve_papers --max_papers 5
+python src/main.py --title "Laboratory automation" --retrieve_papers --max_papers 5 --output_path data
 ```

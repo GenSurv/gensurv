@@ -1,5 +1,217 @@
+from openai import OpenAI
+from dotenv import load_dotenv
+import os
+import json
+from typing import List, Dict
+from concurrent.futures import ThreadPoolExecutor, as_completed
+import re
+
 from .models import Paper
 
+load_dotenv()
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-def generate_headings(papers: list[Paper]) -> list[str]:
-    ...
+
+def generate_initial_categories(papers: List[Paper], num_categories: int = 10) -> List[str]:
+    prompt = f"""
+    Given the following list of paper titles and abstracts, generate {num_categories} research categories that best represent the content. 
+    Provide the categories as a comma-separated list. 
+    Each category should:
+    1. Be 20-30 characters long
+    2. Provide meaningful insights into the specific research area
+    3. Be sufficiently specific to distinguish between different subfields
+    4. Reflect the methodologies, technologies, or key concepts discussed in the papers
+    5. Avoid overly general terms like "Artificial Intelligence" or "Machine Learning"
+    6. Use technical terminology appropriate for the field
+
+    Consider the following examples of good categories:
+    - "Metabolic network modeling"
+    - "Genome-scale flux analysis"
+    - "Synthetic biology automation"
+    - "Multi-omics data integration"
+
+    Papers:
+    {json.dumps([{"title": p.title, "abstract": p.abstract[:100] + "..."} for p in papers[:20]], indent=2)}
+
+    Categories:
+    """
+
+    response = client.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant that generates research categories based on academic papers."},
+            {"role": "user", "content": prompt}
+        ],
+        temperature=0.7,
+        max_tokens=200
+    )
+
+    raw_output = response.choices[0].message.content.strip()
+    categories = [re.sub(r'^["\'\s]+|["\'\s]+$', '', cat.strip()) for cat in raw_output.split(",")]
+    return [cat[:30] for cat in categories]  # Ensure categories are no longer than 30 characters
+
+
+def refine_categories(categories: List[str], papers: List[Paper]) -> List[str]:
+    prompt = f"""
+    Given the following initial categories and a sample of papers, refine and adjust the categories to better represent the research areas. 
+    You can modify, combine, split, or create new categories as needed. Aim for clarity, distinctiveness, and specificity.
+    Each category should:
+    1. Be 20-30 characters long
+    2. Provide meaningful insights into the specific research area
+    3. Be sufficiently specific to distinguish between different subfields
+    4. Reflect the methodologies, technologies, or key concepts discussed in the papers
+    5. Avoid overly general terms
+    6. Use technical terminology appropriate for the field
+    7. Ensure minimal overlap between categories
+
+    Provide the refined categories as a comma-separated list.
+
+    Initial Categories:
+    {json.dumps(categories, indent=2)}
+
+    Sample Papers:
+    {json.dumps([{"title": p.title, "abstract": p.abstract[:100] + "..."} for p in papers[:10]], indent=2)}
+
+    Refined Categories:
+    """
+
+    response = client.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant that refines research categories based on academic papers."},
+            {"role": "user", "content": prompt}
+        ],
+        temperature=0.7,
+        max_tokens=300
+    )
+
+    raw_output = response.choices[0].message.content.strip()
+    refined_categories = [re.sub(r'^["\'\s]+|["\'\s]+$', '', cat.strip()) for cat in raw_output.split(",")]
+    return [cat[:30] for cat in refined_categories if cat]  # Ensure categories are no longer than 30 characters and not empty
+
+
+def classify_paper(paper: Paper, categories: List[str]) -> str:
+    prompt = f"""
+    Classify the following paper into the most appropriate category from the list provided. 
+    If none of the categories fit well, respond with "Other".
+
+    Categories:
+    {json.dumps(categories, indent=2)}
+
+    Paper:
+    Title: {paper.title}
+    Abstract: {paper.abstract}
+
+    Category:
+    """
+
+    try:
+        response = client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "system", "content": "You are a helpful assistant that classifies academic papers into research categories."},
+                {"role": "user", "content": prompt}
+            ],
+            temperature=0.3,
+            max_tokens=50
+        )
+        return response.choices[0].message.content.strip()
+    except Exception as e:
+        print(f"Error classifying paper: {e}")
+        return "Error"
+
+
+def classify_papers_batch(papers: List[Paper], categories: List[str], batch_size: int = 10) -> Dict[str, List[Paper]]:
+    classifications = {cat: [] for cat in categories + ["Other", "Error"]}
+    
+    with ThreadPoolExecutor(max_workers=5) as executor:
+        for i in range(0, len(papers), batch_size):
+            batch = papers[i:i+batch_size]
+            futures = [executor.submit(classify_paper, paper, categories) for paper in batch]
+            for future, paper in zip(as_completed(futures), batch):
+                category = future.result()
+                if category not in classifications:
+                    classifications["Error"].append(paper)
+                else:
+                    classifications[category].append(paper)
+    
+    return classifications
+
+
+def analyze_results(classifications: Dict[str, List[Paper]], papers: List[Paper]) -> str:
+    num_papers = len(papers)
+    num_categories = len(classifications)
+    avg_papers_per_category = num_papers / num_categories
+
+    prompt = f"""
+    Analyze the following classification results and suggest improvements:
+
+    Total papers: {num_papers}
+    Number of categories: {num_categories}
+    Average papers per category: {avg_papers_per_category:.2f}
+
+    Classification distribution:
+    {json.dumps({cat: len(papers) for cat, papers in classifications.items()}, indent=2)}
+
+    Suggestions for improvement:
+    1. Propose any categories that should be split or combined.
+    2. Identify any categories that are too broad or too narrow.
+    3. Suggest new categories that might better represent the research areas.
+    4. Comment on the overall distribution of papers across categories.
+
+    Provide your analysis and suggestions:
+    """
+
+    try:
+        response = client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "system", "content": "You are a helpful assistant that analyzes research paper classifications and suggests improvements."},
+                {"role": "user", "content": prompt}
+            ],
+            temperature=0.7,
+            max_tokens=500
+        )
+        return response.choices[0].message.content.strip()
+    except Exception as e:
+        return f"Error analyzing results: {e}"
+
+
+def generate_headings(papers: list[Paper]) -> dict[str, list[Paper]]:
+    try:
+        # Step 1: Generate initial categories
+        initial_categories = generate_initial_categories(papers)
+        print("Initial Categories:", initial_categories)
+
+        # Step 2: Refine categories
+        refined_categories = refine_categories(initial_categories, papers)
+        print("Refined Categories:", refined_categories)
+
+        if not refined_categories:
+            print("Error: No refined categories generated. Using initial categories.")
+            refined_categories = initial_categories
+
+        # Step 3: Classify papers in batches
+        classifications = classify_papers_batch(papers, refined_categories)
+
+        # Step 4: Output results
+        print("\nClassification Results:")
+        for category, papers in classifications.items():
+            print(f"\n{category}:")
+            for paper in papers:
+                print(f"- {paper.title}")
+
+        # Step 5: Analyze results and suggest further refinements
+        analysis = analyze_results(classifications, papers)
+        print("\nAnalysis and Suggestions:")
+        print(analysis)
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        raise e
+    return classifications
+
+
+if __name__ == "__main__":
+    # Assume 'papers' is a list of dictionaries, each containing 'title' and 'abstract' keys
+    generate_headings([])
