@@ -1,3 +1,5 @@
+from dotenv import load_dotenv
+load_dotenv()
 
 from gensurv import retrieve_papers, generate_headings, classify_papers, generate_overview, generate_draft, load_papers, load_headings
 
