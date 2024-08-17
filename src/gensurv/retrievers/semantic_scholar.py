@@ -1,11 +1,8 @@
 import os
 import time
-from typing import List, Any, Optional
 
+from pydantic import BaseModel
 import requests
-from langchain_core.callbacks import CallbackManagerForRetrieverRun
-from langchain_core.retrievers import BaseRetriever
-from langchain_core.runnables import RunnableConfig, ensure_config
 
 from ..models import Paper, Author
 
@@ -14,27 +11,24 @@ class SemanticScholarError(Exception):
     pass
 
 
-class SemanticScholarRetriever(BaseRetriever):
+class SemanticScholarRetriever(BaseModel):
     api_key: str = os.environ.get("SEMANTIC_SCHOLAR_API_KEY")
     if api_key is None:
         raise SemanticScholarError("API key is required.")
-    base_url = "https://api.semanticscholar.org/graph/v1"
+    base_url: str = "https://api.semanticscholar.org/graph/v1"
     load_max_docs: int = 10
     sleep_time: int = 2
 
-    def _get_relevant_documents(
+    def retrieve(
             self,
             query: str,
-            *,
-            run_manager: CallbackManagerForRetrieverRun,
-            **kwargs: Any,
-    ) -> List[Paper]:
+    ) -> list[Paper]:
         res = self.search_papers(query)
         self._sleep()
         if not res.get("data"):
             return []
         paper_ids = [paper["paperId"] for paper in res["data"]]
-        papers = [self.retrieve_paper(paper_id, **kwargs) for paper_id in paper_ids]
+        papers = [self.retrieve_paper(paper_id) for paper_id in paper_ids]
         return papers
 
     def search_papers(self, query: str) -> dict:
@@ -72,16 +66,3 @@ class SemanticScholarRetriever(BaseRetriever):
         if response.status_code != 200:
             raise SemanticScholarError(f"Request failed with status code {response.status_code}: {response.text}")
         return response.json()
-
-    def invoke(
-        self, input: str, config: Optional[RunnableConfig] = None, **kwargs: Any
-    ) -> List[Paper]:
-        config = ensure_config(config)
-        return self.get_relevant_documents(
-            input,
-            callbacks=config.get("callbacks"),
-            tags=config.get("tags"),
-            metadata=config.get("metadata"),
-            run_name=config.get("run_name"),
-            **kwargs,
-        )

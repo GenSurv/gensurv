@@ -11,5 +11,5 @@ def retrieve_papers(title: str, max_papers: int) -> list[Paper]:
     """
     retriever = SemanticScholarRetriever(load_max_docs=max_papers)
     query = title  # TODO: convert title to query
-    papers = retriever.invoke(query)
+    papers = retriever.retrieve(query)
     return papers
