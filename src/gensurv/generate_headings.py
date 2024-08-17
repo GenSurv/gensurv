@@ -3,6 +3,7 @@ import numpy as np
 from dotenv import load_dotenv
 import os
 import json
+import networkx as nx
 from typing import List, Dict
 import re
 
@@ -14,30 +15,21 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 def generate_initial_categories(papers: List[Paper], num_categories: int = 10) -> List[str]:
 
-    # print("\nSTART: Generating Initial Categories")
-    # print("======================================")
-
-    # print("Input Data Check:")
-    # for i, paper in enumerate(papers[:5], 1):  
-    #     print(f"Paper {i}:")
-    #     print(f"  Title: {paper.title}")
-    #     print(f"  Abstract: {paper.abstract[:100]}...")  
-    # print(f"Total number of papers: {len(papers)}")
-    # print("\n")
-
-    papers_data = [{"title": p.title, "abstract": p.abstract[:100] + "..."} for p in papers[:20]]
+    papers_data = [{"title": p.title, "abstract": p.abstract} for p in papers[:20]]
 
     prompt = f"""
     Generate exactly {num_categories} research categories that best represent the content of the following papers. 
     Provide the categories as a numbered list, with each category on a new line.
     
     Each category should:
-    1. Be 20-40 characters long
-    2. Provide meaningful insights into the specific research area
-    3. Be sufficiently specific to distinguish between different subfields
-    4. Reflect the methodologies, technologies, or key concepts discussed in the papers
-    5. Avoid overly general terms like "Artificial Intelligence" or "Machine Learning"
-    6. Use technical terminology appropriate for the field
+    1. Be between 20 and 40 characters long
+    2. End with a complete word or concept, not mid-word
+    3. Use abbreviations if necessary to fit within 40 characters
+    4. Provide meaningful insights into the specific research area
+    5. Be sufficiently specific to distinguish between different subfields
+    6. Reflect the methodologies, technologies, or key concepts discussed in the papers
+    7. Avoid overly general terms like "Artificial Intelligence" or "Machine Learning"
+    8. Use technical terminology appropriate for the field
 
     Consider the following examples of good categories:
     - "Metabolic network modeling"
@@ -62,24 +54,16 @@ def generate_initial_categories(papers: List[Paper], num_categories: int = 10) -
     )
 
     raw_output = response.choices[0].message.content.strip()
-    # print("\nRaw Output:")
-    # print("-----------")
-    # print(raw_output)
     
     categories = raw_output.split("\n")
     categories = [re.sub(r'^\d+\.\s*', '', cat.strip()) for cat in categories]
 
-    # print("\nEND: Generating Initial Categories")
-    # print("====================================")
     return [cat[:40] for cat in categories] 
 
 
 def refine_categories(categories: List[str], papers: List[Paper]) -> List[str]:
 
-    # print("\nSTART: Refining Categories")
-    # print("===========================")
-
-    sample_papers_data = [{"title": p.title, "abstract": p.abstract[:100] + "..."} for p in papers[:20]]
+    sample_papers_data = [{"title": p.title, "abstract": p.abstract} for p in papers[:20]]
 
     prompt = f"""
     Given the following initial categories and a sample of papers, significantly refine and improve the categories to better represent the research areas. 
@@ -94,11 +78,15 @@ def refine_categories(categories: List[str], papers: List[Paper]) -> List[str]:
     6. Aim to generate exactly {len(categories)} refined categories.
 
     Each refined category should:
-    1. Be 20-40 characters long
-    2. Provide deeper insights into the specific research area
-    3. Be more specific and distinctive than the initial categories
-    4. Reflect advanced methodologies, technologies, or key concepts
-    5. Use precise technical terminology appropriate for experts in the field
+    1. Be between 20 and 40 characters long
+    2. End with a complete word or concept, not mid-word
+    3. Use abbreviations if necessary to fit within 40 characters
+    4. Provide deeper insights into the specific research area
+    5. Be more specific and distinctive than the initial categories
+    6. Reflect advanced methodologies, technologies, or key concepts
+    7. Use precise technical terminology appropriate for experts in the field
+
+    Important: Ensure that each category is a complete phrase or term, even if it means using fewer than 40 characters.
 
     Initial Categories:
     {json.dumps(categories, indent=2)}
@@ -123,22 +111,9 @@ def refine_categories(categories: List[str], papers: List[Paper]) -> List[str]:
     )
 
     raw_output = response.choices[0].message.content.strip()
-    # print("\nRaw Output:")
-    # print("-----------")
-    # print(raw_output)
 
     refined_categories = raw_output.strip().split('\n')
     refined_categories = [re.sub(r'^\d+\.\s*', '', cat.strip()) for cat in refined_categories]
-    
-    # print("\nCategory Comparison:")
-    # print("--------------------")
-    # for i, (initial, refined) in enumerate(zip(categories, refined_categories), 1):
-    #     print(f"{i:2d}. Initial: {initial}")
-    #     print(f"    Refined: {refined}")
-    #     print()
-
-    # print("\nEND: Refining Categories")
-    # print("=========================")
     
     return [cat[:40] for cat in refined_categories if cat] 
 
@@ -178,18 +153,71 @@ def classify_papers_batch(papers: List[Paper], categories: List[str]) -> Dict[st
     
     return classifications
 
+def order_categories(categories: List[str], papers: List[Paper]) -> List[str]:
+    category_relations = calculate_category_relations(categories, papers)
+    
+    G = nx.Graph()
+    G.add_weighted_edges_from([(cat1, cat2, weight) for (cat1, cat2), weight in category_relations.items()])
+    
+    # Obtain a tree that connects all categories with the minimum weight
+    mst = nx.minimum_spanning_tree(G)
+    
+    # Find the node (start node) with the most connections in the MST
+    start_node = max(mst.degree, key=lambda x: x[1])[0]
+    
+    # Starting from the starting node, we perform a breadth-first search (BFS) to order the categories
+    # Caution: No chronological or logical order is taken into account
+    ordered_categories = list(nx.bfs_tree(mst, start_node))
+    
+    ordered_categories.extend([cat for cat in categories if cat not in ordered_categories])
+    
+    return ordered_categories
+
+def calculate_category_relations(categories: List[str], papers: List[Paper]) -> Dict[tuple[str, str], float]:
+    category_embeddings = {cat: get_embedding(cat) for cat in categories}
+    relations = {}
+    
+    for i, cat1 in enumerate(categories):
+        for cat2 in categories[i+1:]:
+            similarity = cosine_similarity(category_embeddings[cat1], category_embeddings[cat2])
+            relations[(cat1, cat2)] = similarity
+    
+    return relations
+    #relations = {
+    #("Lab Automation", "DNA Sequencing"): 0.75,
+    #("Lab Automation", "Robotics"): 0.85,
+    #("DNA Sequencing", "Robotics"): 0.60
+    #}
+
+
 def generate_headings(papers: list[Paper]) -> dict[str, list[Paper]]:
     try:
         initial_categories = generate_initial_categories(papers)
         refined_categories = refine_categories(initial_categories, papers) or initial_categories
-        classifications = classify_papers_batch(papers, refined_categories)
-        # Classification Results: {'Goal-directed Robotic Scripting in Biolo': [Paper(id='5ec18c8777e0eaf1411987638040546a22da861e', title='LLMs can generate robotic scripts from goal-oriented instructions in biological laboratory automation', abstract="The use of laboratory automation by all researchers may substantially accelerate scientific activities by humans, including those in the life sciences. However, computer programs to operate robots should be written to implement laboratory automation, which requires technical knowledge and skills that may not be part of a researcher's training or expertise. In the last few years, there has been remarkable development in large language models (LLMs) such as GPT-4, which can generate computer codes based on natural language instructions. In this study, we used LLMs, including GPT-4, to generate scripts for robot operations in biological experiments based on ambiguous instructions. GPT-4 successfully generates scripts for OT-2, an automated liquid-handling robot, from simple instructions in natural language without specifying the robotic actions. Conventionally, translating the nuances of biological experiments into low-level robot actions requires researchers to understand both biology and robotics, imagine robot actions, and write robotic scripts. Our results showed that GPT-4 can connect the context of biological experiments with robot operation through simple prompts with expert-level contextual understanding and inherent knowledge. Replacing robot script programming, which is a tedious task for biological researchers, with natural-language LLM instructions that do not consider robot behavior significantly increases the number of researchers who can benefit from automating biological experiments.", venue='', year=2023, authors=[Author(id='2054037213', name='T. Inagaki'), Author(id='2214922490', name='Akari Kato'), Author(id='2116095075', name='Koichi Takahashi'), Author(id='50075919', name='Haruka Ozaki'), Author(id='35226027', name='G. Kanda')])], 'NGS Library Prep Automation Challenges &': [Paper(id='85b19a6f5597689fe4dedb3954aff3026e75ea20', title='Implementing laboratory automation for...
+        refined_categories = [cat[:40] for cat in refined_categories]
+
+        ordered_categories = order_categories(refined_categories, papers)
+
+        classifications = classify_papers_batch(papers, ordered_categories)
+
+        non_empty_classifications = {cat: papers for cat, papers in classifications.items() if papers}
+
+        print("\nClassification Results:\n")
+        for category, classified_papers in non_empty_classifications.items():
+            print(f"Category: {category} (Total: {len(classified_papers)})")
+            for paper in classified_papers:
+                print(f"  - {paper.title}")
+            print("\n" + "="*40 + "\n")
 
     except Exception as e:
         print(f"An error occurred: {e}")
         raise e
-    return classifications
-
+    return non_empty_classifications
+    # {'Goal-directed Robotic Scripting in Biolo': 
+    #   [Paper(id='5ec18c8777e0eaf1411987638040546a22da861e', 
+    #   title='LLMs can generate robotic scripts from goal-oriented instructions in biological laboratory automation', 
+    #   abstract="The use of laboratory automation by all researchers may substantially accelerate scientific activities by humans, including those in the life sciences. However, computer programs to operate robots should be written to implement laboratory automation, which requires technical knowledge and skills that may not be part of a researcher's training or expertise. In the last few years, there has been remarkable development in large language models (LLMs) such as GPT-4, which can generate computer codes based on natural language instructions. In this study, we used LLMs, including GPT-4, to generate scripts for robot operations in biological experiments based on ambiguous instructions. GPT-4 successfully generates scripts for OT-2, an automated liquid-handling robot, from simple instructions in natural language without specifying the robotic actions. Conventionally, translating the nuances of biological experiments into low-level robot actions requires researchers to understand both biology and robotics, imagine robot actions, and write robotic scripts. Our results showed that GPT-4 can connect the context of biological experiments with robot operation through simple prompts with expert-level contextual understanding and inherent knowledge. Replacing robot script programming, which is a tedious task for biological researchers, with natural-language LLM instructions that do not consider robot behavior significantly increases the number of researchers who can benefit from automating biological experiments.", venue='', year=2023, authors=[Author(id='2054037213', name='T. Inagaki'), Author(id='2214922490', name='Akari Kato'), Author(id='2116095075', name='Koichi Takahashi'), Author(id='50075919', name='Haruka Ozaki'), Author(id='35226027', name='G. Kanda')])], 'NGS Library Prep Automation Challenges &': [Paper(id='85b19a6f5597689fe4dedb3954aff3026e75ea20', title='Implementing laboratory automation for...
+    # }
 if __name__ == "__main__":
     # Assume 'papers' is a list of dictionaries, each containing 'title' and 'abstract' keys
     generate_headings([])
