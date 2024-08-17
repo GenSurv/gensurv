@@ -5,12 +5,6 @@ load_dotenv()
 from gensurv import retrieve_papers, generate_headings, classify_papers, generate_overview, generate_draft, load_papers, load_headings
 
 
-def main(data_path, output_path):
-    import pandas as pd
-    df = pd.read_csv(data_path)
-    df.to_csv(output_path, index=False)
-
-
 def parse_args():
     import argparse
     parser = argparse.ArgumentParser()
