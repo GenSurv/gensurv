@@ -2,7 +2,10 @@ from pathlib import Path
 from dotenv import load_dotenv
 load_dotenv()
 
-from gensurv import retrieve_papers, generate_headings, classify_papers, generate_overview, generate_draft, load_papers, load_headings
+from gensurv import (
+    generate_query, retrieve_papers, generate_headings, classify_papers, generate_overview,
+    generate_draft, load_papers, load_headings
+)
 
 
 def parse_args():
@@ -22,9 +25,11 @@ def parse_args():
 if __name__ == '__main__':
     args = parse_args()
 
+    query = generate_query(args.title)
+
     if args.retrieve_papers:
         papers = retrieve_papers(
-            args.title, args.max_papers,
+            query, args.max_papers,
             args.output_path / 'semantic_scholar',
         )
     else:
@@ -40,6 +45,3 @@ if __name__ == '__main__':
 
     if args.generate_draft:
         draft = generate_draft(overview)
-
-
-
