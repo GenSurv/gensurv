@@ -17,3 +17,7 @@ Python環境
 ```shell
 pip install -r requirements.txt
 ```
+## Usage
+```shell
+python src/main.py --title "Laboratory automation" --retrieve_papers --max_papers 5
+```

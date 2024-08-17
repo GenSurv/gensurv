@@ -15,6 +15,7 @@ def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('--title', type=str)
     parser.add_argument('--retrieve_papers', action='store_true')
+    parser.add_argument('--max_papers', type=int, default=10)
     parser.add_argument('--papers_path', type=str)
     parser.add_argument('--generate_headings', action='store_true')
     parser.add_argument('--headings_path', type=str)
@@ -27,7 +28,7 @@ if __name__ == '__main__':
     args = parse_args()
 
     if args.retrieve_papers:
-        papers = retrieve_papers(args.title)
+        papers = retrieve_papers(args.title, args.max_papers)
     else:
         papers = load_papers(args.papers_path)
 
