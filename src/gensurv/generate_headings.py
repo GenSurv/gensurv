@@ -3,29 +3,13 @@ import numpy as np
 from dotenv import load_dotenv
 import os
 import json
-from typing import List, Dict, Optional
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from typing import List, Dict
 import re
-from dataclasses import dataclass, field
 
 from .models import Paper
 
 load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-
-@dataclass
-class Author:
-    id: str
-    name: str
-
-@dataclass
-class Paper:
-    id: str
-    title: str
-    abstract: str
-    venue: Optional[str] = None
-    year: Optional[int] = None
-    authors: List[Author] = field(default_factory=list)
 
 
 def generate_initial_categories(papers: List[Paper], num_categories: int = 10) -> List[str]:
