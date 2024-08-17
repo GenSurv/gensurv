@@ -1,3 +1,4 @@
+aider-chat==0.50.1
 annotated-types==0.7.0
 anyio==4.4.0
 appnope==0.1.4
