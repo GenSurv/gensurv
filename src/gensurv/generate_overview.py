@@ -91,8 +91,6 @@ You are tasked with generating a paragraph for the review paper.
 
 def main():
     client = OpenAI()
-    latex_file_path = get_latex_file_path()
-    coder = setup_coder(latex_file_path)
 
     structured_papers = {
         "Feedback": [
@@ -149,7 +147,7 @@ def main():
         ]
     }
 
-    paragraphs = generate_overview(client, coder, structured_papers)
+    paragraphs = generate_overview(client, structured_papers)
     for section_title, paragraph in paragraphs.items():
         print(f"Section: {section_title}")
         print(f"Paragraph: {paragraph}")
