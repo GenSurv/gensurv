@@ -1,9 +1,4 @@
-import gensim
-from gensim import corpora
-from transformers import pipeline
 from openai import OpenAI
-import numpy as np
-from papers_data import papers
 from dotenv import load_dotenv
 import os
 import json
@@ -17,7 +12,7 @@ load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 
-def generate_initial_categories(papers: List[Dict[str, str]], num_categories: int = 10) -> List[str]:
+def generate_initial_categories(papers: List[Paper], num_categories: int = 10) -> List[str]:
     prompt = f"""
     Given the following list of paper titles and abstracts, generate {num_categories} research categories that best represent the content. 
     Provide the categories as a comma-separated list. 
@@ -36,7 +31,7 @@ def generate_initial_categories(papers: List[Dict[str, str]], num_categories: in
     - "Multi-omics data integration"
 
     Papers:
-    {json.dumps([{"title": p["title"], "abstract": p["abstract"][:100] + "..."} for p in papers[:20]], indent=2)}
+    {json.dumps([{"title": p.title, "abstract": p.abstract[:100] + "..."} for p in papers[:20]], indent=2)}
 
     Categories:
     """
@@ -55,7 +50,8 @@ def generate_initial_categories(papers: List[Dict[str, str]], num_categories: in
     categories = [re.sub(r'^["\'\s]+|["\'\s]+$', '', cat.strip()) for cat in raw_output.split(",")]
     return [cat[:30] for cat in categories]  # Ensure categories are no longer than 30 characters
 
-def refine_categories(categories: List[str], papers: List[Dict[str, str]]) -> List[str]:
+
+def refine_categories(categories: List[str], papers: List[Paper]) -> List[str]:
     prompt = f"""
     Given the following initial categories and a sample of papers, refine and adjust the categories to better represent the research areas. 
     You can modify, combine, split, or create new categories as needed. Aim for clarity, distinctiveness, and specificity.
@@ -68,13 +64,13 @@ def refine_categories(categories: List[str], papers: List[Dict[str, str]]) -> Li
     6. Use technical terminology appropriate for the field
     7. Ensure minimal overlap between categories
 
-Provide the refined categories as a comma-separated list.
+    Provide the refined categories as a comma-separated list.
 
     Initial Categories:
     {json.dumps(categories, indent=2)}
 
     Sample Papers:
-    {json.dumps([{"title": p["title"], "abstract": p["abstract"][:100] + "..."} for p in papers[:10]], indent=2)}
+    {json.dumps([{"title": p.title, "abstract": p.abstract[:100] + "..."} for p in papers[:10]], indent=2)}
 
     Refined Categories:
     """
@@ -93,7 +89,8 @@ Provide the refined categories as a comma-separated list.
     refined_categories = [re.sub(r'^["\'\s]+|["\'\s]+$', '', cat.strip()) for cat in raw_output.split(",")]
     return [cat[:30] for cat in refined_categories if cat]  # Ensure categories are no longer than 30 characters and not empty
 
-def classify_paper(paper: Dict[str, str], categories: List[str]) -> str:
+
+def classify_paper(paper: Paper, categories: List[str]) -> str:
     prompt = f"""
     Classify the following paper into the most appropriate category from the list provided. 
     If none of the categories fit well, respond with "Other".
@@ -102,8 +99,8 @@ def classify_paper(paper: Dict[str, str], categories: List[str]) -> str:
     {json.dumps(categories, indent=2)}
 
     Paper:
-    Title: {paper["title"]}
-    Abstract: {paper["abstract"]}
+    Title: {paper.title}
+    Abstract: {paper.abstract}
 
     Category:
     """
@@ -123,7 +120,8 @@ def classify_paper(paper: Dict[str, str], categories: List[str]) -> str:
         print(f"Error classifying paper: {e}")
         return "Error"
 
-def classify_papers_batch(papers: List[Dict[str, str]], categories: List[str], batch_size: int = 10) -> Dict[str, List[str]]:
+
+def classify_papers_batch(papers: List[Paper], categories: List[str], batch_size: int = 10) -> Dict[str, List[Paper]]:
     classifications = {cat: [] for cat in categories + ["Other", "Error"]}
     
     with ThreadPoolExecutor(max_workers=5) as executor:
@@ -133,13 +131,14 @@ def classify_papers_batch(papers: List[Dict[str, str]], categories: List[str], b
             for future, paper in zip(as_completed(futures), batch):
                 category = future.result()
                 if category not in classifications:
-                    classifications["Error"].append(paper["title"])
+                    classifications["Error"].append(paper)
                 else:
-                    classifications[category].append(paper["title"])
+                    classifications[category].append(paper)
     
     return classifications
 
-def analyze_results(classifications: Dict[str, List[str]], papers: List[Dict[str, str]]) -> str:
+
+def analyze_results(classifications: Dict[str, List[Paper]], papers: List[Paper]) -> str:
     num_papers = len(papers)
     num_categories = len(classifications)
     avg_papers_per_category = num_papers / num_categories
@@ -152,7 +151,7 @@ def analyze_results(classifications: Dict[str, List[str]], papers: List[Dict[str
     Average papers per category: {avg_papers_per_category:.2f}
 
     Classification distribution:
-    {json.dumps({cat: len(titles) for cat, titles in classifications.items()}, indent=2)}
+    {json.dumps({cat: len(papers) for cat, papers in classifications.items()}, indent=2)}
 
     Suggestions for improvement:
     1. Propose any categories that should be split or combined.
@@ -177,7 +176,8 @@ def analyze_results(classifications: Dict[str, List[str]], papers: List[Dict[str
     except Exception as e:
         return f"Error analyzing results: {e}"
 
-def generate_headings(papers: List[Dict[str, str]]):
+
+def generate_headings(papers: list[Paper]) -> dict[str, list[Paper]]:
     try:
         # Step 1: Generate initial categories
         initial_categories = generate_initial_categories(papers)
@@ -196,10 +196,10 @@ def generate_headings(papers: List[Dict[str, str]]):
 
         # Step 4: Output results
         print("\nClassification Results:")
-        for category, titles in classifications.items():
+        for category, papers in classifications.items():
             print(f"\n{category}:")
-            for title in titles:
-                print(f"- {title}")
+            for paper in papers:
+                print(f"- {paper.title}")
 
         # Step 5: Analyze results and suggest further refinements
         analysis = analyze_results(classifications, papers)
@@ -208,7 +208,10 @@ def generate_headings(papers: List[Dict[str, str]]):
 
     except Exception as e:
         print(f"An error occurred: {e}")
+        raise e
+    return classifications
+
 
 if __name__ == "__main__":
     # Assume 'papers' is a list of dictionaries, each containing 'title' and 'abstract' keys
-    generate_headings(papers)
+    generate_headings([])
