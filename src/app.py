@@ -1,3 +1,4 @@
+import argparse
 import gradio as gr
 import pandas as pd
 from pathlib import Path
@@ -38,4 +39,9 @@ iface = gr.Interface(
     description="TSVファイルをアップロードすると、各見出しに対して割り当てられるべきPaper.titleを表示します。"
 )
 
-iface.launch()
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--share", action="store_true", help="Whether to publicly share this interface")
+    args = parser.parse_args()
+    iface.launch(share=args.share)

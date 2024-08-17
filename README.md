@@ -27,9 +27,21 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 ## Usage
+Executing the script
 ```shell
 python src/main.py --title "Laboratory automation" --retrieve_papers --max_papers 5 --generate_headings --output_path data
 ```
+
+Launching the application (locally)
+```shell
+gradio run src/app.py
+```
+
+Launching the application (creating a shared link)
+```shell
+gradio run src/app.py --share
+```
+
 
 ## Flow Chart
 ```mermaid

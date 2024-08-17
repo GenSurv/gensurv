@@ -27,9 +27,21 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 ## Usage
+スクリプト実行
 ```shell
 python src/main.py --title "Laboratory automation" --retrieve_papers --max_papers 5 --generate_headings --output_path data
 ```
+
+アプリケーション起動（ローカル）
+```shell
+gradio run src/app.py
+```
+
+アプリケーション起動（共有リンク作成）
+```shell
+gradio run src/app.py --share
+```
+
 
 ## Flow Chart
 ```mermaid
