@@ -10,3 +10,4 @@ class Paper(BaseModel):
     venue: str
     year: int
     authors: list[Author]
+    citation_styles: dict[str, str] | None

@@ -47,7 +47,7 @@ class SemanticScholarRetriever(BaseModel):
         return self.check_response_status(response)
 
     @backoff.on_exception(backoff.expo, SemanticScholarError, max_time=3)
-    def retrieve_paper(self, paper_id: str, fields: str = "title,abstract,authors,venue,year") -> Paper:
+    def retrieve_paper(self, paper_id: str, fields: str = "title,abstract,authors,venue,year,citationStyles") -> Paper:
         if (self.output_dir / f"{paper_id}.json").exists():
             with open(self.output_dir / f"{paper_id}.json") as f:
                 return Paper.parse_raw(f.read())
@@ -67,6 +67,7 @@ class SemanticScholarRetriever(BaseModel):
             venue=response_dict.get("venue", ""),
             year=response_dict.get("year", ""),
             authors=authors,
+            citation_styles=response_dict.get("citationStyles", ""),
         )
         with open(self.output_dir / f"{paper_id}.json", "w") as f:
             f.write(paper.json())
