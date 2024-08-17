@@ -6,6 +6,8 @@ from pydantic import BaseModel
 from aider.coders import Coder
 from aider.models import Model
 from aider.io import InputOutput
+from models import Paper
+from typing import List
 
 class Config(BaseModel):
     current_dir: str = os.path.dirname(os.path.abspath(__file__))
@@ -44,6 +46,15 @@ def add_section_to_latex(coder: Coder, section_title: str, section_content: str)
             section_content=section_content
         )
     )
+
+def add_bibtex_to_latex(coder: Coder, papers: List[Paper]) -> None:
+    latex_edit_template = "Add the following bibtex entries to the latex template:"
+    for paper in papers:
+        bibtex = paper.citation_styles["bibtex"]
+        bibtex_string = "\n".join(bibtex)
+        latex_edit_template += bibtex_string + "\n"
+    
+    coder.run(latex_edit_template)
 
 def run_latex_command(command: List[str], cwd: str, timeout: int = 30) -> None:
     try:
@@ -89,13 +100,15 @@ def compile_latex(cwd: str, pdf_file: str, timeout: int = 30) -> None:
     except Exception as e:
         print(f"Error moving PDF: {e}")
 
-def generate_draft(overview: Dict[str, str]) -> None:
+def generate_draft(overview: Dict[str, str], papers: List[Paper], compile_latex: bool = False) -> None:
     coder = setup_coder()
 
+    add_bibtex_to_latex(coder, papers)
     for section_title, paragraph in overview.items():
         add_section_to_latex(coder, section_title, paragraph)
 
-    compile_latex(config.latex_dir, config.pdf_output)
+    if compile_latex:
+        compile_latex(config.latex_dir, config.pdf_output)
 
 if __name__ == "__main__":
     overview = {

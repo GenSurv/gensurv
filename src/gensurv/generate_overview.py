@@ -1,9 +1,7 @@
-import json
 import os
 from typing import Dict, List
 
 from openai import OpenAI
-from pydantic import BaseModel
 
 from aider.coders import Coder
 from aider.models import Model
@@ -35,17 +33,6 @@ def setup_coder(latex_file_path: str) -> Coder:
         edit_format="diff"
     )
 
-def generate_bibtex_string(paper: Paper) -> str:
-    try:
-        bibtex = paper.citation_styles["bibtex"]
-        return "\n".join(bibtex)
-    except FileNotFoundError:
-        print(f"Warning: BibTeX file for paper {paper.id} not found.")
-        return ""
-    except json.JSONDecodeError:
-        print(f"Error: Invalid JSON in BibTeX file for paper {paper.id}.")
-        return ""
-
 def create_prompt(section_title: str, papers: List[Paper]) -> str:
     prompt = f"""
 Generate a paragraph of the following section of an academic review paper on the theme of {REVIEW_PAPER_THEME}:
@@ -60,7 +47,8 @@ You 'must' use \\cite{{...}} to reference papers from bibtex name, do not manual
 papers:
 """
     for paper in papers:
-        bibtex_string = generate_bibtex_string(paper)
+        bibtex = paper.citation_styles["bibtex"]
+        bibtex_string = "\n".join(bibtex)
         prompt += f"abstract: {paper.abstract}\n"
         prompt += f"bibtex: {bibtex_string}\n\n"
     return prompt
@@ -87,25 +75,18 @@ def format_bibtex(bibtex: str) -> str:
     bibtex = bibtex.replace('\\', '\\\\').replace('"', '\\"')
     return bibtex
 
-def generate_overview(client: OpenAI, coder: Coder, structured_papers: Dict[str, List[Paper]]) -> ParagraphDict:
+def generate_overview(client: OpenAI, structured_papers: Dict[str, List[Paper]]) -> ParagraphDict:
     system_message = f"""
 You are a expert researcher in the field of AI. 
 You are writing an academic review paper on the theme of {REVIEW_PAPER_THEME}.
 You are tasked with generating a paragraph for the review paper.
 """
-    latex_edit_template = "Add the following bibtex entries to the latex template:"
     paragraphs = {}
 
     for section_title, papers in structured_papers.items():
-        prompt = create_prompt(section_title, papers)
-        for paper in papers:
-            bibtex_string = generate_bibtex_string(paper)
-            latex_edit_template += bibtex_string + "\n"
-        
+        prompt = create_prompt(section_title, papers)        
         paragraph = generate_paragraph(client, system_message, prompt)
         paragraphs[section_title] = paragraph
-    
-    coder.run(latex_edit_template)
     return paragraphs
 
 def main():
