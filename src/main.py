@@ -11,14 +11,14 @@ from gensurv import (
 def parse_args():
     import argparse
     parser = argparse.ArgumentParser()
-    parser.add_argument('--title', type=str)
-    parser.add_argument('--retrieve_papers', action='store_true')
-    parser.add_argument('--max_papers', type=int, default=10)
-    parser.add_argument('--papers_path', type=str)
-    parser.add_argument('--generate_headings', action='store_true')
-    parser.add_argument('--headings_path', type=str)
-    parser.add_argument('--generate_draft', action='store_true')
-    parser.add_argument('--output_path', type=Path)
+    parser.add_argument('--title', type=str, help='Title of the paper which you want to generate draft for')
+    parser.add_argument('--retrieve_papers', action='store_true', help='Retrieve papers from Semantic Scholar')
+    parser.add_argument('--max_papers', type=int, default=10, help='Maximum number of papers to retrieve')
+    parser.add_argument('--papers_path', type=str, help='Path to the papers')
+    parser.add_argument('--generate_headings', action='store_true', help='Generate headings')
+    parser.add_argument('--headings_path', type=str, help='Path to the headings')
+    parser.add_argument('--generate_draft', action='store_true', help='Generate draft')
+    parser.add_argument('--output_path', type=Path, help='Output directory path')
     return parser.parse_args()
 
 
