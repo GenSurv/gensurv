@@ -101,7 +101,11 @@ def compile_latex(cwd: str, pdf_file: str, timeout: int = 30) -> None:
     except Exception as e:
         print(f"Error moving PDF: {e}")
 
+<<<<<<< HEAD
 def generate_draft(overview: Dict[str, str], papers: List[Paper], compile_latex: bool = False) -> None:
+=======
+def generate_draft(overview: Dict[str, str], compile_latex: bool = False) -> None:
+>>>>>>> origin/feature/overview-to-draft
     coder = setup_coder()
 
     add_bibtex_to_latex(coder, papers)
