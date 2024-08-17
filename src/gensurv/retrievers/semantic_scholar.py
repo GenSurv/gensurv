@@ -58,7 +58,7 @@ class SemanticScholarRetriever(BaseModel):
         response = requests.get(url, params=params, headers=headers)
         response_dict = self.check_response_status(response)
         authors = [
-            Author(id=author["authorId"], name=author["name"]) for author in response_dict.get("authors", [])
+            Author(id=author.get("authorId", None), name=author["name"]) for author in response_dict.get("authors", [])
         ]
         paper = Paper(
             id=paper_id,
