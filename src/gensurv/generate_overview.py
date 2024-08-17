@@ -1,2 +1,5 @@
-def generate_overview(structured_papers: dict[str, list[str]]) -> dict[str, str]:
+from .models import Paper
+
+
+def generate_overview(structured_papers: dict[str, list[Paper]]) -> dict[str, str]:
     ...
