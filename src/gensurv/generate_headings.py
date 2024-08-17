@@ -1,23 +1,54 @@
 from openai import OpenAI
+import numpy as np
 from dotenv import load_dotenv
 import os
 import json
-from typing import List, Dict
+from typing import List, Dict, Optional
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import re
+from dataclasses import dataclass, field
 
 from .models import Paper
 
 load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
+@dataclass
+class Author:
+    id: str
+    name: str
+
+@dataclass
+class Paper:
+    id: str
+    title: str
+    abstract: str
+    venue: Optional[str] = None
+    year: Optional[int] = None
+    authors: List[Author] = field(default_factory=list)
+
 
 def generate_initial_categories(papers: List[Paper], num_categories: int = 10) -> List[str]:
+
+    # print("\nSTART: Generating Initial Categories")
+    # print("======================================")
+
+    # print("Input Data Check:")
+    # for i, paper in enumerate(papers[:5], 1):  
+    #     print(f"Paper {i}:")
+    #     print(f"  Title: {paper.title}")
+    #     print(f"  Abstract: {paper.abstract[:100]}...")  
+    # print(f"Total number of papers: {len(papers)}")
+    # print("\n")
+
+    papers_data = [{"title": p.title, "abstract": p.abstract[:100] + "..."} for p in papers[:20]]
+
     prompt = f"""
-    Given the following list of paper titles and abstracts, generate {num_categories} research categories that best represent the content. 
-    Provide the categories as a comma-separated list. 
+    Generate exactly {num_categories} research categories that best represent the content of the following papers. 
+    Provide the categories as a numbered list, with each category on a new line.
+    
     Each category should:
-    1. Be 20-30 characters long
+    1. Be 20-40 characters long
     2. Provide meaningful insights into the specific research area
     3. Be sufficiently specific to distinguish between different subfields
     4. Reflect the methodologies, technologies, or key concepts discussed in the papers
@@ -31,7 +62,7 @@ def generate_initial_categories(papers: List[Paper], num_categories: int = 10) -
     - "Multi-omics data integration"
 
     Papers:
-    {json.dumps([{"title": p.title, "abstract": p.abstract[:100] + "..."} for p in papers[:20]], indent=2)}
+    {json.dumps(papers_data, indent=2)}
 
     Categories:
     """
@@ -43,34 +74,56 @@ def generate_initial_categories(papers: List[Paper], num_categories: int = 10) -
             {"role": "user", "content": prompt}
         ],
         temperature=0.7,
-        max_tokens=200
+        max_tokens=400
     )
 
     raw_output = response.choices[0].message.content.strip()
-    categories = [re.sub(r'^["\'\s]+|["\'\s]+$', '', cat.strip()) for cat in raw_output.split(",")]
-    return [cat[:30] for cat in categories]  # Ensure categories are no longer than 30 characters
+    # print("\nRaw Output:")
+    # print("-----------")
+    # print(raw_output)
+    
+    categories = raw_output.split("\n")
+    categories = [re.sub(r'^\d+\.\s*', '', cat.strip()) for cat in categories]
+
+    # print("\nEND: Generating Initial Categories")
+    # print("====================================")
+    return [cat[:40] for cat in categories] 
 
 
 def refine_categories(categories: List[str], papers: List[Paper]) -> List[str]:
-    prompt = f"""
-    Given the following initial categories and a sample of papers, refine and adjust the categories to better represent the research areas. 
-    You can modify, combine, split, or create new categories as needed. Aim for clarity, distinctiveness, and specificity.
-    Each category should:
-    1. Be 20-30 characters long
-    2. Provide meaningful insights into the specific research area
-    3. Be sufficiently specific to distinguish between different subfields
-    4. Reflect the methodologies, technologies, or key concepts discussed in the papers
-    5. Avoid overly general terms
-    6. Use technical terminology appropriate for the field
-    7. Ensure minimal overlap between categories
 
-    Provide the refined categories as a comma-separated list.
+    # print("\nSTART: Refining Categories")
+    # print("===========================")
+
+    sample_papers_data = [{"title": p.title, "abstract": p.abstract[:100] + "..."} for p in papers[:20]]
+
+    prompt = f"""
+    Given the following initial categories and a sample of papers, significantly refine and improve the categories to better represent the research areas. 
+    You MUST make substantial changes to the categories. Simply repeating the initial categories is not acceptable.
+
+    Your task:
+    1. Critically evaluate each initial category.
+    2. Combine overlapping categories.
+    3. Split broad categories into more specific ones.
+    4. Create entirely new categories if needed.
+    5. Ensure each category is distinct and non-overlapping.
+    6. Aim to generate exactly {len(categories)} refined categories.
+
+    Each refined category should:
+    1. Be 20-40 characters long
+    2. Provide deeper insights into the specific research area
+    3. Be more specific and distinctive than the initial categories
+    4. Reflect advanced methodologies, technologies, or key concepts
+    5. Use precise technical terminology appropriate for experts in the field
 
     Initial Categories:
     {json.dumps(categories, indent=2)}
 
     Sample Papers:
-    {json.dumps([{"title": p.title, "abstract": p.abstract[:100] + "..."} for p in papers[:10]], indent=2)}
+    {json.dumps(sample_papers_data, indent=2)}
+
+    Provide your refined categories as a numbered list, with each category on a new line. 
+    Ensure that your refined categories are substantially different from the initial ones.
 
     Refined Categories:
     """
@@ -82,135 +135,76 @@ def refine_categories(categories: List[str], papers: List[Paper]) -> List[str]:
             {"role": "user", "content": prompt}
         ],
         temperature=0.7,
-        max_tokens=300
+        max_tokens=400
     )
 
     raw_output = response.choices[0].message.content.strip()
-    refined_categories = [re.sub(r'^["\'\s]+|["\'\s]+$', '', cat.strip()) for cat in raw_output.split(",")]
-    return [cat[:30] for cat in refined_categories if cat]  # Ensure categories are no longer than 30 characters and not empty
+    # print("\nRaw Output:")
+    # print("-----------")
+    # print(raw_output)
 
-
-def classify_paper(paper: Paper, categories: List[str]) -> str:
-    prompt = f"""
-    Classify the following paper into the most appropriate category from the list provided. 
-    If none of the categories fit well, respond with "Other".
-
-    Categories:
-    {json.dumps(categories, indent=2)}
-
-    Paper:
-    Title: {paper.title}
-    Abstract: {paper.abstract}
-
-    Category:
-    """
-
-    try:
-        response = client.chat.completions.create(
-            model="gpt-3.5-turbo",
-            messages=[
-                {"role": "system", "content": "You are a helpful assistant that classifies academic papers into research categories."},
-                {"role": "user", "content": prompt}
-            ],
-            temperature=0.3,
-            max_tokens=50
-        )
-        return response.choices[0].message.content.strip()
-    except Exception as e:
-        print(f"Error classifying paper: {e}")
-        return "Error"
-
-
-def classify_papers_batch(papers: List[Paper], categories: List[str], batch_size: int = 10) -> Dict[str, List[Paper]]:
-    classifications = {cat: [] for cat in categories + ["Other", "Error"]}
+    refined_categories = raw_output.strip().split('\n')
+    refined_categories = [re.sub(r'^\d+\.\s*', '', cat.strip()) for cat in refined_categories]
     
-    with ThreadPoolExecutor(max_workers=5) as executor:
-        for i in range(0, len(papers), batch_size):
-            batch = papers[i:i+batch_size]
-            futures = [executor.submit(classify_paper, paper, categories) for paper in batch]
-            for future, paper in zip(as_completed(futures), batch):
-                category = future.result()
-                if category not in classifications:
-                    classifications["Error"].append(paper)
-                else:
-                    classifications[category].append(paper)
+    # print("\nCategory Comparison:")
+    # print("--------------------")
+    # for i, (initial, refined) in enumerate(zip(categories, refined_categories), 1):
+    #     print(f"{i:2d}. Initial: {initial}")
+    #     print(f"    Refined: {refined}")
+    #     print()
+
+    # print("\nEND: Refining Categories")
+    # print("=========================")
+    
+    return [cat[:40] for cat in refined_categories if cat] 
+
+def get_embedding(text: str, model: str = "text-embedding-3-small") -> np.array:
+    response = client.embeddings.create(input=[text], model=model)
+    embedding = response.data[0].embedding
+    return np.array(embedding)
+
+def cosine_similarity(embedding1: np.array, embedding2: np.array) -> float:
+    return np.dot(embedding1, embedding2)
+
+def classify_paper_by_similarity(paper: Paper, category_embeddings: Dict[str, np.array]) -> str:
+    paper_embedding = get_embedding(paper.title + " " + paper.abstract)
+    
+    max_similarity = -1
+    best_category = "Error"
+    
+    for category, embedding in category_embeddings.items():
+        similarity = cosine_similarity(paper_embedding, embedding)
+        if similarity > max_similarity:
+            max_similarity = similarity
+            best_category = category
+    
+    if max_similarity < 0.3:
+        return "Error"
+    
+    return best_category
+
+def classify_papers_batch(papers: List[Paper], categories: List[str]) -> Dict[str, List[Paper]]:
+    category_embeddings = {category: get_embedding(category) for category in categories}
+    classifications = {cat: [] for cat in categories}
+    classifications["Error"] = []
+    
+    for paper in papers:
+        category = classify_paper_by_similarity(paper, category_embeddings)
+        classifications[category].append(paper)
     
     return classifications
 
-
-def analyze_results(classifications: Dict[str, List[Paper]], papers: List[Paper]) -> str:
-    num_papers = len(papers)
-    num_categories = len(classifications)
-    avg_papers_per_category = num_papers / num_categories
-
-    prompt = f"""
-    Analyze the following classification results and suggest improvements:
-
-    Total papers: {num_papers}
-    Number of categories: {num_categories}
-    Average papers per category: {avg_papers_per_category:.2f}
-
-    Classification distribution:
-    {json.dumps({cat: len(papers) for cat, papers in classifications.items()}, indent=2)}
-
-    Suggestions for improvement:
-    1. Propose any categories that should be split or combined.
-    2. Identify any categories that are too broad or too narrow.
-    3. Suggest new categories that might better represent the research areas.
-    4. Comment on the overall distribution of papers across categories.
-
-    Provide your analysis and suggestions:
-    """
-
-    try:
-        response = client.chat.completions.create(
-            model="gpt-3.5-turbo",
-            messages=[
-                {"role": "system", "content": "You are a helpful assistant that analyzes research paper classifications and suggests improvements."},
-                {"role": "user", "content": prompt}
-            ],
-            temperature=0.7,
-            max_tokens=500
-        )
-        return response.choices[0].message.content.strip()
-    except Exception as e:
-        return f"Error analyzing results: {e}"
-
-
 def generate_headings(papers: list[Paper]) -> dict[str, list[Paper]]:
     try:
-        # Step 1: Generate initial categories
         initial_categories = generate_initial_categories(papers)
-        print("Initial Categories:", initial_categories)
-
-        # Step 2: Refine categories
-        refined_categories = refine_categories(initial_categories, papers)
-        print("Refined Categories:", refined_categories)
-
-        if not refined_categories:
-            print("Error: No refined categories generated. Using initial categories.")
-            refined_categories = initial_categories
-
-        # Step 3: Classify papers in batches
+        refined_categories = refine_categories(initial_categories, papers) or initial_categories
         classifications = classify_papers_batch(papers, refined_categories)
-
-        # Step 4: Output results
-        print("\nClassification Results:")
-        for category, papers in classifications.items():
-            print(f"\n{category}:")
-            for paper in papers:
-                print(f"- {paper.title}")
-
-        # Step 5: Analyze results and suggest further refinements
-        analysis = analyze_results(classifications, papers)
-        print("\nAnalysis and Suggestions:")
-        print(analysis)
+        # Classification Results: {'Goal-directed Robotic Scripting in Biolo': [Paper(id='5ec18c8777e0eaf1411987638040546a22da861e', title='LLMs can generate robotic scripts from goal-oriented instructions in biological laboratory automation', abstract="The use of laboratory automation by all researchers may substantially accelerate scientific activities by humans, including those in the life sciences. However, computer programs to operate robots should be written to implement laboratory automation, which requires technical knowledge and skills that may not be part of a researcher's training or expertise. In the last few years, there has been remarkable development in large language models (LLMs) such as GPT-4, which can generate computer codes based on natural language instructions. In this study, we used LLMs, including GPT-4, to generate scripts for robot operations in biological experiments based on ambiguous instructions. GPT-4 successfully generates scripts for OT-2, an automated liquid-handling robot, from simple instructions in natural language without specifying the robotic actions. Conventionally, translating the nuances of biological experiments into low-level robot actions requires researchers to understand both biology and robotics, imagine robot actions, and write robotic scripts. Our results showed that GPT-4 can connect the context of biological experiments with robot operation through simple prompts with expert-level contextual understanding and inherent knowledge. Replacing robot script programming, which is a tedious task for biological researchers, with natural-language LLM instructions that do not consider robot behavior significantly increases the number of researchers who can benefit from automating biological experiments.", venue='', year=2023, authors=[Author(id='2054037213', name='T. Inagaki'), Author(id='2214922490', name='Akari Kato'), Author(id='2116095075', name='Koichi Takahashi'), Author(id='50075919', name='Haruka Ozaki'), Author(id='35226027', name='G. Kanda')])], 'NGS Library Prep Automation Challenges &': [Paper(id='85b19a6f5597689fe4dedb3954aff3026e75ea20', title='Implementing laboratory automation for...
 
     except Exception as e:
         print(f"An error occurred: {e}")
         raise e
     return classifications
-
 
 if __name__ == "__main__":
     # Assume 'papers' is a list of dictionaries, each containing 'title' and 'abstract' keys
