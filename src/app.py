@@ -16,8 +16,16 @@ def classify(file_path: Path):
     valid_data = df[df["headlines_section_title"].notna() & df["paper_id"].notna()]
     headings = valid_data["headlines_section_title"].tolist()
     paper_ids = valid_data["paper_id"].tolist()
-    papers = [retriever.retrieve_paper(pid) for pid in paper_ids]
-    structured_papers = classify_papers_batch(papers, headings)
+
+    papers_with_abstracts = []
+    valid_headings = []
+    for pid, heading in zip(paper_ids, headings):
+        paper = retriever.retrieve_paper(pid)
+        if paper.abstract is not None:
+            papers_with_abstracts.append(paper)
+            valid_headings.append(heading)
+
+    structured_papers = classify_papers_batch(papers_with_abstracts, valid_headings)
     simple_structured = {heading: [p.title for p in papers] for heading, papers in structured_papers.items()}
     return simple_structured
 
