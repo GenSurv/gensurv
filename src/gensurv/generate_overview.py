@@ -1,19 +1,19 @@
-import json
 import os
 from typing import Dict, List
 
 from openai import OpenAI
-from pydantic import BaseModel
 
 from aider.coders import Coder
 from aider.models import Model
 from aider.io import InputOutput
 from models import Paper, Author
+from utils import format_bibtex
 
 # Constants
-REVIEW_PAPER_THEME = "AI alignment"
 OPENAI_MODEL = "gpt-3.5-turbo"
 MAIN_MODEL = "claude-3-5-sonnet-20240620"
+
+client = OpenAI()
 
 # Type aliases
 ParagraphDict = Dict[str, str]
@@ -35,20 +35,9 @@ def setup_coder(latex_file_path: str) -> Coder:
         edit_format="diff"
     )
 
-def generate_bibtex_string(paper: Paper) -> str:
-    try:
-        bibtex = paper.citation_styles["bibtex"]
-        return "\n".join(bibtex)
-    except FileNotFoundError:
-        print(f"Warning: BibTeX file for paper {paper.id} not found.")
-        return ""
-    except json.JSONDecodeError:
-        print(f"Error: Invalid JSON in BibTeX file for paper {paper.id}.")
-        return ""
-
-def create_prompt(section_title: str, papers: List[Paper]) -> str:
+def create_prompt(section_title: str, papers: List[Paper], title: str) -> str:
     prompt = f"""
-Generate a paragraph of the following section of an academic review paper on the theme of {REVIEW_PAPER_THEME}:
+Generate a paragraph of the following section of an academic review paper on the theme of {title}:
 section_title:
 {section_title}
 
@@ -60,7 +49,8 @@ You 'must' use \\cite{{...}} to reference papers from bibtex name, do not manual
 papers:
 """
     for paper in papers:
-        bibtex_string = generate_bibtex_string(paper)
+        bibtex = paper.citation_styles["bibtex"]
+        bibtex_string = "\n".join(bibtex)
         prompt += f"abstract: {paper.abstract}\n"
         prompt += f"bibtex: {bibtex_string}\n\n"
     return prompt
@@ -79,40 +69,22 @@ def generate_paragraph(client: OpenAI, system_message: str, prompt: str) -> str:
     except Exception as e:
         print(f"Error generating paragraph: {e}")
         return ""
-    
-def format_bibtex(bibtex: str) -> str:
-    # Remove any newline characters and extra spaces
-    bibtex = ' '.join(bibtex.split())
-    # Escape any backslashes and double quotes
-    bibtex = bibtex.replace('\\', '\\\\').replace('"', '\\"')
-    return bibtex
 
-def generate_overview(client: OpenAI, coder: Coder, structured_papers: Dict[str, List[Paper]]) -> ParagraphDict:
+def generate_overview(structured_papers: Dict[str, List[Paper]], title: str) -> ParagraphDict:
     system_message = f"""
 You are a expert researcher in the field of AI. 
-You are writing an academic review paper on the theme of {REVIEW_PAPER_THEME}.
+You are writing an academic review paper on the theme of {title}.
 You are tasked with generating a paragraph for the review paper.
 """
-    latex_edit_template = "Add the following bibtex entries to the latex template:"
     paragraphs = {}
 
     for section_title, papers in structured_papers.items():
-        prompt = create_prompt(section_title, papers)
-        for paper in papers:
-            bibtex_string = generate_bibtex_string(paper)
-            latex_edit_template += bibtex_string + "\n"
-        
+        prompt = create_prompt(section_title, papers, title)        
         paragraph = generate_paragraph(client, system_message, prompt)
         paragraphs[section_title] = paragraph
-    
-    coder.run(latex_edit_template)
     return paragraphs
 
 def main():
-    client = OpenAI()
-    latex_file_path = get_latex_file_path()
-    coder = setup_coder(latex_file_path)
-
     structured_papers = {
         "Feedback": [
             Paper(
@@ -168,7 +140,8 @@ def main():
         ]
     }
 
-    paragraphs = generate_overview(client, coder, structured_papers)
+    title = "AI alignment"
+    paragraphs = generate_overview(client, structured_papers, title)
     for section_title, paragraph in paragraphs.items():
         print(f"Section: {section_title}")
         print(f"Paragraph: {paragraph}")
