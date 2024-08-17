@@ -10,5 +10,5 @@ def retrieve_papers(title: str) -> list[str]:
     retriever = SemanticScholarRetriever()
     query = title  # TODO: convert title to query
     docs = retriever.invoke(query)
-    papers = [doc.metadata for doc in docs]
+    papers = [doc.page_content for doc in docs]
     return papers
