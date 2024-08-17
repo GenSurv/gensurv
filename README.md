@@ -11,8 +11,6 @@ GenSurv (Generative Survey) は生成AIを活用し、文献調査を効率化�
 環境変数
 ```shell
 cp .env.sample .env  # APIキーなどを自分のものに書き換える
-brew install direnv
-direnv allow
 ```
 
 Python環境

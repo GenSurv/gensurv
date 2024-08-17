@@ -1,4 +1,4 @@
-from retrievers.semantic_scholar import SemanticScholarRetriever
+from .retrievers.semantic_scholar import SemanticScholarRetriever
 
 
 def retrieve_papers(title: str) -> list[str]:
