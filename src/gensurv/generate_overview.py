@@ -10,9 +10,10 @@ from models import Paper, Author
 from utils import format_bibtex
 
 # Constants
-REVIEW_PAPER_THEME = "AI alignment"
 OPENAI_MODEL = "gpt-3.5-turbo"
 MAIN_MODEL = "claude-3-5-sonnet-20240620"
+
+client = OpenAI()
 
 # Type aliases
 ParagraphDict = Dict[str, str]
@@ -34,9 +35,9 @@ def setup_coder(latex_file_path: str) -> Coder:
         edit_format="diff"
     )
 
-def create_prompt(section_title: str, papers: List[Paper]) -> str:
+def create_prompt(section_title: str, papers: List[Paper], title: str) -> str:
     prompt = f"""
-Generate a paragraph of the following section of an academic review paper on the theme of {REVIEW_PAPER_THEME}:
+Generate a paragraph of the following section of an academic review paper on the theme of {title}:
 section_title:
 {section_title}
 
@@ -69,23 +70,21 @@ def generate_paragraph(client: OpenAI, system_message: str, prompt: str) -> str:
         print(f"Error generating paragraph: {e}")
         return ""
 
-def generate_overview(client: OpenAI, structured_papers: Dict[str, List[Paper]]) -> ParagraphDict:
+def generate_overview(structured_papers: Dict[str, List[Paper]], title: str) -> ParagraphDict:
     system_message = f"""
 You are a expert researcher in the field of AI. 
-You are writing an academic review paper on the theme of {REVIEW_PAPER_THEME}.
+You are writing an academic review paper on the theme of {title}.
 You are tasked with generating a paragraph for the review paper.
 """
     paragraphs = {}
 
     for section_title, papers in structured_papers.items():
-        prompt = create_prompt(section_title, papers)        
+        prompt = create_prompt(section_title, papers, title)        
         paragraph = generate_paragraph(client, system_message, prompt)
         paragraphs[section_title] = paragraph
     return paragraphs
 
 def main():
-    client = OpenAI()
-
     structured_papers = {
         "Feedback": [
             Paper(
@@ -141,7 +140,8 @@ def main():
         ]
     }
 
-    paragraphs = generate_overview(client, structured_papers)
+    title = "AI alignment"
+    paragraphs = generate_overview(client, structured_papers, title)
     for section_title, paragraph in paragraphs.items():
         print(f"Section: {section_title}")
         print(f"Paragraph: {paragraph}")
