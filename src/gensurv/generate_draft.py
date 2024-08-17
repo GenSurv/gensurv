@@ -89,13 +89,14 @@ def compile_latex(cwd: str, pdf_file: str, timeout: int = 30) -> None:
     except Exception as e:
         print(f"Error moving PDF: {e}")
 
-def generate_draft(overview: Dict[str, str]) -> None:
+def generate_draft(overview: Dict[str, str], compile_latex: bool = False) -> None:
     coder = setup_coder()
 
     for section_title, paragraph in overview.items():
         add_section_to_latex(coder, section_title, paragraph)
 
-    compile_latex(config.latex_dir, config.pdf_output)
+    if compile_latex:
+        compile_latex(config.latex_dir, config.pdf_output)
 
 if __name__ == "__main__":
     overview = {
