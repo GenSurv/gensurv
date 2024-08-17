@@ -209,8 +209,10 @@ def generate_headings(papers: list[Paper]) -> dict[str, list[Paper]]:
         classifications = classify_papers_batch(papers, refined_categories)
         # Classification Results: {'Goal-directed Robotic Scripting in Biolo': [Paper(id='5ec18c8777e0eaf1411987638040546a22da861e', title='LLMs can generate robotic scripts from goal-oriented instructions in biological laboratory automation', abstract="The use of laboratory automation by all researchers may substantially accelerate scientific activities by humans, including those in the life sciences. However, computer programs to operate robots should be written to implement laboratory automation, which requires technical knowledge and skills that may not be part of a researcher's training or expertise. In the last few years, there has been remarkable development in large language models (LLMs) such as GPT-4, which can generate computer codes based on natural language instructions. In this study, we used LLMs, including GPT-4, to generate scripts for robot operations in biological experiments based on ambiguous instructions. GPT-4 successfully generates scripts for OT-2, an automated liquid-handling robot, from simple instructions in natural language without specifying the robotic actions. Conventionally, translating the nuances of biological experiments into low-level robot actions requires researchers to understand both biology and robotics, imagine robot actions, and write robotic scripts. Our results showed that GPT-4 can connect the context of biological experiments with robot operation through simple prompts with expert-level contextual understanding and inherent knowledge. Replacing robot script programming, which is a tedious task for biological researchers, with natural-language LLM instructions that do not consider robot behavior significantly increases the number of researchers who can benefit from automating biological experiments.", venue='', year=2023, authors=[Author(id='2054037213', name='T. Inagaki'), Author(id='2214922490', name='Akari Kato'), Author(id='2116095075', name='Koichi Takahashi'), Author(id='50075919', name='Haruka Ozaki'), Author(id='35226027', name='G. Kanda')])], 'NGS Library Prep Automation Challenges &': [Paper(id='85b19a6f5597689fe4dedb3954aff3026e75ea20', title='Implementing laboratory automation for...
 
+        non_empty_classifications = {cat: papers for cat, papers in classifications.items() if papers}
+
         print("\nClassification Results:\n")
-        for category, classified_papers in classifications.items():
+        for category, classified_papers in non_empty_classifications.items():
             print(f"Category: {category} (Total: {len(classified_papers)})")
             for paper in classified_papers:
                 print(f"  - {paper.title}")
@@ -219,7 +221,7 @@ def generate_headings(papers: list[Paper]) -> dict[str, list[Paper]]:
     except Exception as e:
         print(f"An error occurred: {e}")
         raise e
-    return classifications
+    return non_empty_classifications
 
 if __name__ == "__main__":
     # Assume 'papers' is a list of dictionaries, each containing 'title' and 'abstract' keys
