@@ -12,12 +12,14 @@ asttokens==2.4.1
 async-lru==2.0.4
 attrs==23.2.0
 Babel==2.14.0
+backoff==2.2.1
 beautifulsoup4==4.12.3
 bibtexparser==1.4.1
 bleach==6.1.0
 certifi==2024.2.2
 cffi==1.16.0
 charset-normalizer==3.3.2
+click==8.1.7
 comm==0.2.2
 dataclasses-json==0.6.4
 debugpy==1.8.1
