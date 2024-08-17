@@ -1,3 +1,4 @@
+from dotenv import load_dotenv
 import os
 from pathlib import Path
 import time
@@ -7,6 +8,8 @@ from pydantic import BaseModel
 import requests
 
 from ..models import Paper, Author
+
+load_dotenv()
 
 
 class SemanticScholarError(Exception):
