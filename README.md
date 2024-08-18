@@ -37,12 +37,12 @@ python src/main.py --title "Laboratory automation" \
 
 Launching the application (locally)
 ```shell
-gradio run src/app.py
+gradio src/app.py
 ```
 
 Launching the application (creating a shared link)
 ```shell
-gradio run src/app.py --share
+gradio src/app.py --share
 ```
 
 
