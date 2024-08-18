@@ -126,7 +126,12 @@ def cosine_similarity(embedding1: np.array, embedding2: np.array) -> float:
     return np.dot(embedding1, embedding2)
 
 def classify_paper_by_similarity(paper: Paper, category_embeddings: Dict[str, np.array]) -> str:
-    paper_embedding = get_embedding(paper.title + " " + paper.abstract)
+    text = ""
+    if paper.title is not None:
+        text += paper.title + " "
+    if paper.abstract is not None:
+        text += paper.abstract
+    paper_embedding = get_embedding(text)
     
     max_similarity = -1
     best_category = "Error"
