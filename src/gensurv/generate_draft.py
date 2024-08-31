@@ -13,9 +13,11 @@ from .utils import format_bibtex
 class Config(BaseModel):
     current_dir: str = os.path.dirname(os.path.abspath(__file__))
     latex_dir: str = os.path.join(current_dir, "latex")
-    writeup_file: str = os.path.join(latex_dir, "template.tex")
+    template_file: str = os.path.join(latex_dir, "template.tex")
+    output_file: str = os.path.join(latex_dir, "output.tex")
     pdf_output: str = os.path.join(latex_dir, "paper.pdf")
     model_name: str = "gpt-4o-2024-05-13"
+
 
 config = Config()
 
@@ -39,21 +41,27 @@ def setup_coder() -> Coder:
         use_git=False,
         edit_format="diff"
     )
+    
+def initialize_output_file():
+    shutil.copy(config.template_file, config.output_file)    
 
 def add_section_to_latex(coder: Coder, section_title: str, section_content: str) -> None:
-    coder.run(
-        latex_edit_template.format(
-            section_title=section_title,
-            section_content=section_content
-        )
-    )
+    latex_edit_template = f"""
+    Add the following section to the LaTeX file:
+    \section{{{section_title}}}
+    {section_content}
+
+   - Note that you should properly escape LaTeX special characters, e.g. backslash, bracket, etc.
+   - Add this section just before the \end{{document}} command.
+    """
+    coder.run(latex_edit_template)
 
 def add_bibtex_to_latex(coder: Coder, papers: List[Paper]) -> None:
-    latex_edit_template = "Add the following bibtex entries to the latex template:"
+    latex_edit_template = "Add the following bibtex entries to the LaTeX file, just before the \\end{document} command:"
     for paper in papers:
         bibtex = paper.citation_styles["bibtex"]
         bibtex_string = "\n".join(bibtex)
-        latex_edit_template += bibtex_string + "\n"
+        latex_edit_template += f"\n{bibtex_string}"
     
     coder.run(latex_edit_template)
 
@@ -78,14 +86,14 @@ def run_latex_command(command: List[str], cwd: str, timeout: int = 30) -> None:
     except subprocess.CalledProcessError as e:
         print(f"Error running command {' '.join(command)}: {e}")
 
-def compile_latex(cwd: str, pdf_file: str, timeout: int = 30) -> None:
+def compile_latex(cwd: str, tex_file: str, pdf_file: str, timeout: int = 30) -> None:
     print("GENERATING LATEX")
 
     commands = [
-        ["pdflatex", "-interaction=nonstopmode", "template.tex"],
-        ["bibtex", "-debug", "template"],
-        ["pdflatex", "-interaction=nonstopmode", "template.tex"],
-        ["pdflatex", "-interaction=nonstopmode", "template.tex"]
+        ["pdflatex", "-interaction=nonstopmode", tex_file],
+        ["bibtex", tex_file.replace(".tex", "")],
+        ["pdflatex", "-interaction=nonstopmode", tex_file],
+        ["pdflatex", "-interaction=nonstopmode", tex_file]
     ]
 
     for command in commands:
@@ -94,7 +102,8 @@ def compile_latex(cwd: str, pdf_file: str, timeout: int = 30) -> None:
     print("FINISHED GENERATING LATEX")
 
     try:
-        shutil.move(os.path.join(cwd, "template.pdf"), pdf_file)
+        output_pdf = os.path.join(cwd, tex_file.replace(".tex", ".pdf"))
+        shutil.move(output_pdf, pdf_file)
         print(f"PDF successfully moved to {pdf_file}")
     except FileNotFoundError:
         print("Failed to rename PDF. File not found.")
@@ -102,6 +111,7 @@ def compile_latex(cwd: str, pdf_file: str, timeout: int = 30) -> None:
         print(f"Error moving PDF: {e}")
 
 def generate_draft(overview: Dict[str, str], papers: List[Paper], _compile_latex: bool = False) -> None:
+    initialize_output_file()
     coder = setup_coder()
 
     add_bibtex_to_latex(coder, papers)
