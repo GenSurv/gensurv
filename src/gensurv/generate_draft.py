@@ -17,18 +17,8 @@ class Config(BaseModel):
     latex_dir: str = os.path.join(current_dir, "latex")
     writeup_file: str = os.path.join(latex_dir, "template.tex")
     pdf_output: str = os.path.join(latex_dir, "paper.pdf")
-    model_name: str = "gpt-4o-2024-05-13"
-    # model_name: str = "claude-3-5-sonnet-20240620"
-
-
-latex_edit_template = """
-    Add the following section to the latex template:
-    \section{{{section_title}}}
-    {section_content}
-
-   - Note that you should properly escape use LaTeX special characters, e.g. backslash, blacket, etc.
-   - If there are duplicate bibtex entries, you should remove them.
-"""
+    # model_name: str = "gpt-4o-2024-05-13"
+    model_name: str = "claude-3-5-sonnet-20240620"
 
 
 def setup_coder(config: Config) -> Coder:
@@ -45,6 +35,14 @@ def setup_coder(config: Config) -> Coder:
 
 
 def add_section_to_latex(coder: Coder, section_title: str, section_content: str) -> None:
+    latex_edit_template = """
+        Add the following section to the latex template:
+        \section{{{section_title}}}
+        {section_content}
+
+       - Note that you should properly escape use LaTeX special characters, e.g. backslash, blacket, etc.
+       - If there are duplicate bibtex entries, you should remove them.
+    """
     coder.run(
         latex_edit_template.format(
             section_title=section_title,
