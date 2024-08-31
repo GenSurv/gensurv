@@ -6,7 +6,7 @@ from .models import Paper, Author
 from .utils import format_bibtex
 
 # Constants
-OPENAI_MODEL = "gpt-3.5-turbo"
+OPENAI_MODEL = "gpt-4o-mini"
 
 client = OpenAI()
 
