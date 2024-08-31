@@ -1,4 +1,5 @@
 from datetime import datetime
+import json
 from pathlib import Path
 import shutil
 
@@ -38,6 +39,7 @@ if __name__ == "__main__":
 
     query = generate_query(args.title)
 
+    # Retrieve papers from Semantic Scholar
     if args.retrieve_papers:
         print("Retrieving papers from Semantic Scholar...")
         papers = retrieve_papers(
@@ -47,7 +49,14 @@ if __name__ == "__main__":
     else:
         print("Loading papers...")
         papers = load_papers(args.papers_path)
+    with open(output_dir / "papers.json", "w") as f:
+        papers_json = [
+            {"title": p.title, "authors": [a.name for a in p.authors], "venue": p.venue, "year": p.year}
+            for p in papers
+        ]
+        json.dump(papers_json, f, indent=4)
 
+    # Generate headings
     if args.generate_headings:
         print("Generating headings...")
         # TODO: move classify_papers() from generate_headings.py to classify_papers.py
@@ -57,9 +66,20 @@ if __name__ == "__main__":
         print("Loading headings...")
         headings = load_headings(args.headings_path)
         structured_papers = classify_papers(headings, papers)
+    with open(output_dir / "structured_papers.json", "w") as f:
+        print(structured_papers)
+        structured_papers_json = {
+            heading: [paper.title for paper in papers]
+            for heading, papers in structured_papers.items()
+        }
+        json.dump(structured_papers_json, f, indent=4)
 
+    # Generate overview
     print("Generating overview...")
     overview = generate_overview(structured_papers, args.title)
+    with open(output_dir / "overview.json", "w") as f:
+        json.dump(overview, f, indent=4)
 
+    # Generate draft
     print("Generating draft...")
     generate_draft(overview, papers, output_dir)
