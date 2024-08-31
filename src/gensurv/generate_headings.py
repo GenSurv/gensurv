@@ -4,13 +4,28 @@ from dotenv import load_dotenv
 import os
 import json
 import networkx as nx
-from typing import List, Dict
+from typing import List, Dict, Optional
 import re
+from dataclasses import dataclass, field
 
 from .models import Paper
 
 load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+@dataclass
+class Author:
+    id: str
+    name: str
+
+@dataclass
+class Paper:
+    id: str
+    title: str
+    abstract: str
+    venue: Optional[str] = None
+    year: Optional[int] = None
+    authors: List[Author] = field(default_factory=list)
 
 
 def generate_initial_categories(papers: List[Paper]) -> List[str]:
@@ -126,12 +141,7 @@ def cosine_similarity(embedding1: np.array, embedding2: np.array) -> float:
     return np.dot(embedding1, embedding2)
 
 def classify_paper_by_similarity(paper: Paper, category_embeddings: Dict[str, np.array]) -> str:
-    text = ""
-    if paper.title is not None:
-        text += paper.title + " "
-    if paper.abstract is not None:
-        text += paper.abstract
-    paper_embedding = get_embedding(text)
+    paper_embedding = get_embedding(paper.title + " " + paper.abstract)
     
     max_similarity = -1
     best_category = "Error"
@@ -193,7 +203,6 @@ def calculate_category_relations(categories: List[str], papers: List[Paper]) -> 
     #("Lab Automation", "Robotics"): 0.85,
     #("DNA Sequencing", "Robotics"): 0.60
     #}
-
 
 def generate_headings(papers: list[Paper]) -> dict[str, list[Paper]]:
     try:
