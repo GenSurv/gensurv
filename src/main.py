@@ -1,6 +1,8 @@
 from datetime import datetime
-from dotenv import load_dotenv
 from pathlib import Path
+import shutil
+
+from dotenv import load_dotenv
 
 from gensurv import (
     generate_query, retrieve_papers, generate_headings, classify_papers, generate_overview,
@@ -27,6 +29,12 @@ if __name__ == "__main__":
     args = parse_args()
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     draft_name = f"{timestamp}_{args.title.replace(' ', '_')}"
+    output_dir = (args.output_path / draft_name).resolve()
+
+    project_root = Path(__file__).resolve().parent.parent
+    data_dir = project_root / "data"
+    latex_dir = data_dir / "latex"
+    shutil.copytree(latex_dir, output_dir)
 
     query = generate_query(args.title)
 
@@ -54,4 +62,4 @@ if __name__ == "__main__":
     overview = generate_overview(structured_papers, args.title)
 
     print("Generating draft...")
-    generate_draft(overview, papers)
+    generate_draft(overview, papers, output_dir)
