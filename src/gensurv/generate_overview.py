@@ -1,11 +1,7 @@
-import os
 from typing import Dict, List
 
 from openai import OpenAI
 
-from aider.coders import Coder
-from aider.models import Model
-from aider.io import InputOutput
 from .models import Paper, Author
 from .utils import format_bibtex
 
