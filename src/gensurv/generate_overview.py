@@ -7,7 +7,6 @@ from .utils import format_bibtex
 
 # Constants
 OPENAI_MODEL = "gpt-3.5-turbo"
-MAIN_MODEL = "claude-3-5-sonnet-20240620"
 
 client = OpenAI()
 
