@@ -1,6 +1,9 @@
 from datetime import datetime
-from dotenv import load_dotenv
+import json
 from pathlib import Path
+import shutil
+
+from dotenv import load_dotenv
 
 from gensurv import (
     generate_query, retrieve_papers, generate_headings, classify_papers, generate_overview,
@@ -27,9 +30,16 @@ if __name__ == "__main__":
     args = parse_args()
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     draft_name = f"{timestamp}_{args.title.replace(' ', '_')}"
+    output_dir = (args.output_path / draft_name).resolve()
+
+    project_root = Path(__file__).resolve().parent.parent
+    data_dir = project_root / "data"
+    latex_dir = data_dir / "latex"
+    shutil.copytree(latex_dir, output_dir)
 
     query = generate_query(args.title)
 
+    # Retrieve papers from Semantic Scholar
     if args.retrieve_papers:
         print("Retrieving papers from Semantic Scholar...")
         papers = retrieve_papers(
@@ -39,7 +49,14 @@ if __name__ == "__main__":
     else:
         print("Loading papers...")
         papers = load_papers(args.papers_path)
+    with open(output_dir / "papers.json", "w") as f:
+        papers_json = [
+            {"title": p.title, "authors": [a.name for a in p.authors], "venue": p.venue, "year": p.year}
+            for p in papers
+        ]
+        json.dump(papers_json, f, indent=4)
 
+    # Generate headings
     if args.generate_headings:
         print("Generating headings...")
         # TODO: move classify_papers() from generate_headings.py to classify_papers.py
@@ -49,9 +66,20 @@ if __name__ == "__main__":
         print("Loading headings...")
         headings = load_headings(args.headings_path)
         structured_papers = classify_papers(headings, papers)
+    with open(output_dir / "structured_papers.json", "w") as f:
+        print(structured_papers)
+        structured_papers_json = {
+            heading: [paper.title for paper in papers]
+            for heading, papers in structured_papers.items()
+        }
+        json.dump(structured_papers_json, f, indent=4)
 
+    # Generate overview
     print("Generating overview...")
     overview = generate_overview(structured_papers, args.title)
+    with open(output_dir / "overview.json", "w") as f:
+        json.dump(overview, f, indent=4)
 
+    # Generate draft
     print("Generating draft...")
-    generate_draft(overview, papers)
+    generate_draft(overview, papers, output_dir)

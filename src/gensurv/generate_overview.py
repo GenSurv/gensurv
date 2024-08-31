@@ -1,39 +1,18 @@
-import os
 from typing import Dict, List
 
 from openai import OpenAI
 
-from aider.coders import Coder
-from aider.models import Model
-from aider.io import InputOutput
 from .models import Paper, Author
 from .utils import format_bibtex
 
 # Constants
 OPENAI_MODEL = "gpt-4o-mini"
-MAIN_MODEL = "claude-3-5-sonnet-20240620"
 
 client = OpenAI()
 
 # Type aliases
 ParagraphDict = Dict[str, str]
 
-def get_latex_file_path() -> str:
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    latex_dir = os.path.join(current_dir, "latex")
-    return os.path.join(latex_dir, "template.tex")
-
-def setup_coder(latex_file_path: str) -> Coder:
-    io = InputOutput(yes=True)
-    main_model = Model(MAIN_MODEL)
-    return Coder.create(
-        main_model=main_model,
-        fnames=[latex_file_path],
-        io=io,
-        stream=False,
-        use_git=False,
-        edit_format="diff"
-    )
 
 def create_prompt(section_title: str, papers: List[Paper], title: str) -> str:
     prompt = f"""
