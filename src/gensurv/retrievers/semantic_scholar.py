@@ -1,3 +1,4 @@
+from dotenv import load_dotenv
 import os
 from pathlib import Path
 import time
@@ -7,6 +8,8 @@ from pydantic import BaseModel
 import requests
 
 from ..models import Paper, Author
+
+load_dotenv()
 
 
 class SemanticScholarError(Exception):
@@ -20,7 +23,7 @@ class SemanticScholarRetriever(BaseModel):
         raise SemanticScholarError("API key is required.")
     base_url: str = "https://api.semanticscholar.org/graph/v1"
     load_max_docs: int = 10
-    sleep_time: int = 2
+    sleep_time: int = 3
 
     def __init__(self, **data):
         super().__init__(**data)
@@ -38,7 +41,6 @@ class SemanticScholarRetriever(BaseModel):
         papers = [self.retrieve_paper(paper_id) for paper_id in paper_ids]
         return papers
 
-    @backoff.on_exception(backoff.expo, SemanticScholarError, max_time=3)
     def search_papers(self, query: str) -> dict:
         url = f"{self.base_url}/paper/search"
         params = {"query": query, "limit": self.load_max_docs}
@@ -46,8 +48,8 @@ class SemanticScholarRetriever(BaseModel):
         response = requests.get(url, params=params, headers=headers)
         return self.check_response_status(response)
 
-    @backoff.on_exception(backoff.expo, SemanticScholarError, max_time=3)
-    def retrieve_paper(self, paper_id: str, fields: str = "title,abstract,authors,venue,year") -> Paper:
+    @backoff.on_exception(backoff.expo, SemanticScholarError, max_tries=5)
+    def retrieve_paper(self, paper_id: str, fields: str = "title,abstract,authors,venue,year,citationStyles") -> Paper:
         if (self.output_dir / f"{paper_id}.json").exists():
             with open(self.output_dir / f"{paper_id}.json") as f:
                 return Paper.parse_raw(f.read())
@@ -58,7 +60,7 @@ class SemanticScholarRetriever(BaseModel):
         response = requests.get(url, params=params, headers=headers)
         response_dict = self.check_response_status(response)
         authors = [
-            Author(id=author["authorId"], name=author["name"]) for author in response_dict.get("authors", [])
+            Author(id=author.get("authorId", None), name=author["name"]) for author in response_dict.get("authors", [])
         ]
         paper = Paper(
             id=paper_id,
@@ -67,6 +69,7 @@ class SemanticScholarRetriever(BaseModel):
             venue=response_dict.get("venue", ""),
             year=response_dict.get("year", ""),
             authors=authors,
+            citation_styles=response_dict.get("citationStyles", ""),
         )
         with open(self.output_dir / f"{paper_id}.json", "w") as f:
             f.write(paper.json())
@@ -79,6 +82,8 @@ class SemanticScholarRetriever(BaseModel):
 
     @staticmethod
     def check_response_status(response) -> dict:
-        if response.status_code != 200:
+        if response.status_code == 429:
+            raise SemanticScholarError(f"Request failed with status code 429: Too Many Requests")
+        elif response.status_code != 200:
             raise SemanticScholarError(f"Request failed with status code {response.status_code}: {response.text}")
         return response.json()

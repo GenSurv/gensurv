@@ -1,3 +1,4 @@
+from .generate_query import generate_query
 from .retrieve_papers import retrieve_papers
 from .generate_headings import generate_headings
 from .classify_papers import classify_papers
