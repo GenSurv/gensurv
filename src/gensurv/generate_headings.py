@@ -28,12 +28,11 @@ class Paper:
     authors: List[Author] = field(default_factory=list)
 
 
-def generate_initial_categories(papers: List[Paper], num_categories: int = 10) -> List[str]:
-
+def generate_initial_categories(papers: List[Paper]) -> List[str]:
     papers_data = [{"title": p.title, "abstract": p.abstract} for p in papers[:20]]
 
     prompt = f"""
-    Generate exactly {num_categories} research categories that best represent the content of the following papers. 
+    Generate research categories that best represent the content of the following papers. 
     Provide the categories as a numbered list, with each category on a new line.
     
     Each category should:
@@ -45,6 +44,9 @@ def generate_initial_categories(papers: List[Paper], num_categories: int = 10) -
     6. Reflect the methodologies, technologies, or key concepts discussed in the papers
     7. Avoid overly general terms like "Artificial Intelligence" or "Machine Learning"
     8. Use technical terminology appropriate for the field
+
+    Generate as many categories as needed to cover all major themes in the papers, but aim for a concise set.
+    Avoid redundancy and ensure each category represents a distinct area of research.
 
     Consider the following examples of good categories:
     - "Metabolic network modeling"
@@ -65,7 +67,7 @@ def generate_initial_categories(papers: List[Paper], num_categories: int = 10) -
             {"role": "user", "content": prompt}
         ],
         temperature=0.7,
-        max_tokens=400
+        max_tokens=600  # Increased to allow for more categories
     )
 
     raw_output = response.choices[0].message.content.strip()
@@ -73,35 +75,34 @@ def generate_initial_categories(papers: List[Paper], num_categories: int = 10) -
     categories = raw_output.split("\n")
     categories = [re.sub(r'^\d+\.\s*', '', cat.strip()) for cat in categories]
 
-    return [cat[:40] for cat in categories] 
-
+    return [cat[:40] for cat in categories if cat]
 
 def refine_categories(categories: List[str], papers: List[Paper]) -> List[str]:
-
     sample_papers_data = [{"title": p.title, "abstract": p.abstract} for p in papers[:20]]
 
     prompt = f"""
-    Given the following initial categories and a sample of papers, significantly refine and improve the categories to better represent the research areas. 
-    You MUST make substantial changes to the categories. Simply repeating the initial categories is not acceptable.
+    Given the following initial categories and a sample of papers, refine and improve the categories to better represent the research areas. 
+    You can add, remove, combine, or split categories as needed.
 
     Your task:
     1. Critically evaluate each initial category.
     2. Combine overlapping categories.
-    3. Split broad categories into more specific ones.
-    4. Create entirely new categories if needed.
-    5. Ensure each category is distinct and non-overlapping.
-    6. Aim to generate exactly {len(categories)} refined categories.
+    3. Split broad categories into more specific ones if necessary.
+    4. Create new categories if important themes are not represented.
+    5. Remove categories that are too specific or not well-represented in the papers.
+    6. Ensure each category is distinct and non-overlapping.
 
     Each refined category should:
     1. Be between 20 and 40 characters long
     2. End with a complete word or concept, not mid-word
     3. Use abbreviations if necessary to fit within 40 characters
     4. Provide deeper insights into the specific research area
-    5. Be more specific and distinctive than the initial categories
+    5. Be specific and distinctive
     6. Reflect advanced methodologies, technologies, or key concepts
     7. Use precise technical terminology appropriate for experts in the field
 
     Important: Ensure that each category is a complete phrase or term, even if it means using fewer than 40 characters.
+    Aim for a concise set of categories that comprehensively covers the major themes in the papers.
 
     Initial Categories:
     {json.dumps(categories, indent=2)}
@@ -110,7 +111,6 @@ def refine_categories(categories: List[str], papers: List[Paper]) -> List[str]:
     {json.dumps(sample_papers_data, indent=2)}
 
     Provide your refined categories as a numbered list, with each category on a new line. 
-    Ensure that your refined categories are substantially different from the initial ones.
 
     Refined Categories:
     """
@@ -122,7 +122,7 @@ def refine_categories(categories: List[str], papers: List[Paper]) -> List[str]:
             {"role": "user", "content": prompt}
         ],
         temperature=0.7,
-        max_tokens=400
+        max_tokens=600  
     )
 
     raw_output = response.choices[0].message.content.strip()
@@ -130,7 +130,7 @@ def refine_categories(categories: List[str], papers: List[Paper]) -> List[str]:
     refined_categories = raw_output.strip().split('\n')
     refined_categories = [re.sub(r'^\d+\.\s*', '', cat.strip()) for cat in refined_categories]
     
-    return [cat[:40] for cat in refined_categories if cat] 
+    return [cat[:40] for cat in refined_categories if cat]
 
 def get_embedding(text: str, model: str = "text-embedding-3-small") -> np.array:
     response = client.embeddings.create(input=[text], model=model)
