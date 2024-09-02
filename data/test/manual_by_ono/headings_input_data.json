@@ -1,0 +1,872 @@
+[
+    {
+      "id": "1",
+      "title": "Single-cell microbiology: tools, technologies, and applications",
+      "abstract": "The field of microbiology has traditionally been concerned with and focused on studies at the population level. Information on how cells respond to their environment, interact with each other, or undergo complex processes such as cellular differentiation or gene expression has been obtained mostly by inference from population-level data. Individual microorganisms, even those in supposedly populations, may differ widely from each other in terms of their genetic composition, physiology, biochemistry, or behavior. This genetic and phenotypic heterogeneity has important practical consequences for a number of human interests, including antibiotic or biocide resistance, the productivity and stability of industrial fermentations, the efficacy of food preservatives, and the potential of pathogens to cause disease. New appreciation of the importance of cellular heterogeneity, coupled with recent advances in technology, has driven the development of new tools and techniques for the study of individual microbial cells. Because observations made at the single-cell level are not subject to the effects characteristic of bulk-phase, population-level methods, they offer the unique capacity to observe discrete microbiological phenomena unavailable using traditional approaches. As a result, scientists have been able to characterize microorganisms, their activities, and their interactions at unprecedented levels of detail.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Single-cell multi-omics sequencing of mouse early embryos and embryonic stem cells",
+      "abstract": "Single-cell epigenome sequencing techniques have recently been developed. However, the combination of different layers of epigenome sequencing in an individual cell has not yet been achieved. Here, we developed a single-cell multi-omics sequencing technology (single-cell COOL-seq) that can analyze the chromatin state/nucleosome positioning, DNA methylation, copy number variation and ploidy simultaneously from the same individual mammalian cell. We used this method to analyze the reprogramming of the chromatin state and DNA methylation in mouse preimplantation embryos. We found that within < 12 h of fertilization, each individual cell undergoes global genome demethylation together with the rapid and global reprogramming of both maternal and paternal genomes to a highly opened chromatin state. This was followed by decreased openness after the late zygote stage. Furthermore, from the late zygote to the 4-cell stage, the residual DNA methylation is preferentially preserved on intergenic regions of the paternal alleles and intragenic regions of maternal alleles in each individual blastomere. However, chromatin accessibility is similar between paternal and maternal alleles in each individual cell from the late zygote to the blastocyst stage. The binding motifs of several pluripotency regulators are enriched at distal nucleosome depleted regions from as early as the 2-cell stage. This indicates that the cis-regulatory elements of such target genes have been primed to an open state from the 2-cell stage onward, long before pluripotency is eventually established in the ICM of the blastocyst. Genes may be classified into homogeneously open, homogeneously closed and divergent states based on the chromatin accessibility of their promoter regions among individual cells. This can be traced to step-wise transitions during preimplantation development. Our study offers the first single-cell and parental allele-specific analysis of the genome-scale chromatin state and DNA methylation dynamics at single-base resolution in early mouse embryos and provides new insights into the heterogeneous yet highly ordered features of epigenomic reprogramming during this process.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "3",
+      "title": "Demonstration that antigen-binding cells are precursors of antibody-producing cells after purification with a fluorescence-activated cell sorter",
+      "abstract": "We have obtained viable and functional populations of antigen-binding cells enriched up to 500-fold from primed spleen-cell suspensions by fluorescent labeling and by a new electronic cell sorter that sorts viable cells according to fluorescence. Concomitantly, populations largely depleted of antigen-binding cells were obtained. While neither population alone is capable of a full adoptive secondary response when injected into irradiated recipients, a reconstituted mixture restores the full response of the unfractionated spleen cells. Admixture of sources of unprimed thymus-derived cells (T-cells) with the purified antigen-binding cells (B-cells) restores much of the full response.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "4",
+      "title": "Laser capture microscopy coupled with Smart-seq2 for precise spatial transcriptomic profiling",
+      "abstract": "Laser capture microscopy (LCM) coupled with global transcriptome profiling could enable precise analyses of cell populations without the need for tissue dissociation, but has so far required relatively large numbers of cells. Here we report a robust and highly efficient strategy for LCM coupled with full-length mRNA-sequencing (LCM-seq) developed for single-cell transcriptomics. Fixed cells are subjected to direct lysis without RNA extraction, which both simplifies the experimental procedures as well as lowers technical noise. We apply LCM-seq on neurons isolated from mouse tissues, human post-mortem tissues, and illustrate its utility down to single captured cells. Importantly, we demonstrate that LCM-seq can provide biological insight on highly similar neuronal populations, including motor neurons isolated from different levels of the mouse spinal cord, as well as human midbrain dopamine neurons of the substantia nigra compacta and the ventral tegmental area.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "5",
+      "title": "High-efficiency, two-dimensional separations of protein digests on microfluidic devices",
+      "abstract": "High-efficiency, two-dimensional separations of tryptic digests were achieved using glass microfluidic devices. Following micellar electrokinetic chromatography (MEKC) separations in a 19.6-cm-long serpentine channel, the peptides were rapidly sampled into a 1.3-cm-long second-dimension channel, where they were separated by capillary electrophoresis (CE). The turns in the serpentine channel were asymmetrically tapered to minimize geometrical contributions to band broadening and to provide ample channel length for high-efficiency chromatographic separations. Analysis of rhodamine B injections routinely produced plate numbers of 230000 and 40000 in the first (MEKC) and second (CE) dimensions, respectively, corresponding to plate heights of 0.9 and 0.3 microm. The electric field strengths were 200 V/cm for MEKC and 2400 V/cm for CE. In analysis times less than 15 min, two-dimensional separation of bovine serum albumin tryptic digest produced a peak capacity of 4200 (110 in the first dimension and 38 in the second dimension). The system was used to identify a peptide from a tryptic digest of ovalbumin using standard addition and to distinguish between tryptic digests of human and bovine hemoglobin.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "6",
+      "title": "Integrated System for Rapid PCR-Based DNA Analysis in Microfluidic Devices",
+      "abstract": "An integrated system for rapid PCR-based analysis on a microchip has been demonstrated. The system couples a compact thermal cycling assembly based on dual Peltier thermoelectric elements with a microchip gel electrophoresis platform. This configuration allows fast (∼1 min/cycle) and efficient DNA amplification on-chip followed by electrophoretic sizing and detection on the same chip. An on-chip DNA concentration technique has been incorporated into the system to further reduce analysis time by decreasing the number of thermal cycles required. The concentration injection scheme enables detection of PCR products after performing as few as 10 thermal cycles, with a total analysis time of less than 20 min. The starting template copy number was less than 15 per injection volume.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "7",
+      "title": "Single-molecule DNA amplification and analysis in an integrated microfluidic device",
+      "abstract": "Stochastic PCR amplification of single DNA template molecules followed by capillary electrophoretic (CE) analysis of the products is demonstrated in an integrated microfluidic device. The microdevice consists of submicroliter PCR chambers etched into a glass substrate that are directly connected to a microfabricated CE system. Valves and hydrophobic vents provide controlled and sensorless loading of the 280-nL PCR chambers; the low volume reactor, the low thermal mass, and the use of thin-film heaters permit cycle times as fast as 30 s. The amplified product, labeled with an intercalating fluorescent dye, is directly injected into the gel-filled capillary channel for electrophoretic analysis. Repetitive PCR analyses at the single DNA template molecule level exhibit quantized product peak areas; a histogram of the normalized peak areas reveals clusters of events caused by 0, 1, 2, and 3 viable template copies in the reactor and these event clusters are shown to fit a Poisson distribution. This device demonstrates the most sensitive PCR possible in a microfabricated device. The detection of single DNA molecules will also facilitate single-cell and single-molecule studies to expose the genetic variation underlying ensemble sequence and expression averages.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "7",
+      "title": "Microfluidic large-scale integration",
+      "abstract": "We developed high-density microfluidic chips that contain plumbing networks with thousands of micromechanical valves and hundreds of individually addressable chambers. These fluidic devices are analogous to electronic integrated circuits fabricated using large-scale integration. A key component of these networks is the fluidic multiplexor, which is a combinatorial array of binary valve patterns that exponentially increases the processing power of a network by allowing complex fluid manipulations with a minimal number of inputs. We used these integrated microfluidic networks to construct the microfluidic analog of a comparator array and a microfluidic memory storage device whose behavior resembles random-access memory.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "8",
+      "title": "Using three-dimensional microfluidic networks for solving computationally hard problems",
+      "abstract": "This paper describes the design of a parallel algorithm that uses moving fluids in a three-dimensional microfluidic system to solve a nondeterministically polynomial complete problem (the maximal clique problem) in polynomial time. This algorithm relies on (i) parallel fabrication of the microfluidic system, (ii) parallel searching of all potential solutions by using fluid flow, and (iii) parallel optical readout of all solutions. This algorithm was implemented to solve the maximal clique problem for a simple graph with six vertices. The successful implementation of this algorithm to compute solutions for small-size graphs with fluids in microchannels is not useful, per se, but does suggest broader application for microfluidics in computation and control.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "9",
+      "title": "Long-term monitoring of bacteria undergoing programmed population control in a microchemostat",
+      "abstract": "Using an active approach to preventing biofilm formation, we implemented a microfluidic bioreactor that enables long-term culture and monitoring of extremely small populations of bacteria with single-cell resolution. We used this device to observe the dynamics of Escherichia coli carrying a synthetic population control circuit that regulates cell density through a feedback mechanism based on quorum sensing. The microfluidic bioreactor enabled long-term monitoring of unnatural behavior programmed by the synthetic circuit, which included sustained oscillations in cell density and associated morphological changes, over hundreds of hours.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "10",
+      "title": "Microfluidic Single-Cell mRNA Isolation and Analysis",
+      "abstract": "Single-cell gene expression analysis holds great promise for studying diverse biological systems, but methodology to process these precious samples in a reproducible, quantitative, and parallel fashion remains challenging. Here, we utilize microfluidics to isolate picogram and subpicogram mRNA templates, as well as to synthesize cDNA from these templates. We demonstrate single-cell mRNA isolation and cDNA synthesis, provide quantitative calibrations for each step in the process, and measure gene expression in individual cells. The techniques presented here form the foundation for highly parallel single-cell gene expression studies.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "11",
+      "title": "Monodisperse Double Emulsions Generated from a Microcapillary Device",
+      "abstract": "Double emulsions are highly structured fluids consisting of emulsion drops that contain smaller droplets inside. Although double emulsions are potentially of commercial value, traditional fabrication by means of two emulsification steps leads to very ill-controlled structuring. Using a microcapillary device, we fabricated double emulsions that contained a single internal droplet in a core-shell geometry. We show that the droplet size can be quantitatively predicted from the flow profiles of the fluids. The double emulsions were used to generate encapsulation structures by manipulating the properties of the fluid that makes up the shell. The high degree of control afforded by this method and the completely separate fluid streams make this a flexible and promising technique.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "12",
+      "title": "Quantitative single-cell RNA-seq with unique molecular identifiers",
+      "abstract": "discover new cell types and characterize tumor microevolution. However, losses in cDNA synthesis and bias in cDNA amplification lead to severe quantitative errors. We show that molecular labels—random sequences that label individual molecules—can nearly eliminate amplification noise, and that microfluidic sample preparation and optimized reagents produce a fivefold improvement in mRNA capture efficiency.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "12",
+      "title": "Novel mutations in Moloney Murine Leukemia Virus reverse transcriptase increase thermostability through tighter binding to template-primer",
+      "abstract": "In an effort to increase the thermostability of Moloney Murine Leukemia Virus reverse transcriptase (MMLV RT), we screened random and site-saturation libraries for variants that show increased resistance to thermal inactivation. We discovered five mutations E69K, E302R, W313F, L435G and N454K that collectively increase the half-life of MMLV RT at 55 degrees C from less than 5 min to approximately 30 min in the presence of template-primer. In addition, these mutations alter the thermal profile by increasing specific activity of the pentuple mutant (M5) over a broad range of cDNA synthesis temperatures (25-70 degrees C). We further show that M5 generates higher cDNA yields and exhibits better RT-PCR performance compared to wild-type RT when used at high temperature to amplify RNA targets containing secondary structure. Finally, we demonstrate that M5 exhibits tighter binding (lower K(m)) to template-primer, which likely protects against heat inactivation.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "13",
+      "title": "The role of template-primer in protection of reverse transcriptase from thermal inactivation",
+      "abstract": "We compared the thermal stabilities of wild-type recombinant avian myeloblastosis virus (AMV) and Moloney murine leukemia virus (M-MLV) reverse transcriptase (RT) with those of mutants of the recombinant enzymes lacking RNase H activity. They differed in resistance to thermal inactivation at elevated temperatures in the presence of an RNA/DNA template-primer. RNase H-minus RTs retained the ability to efficiently synthesize cDNA at much higher temperatures. We show that the structure of the template-primer has a critical bearing on protection of RT from thermal inactivation. RT RNase H activity rapidly alters the structure of the template-primer to forms less tightly bound by RT and thus less able to protect the enzyme at elevated temperatures. We also found that when comparing wild-type or mutant AMV RT with the respective M-MLV RT, the avian enzymes retained more DNA synthetic activity at elevated temperatures than murine RTs. Enzyme, template-primer interaction again played the most significant role in producing these differences. AMV RT binds much tighter to template- primer and has a much greater tendency to remain bound during cDNA synthesis than M-MLV RT and therefore is better protected from heat inactivation.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "14",
+      "title": "mRNA-Seq whole-transcriptome analysis of a single cell",
+      "abstract": "Next-generation sequencing technology is a powerful tool for transcriptome analysis. However, under certain conditions, only a small amount of material is available, which requires more sensitive techniques that can preferably be used at the single-cell level. Here we describe a single-cell digital gene expression profiling assay. Using our mRNA-Seq assay with only a single mouse blastomere, we detected the expression of 75% (5,270) more genes than microarray techniques and identified 1,753 previously unknown splice junctions called by at least 5 reads. Moreover, 8–19% of the genes with multiple known transcript isoforms expressed at least two isoforms in the same blastomere or oocyte, which unambiguously demonstrated the complexity of the transcript variants at whole-genome scale in individual cells. Finally, for Dicer1−/− and Ago2−/− (Eif2c2−/−) oocytes, we found that 1,696 and 1,553 genes, respectively, were abnormally upregulated compared to wild-type controls, with 619 genes in common.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "15",
+      "title": "Quartz-Seq: a highly reproducible and sensitive single-cell RNA sequencing method, reveals non-genetic gene-expression heterogeneity",
+      "abstract": "Development of a highly reproducible and sensitive single-cell RNA sequencing (RNA-seq) method would facilitate the understanding of the biological roles and underlying mechanisms of non-genetic cellular heterogeneity. In this study, we report a novel single-cell RNA-seq method called Quartz-Seq that has a simpler protocol and higher reproducibility and sensitivity than existing methods. We show that single-cell Quartz-Seq can quantitatively detect various kinds of non-genetic cellular heterogeneity, and can detect different cell types and different cell-cycle phases of a single cell type. Moreover, this method can comprehensively reveal gene-expression heterogeneity between single cells of the same cell type in the same cell-cycle phase.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "16",
+      "title": "Characterization of the single-cell transcriptional landscape by highly multiplex RNA-seq",
+      "abstract": "Our understanding of the development and maintenance of tissues has been greatly aided by large-scale gene expression analysis. However, tissues are invariably complex, and expression analysis of a tissue confounds the true expression patterns of its constituent cell types. Here we describe a novel strategy to access such complex samples. Single-cell RNA-seq expression profiles were generated, and clustered to form a two-dimensional cell map onto which expression data were projected. The resulting cell map integrates three levels of organization: the whole population of cells, the functionally distinct subpopulations it contains, and the single cells themselves-all without need for known markers to classify cell types. The feasibility of the strategy was demonstrated by analyzing the transcriptomes of 85 single cells of two distinct types. We believe this strategy will enable the unbiased discovery and analysis of naturally occurring cell types during development, adult physiology, and disease.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "16",
+      "title": "Full-length mRNA-Seq from single-cell levels of RNA and individual circulating tumor cells",
+      "abstract": "Genome-wide transcriptome analyses are routinely used to monitor tissue-, disease- and cell type–specific gene expression, but it has been technically challenging to generate expression profiles from single cells. Here we describe a robust mRNA-Seq protocol (Smart-Seq) that is applicable down to single cell levels. Compared with existing methods, Smart-Seq has improved read coverage across transcripts, which enhances detailed analyses of alternative transcript isoforms and identification of single-nucleotide polymorphisms. We determined the sensitivity and quantitative accuracy of Smart-Seq for single-cell transcriptomics by evaluating it on total RNA dilution series. We found that although gene expression estimates from single cells have increased noise, hundreds of differentially expressed genes could be identified using few cells per cell type. Applying Smart-Seq to circulating tumor cells from melanomas, we identified distinct gene expression patterns, including candidate biomarkers for melanoma circulating tumor cells. Our protocol will be useful for addressing fundamental biological problems requiring genome-wide transcriptome profiling in rare cells.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "16",
+      "title": "CEL-Seq: single-cell RNA-Seq by multiplexed linear amplification",
+      "abstract": "High-throughput sequencing has allowed for unprecedented detail in gene expression analyses, yet its efficient application to single cells is challenged by the small starting amounts of RNA. We have developed CEL-Seq, a method for overcoming this limitation by barcoding and pooling samples before linearly amplifying mRNA with the use of one round of in vitro transcription. We show that CEL-Seq gives more reproducible, linear, and sensitive results than a PCR-based amplification method. We demonstrate the power of this method by studying early C. elegans embryonic development at single-cell resolution. Differential distribution of transcripts between sister cells is seen as early as the two-cell stage embryo, and zygotic expression in the somatic cell lineages is enriched for transcription factors. The robust transcriptome quantifications enabled by CEL-Seq will be useful for transcriptomic analyses of complex tissues containing populations of diverse cell types.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "16",
+      "title": "Massively parallel single cell RNA-Seq for marker-free decomposition of tissues into cell types",
+      "abstract": "In multicellular organisms, biological function emerges when heterogeneous cell types form complex organs. Nevertheless, dissection of tissues into mixtures of cellular subpopulations is currently challenging. We introduce an automated massively parallel single-cell RNA sequencing (RNA-seq) approach for analyzing in vivo transcriptional states in thousands of single cells. Combined with unsupervised classification algorithms, this facilitates ab initio cell-type characterization of splenic tissues. Modeling single-cell transcriptional states in dendritic cells and additional hematopoietic cell types uncovers rich cell-type heterogeneity and gene-modules activity in steady state and after pathogen activation. Cellular diversity is thereby approached through inference of variable and dynamic pathway activity rather than a fixed preprogrammed cell-type hierarchy. These data demonstrate single-cell RNA-seq as an effective tool for comprehensive cellular decomposition of complex tissues.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "16",
+      "title": "Transcriptome analysis of single cells",
+      "abstract": "Many gene expression analysis techniques rely on material isolated from heterogeneous populations of cells from tissue homogenates or cells in culture.1,2,3 In the case of the brain, regions such as the hippocampus contain a complex arrangement of different cell types, each with distinct mRNA profiles. The ability to harvest single cells allows for a more in depth investigation into the molecular differences between and within cell populations. We describe a simple and rapid method for harvesting cells for further processing. Pipettes often used in electrophysiology are utilized to isolate (using aspiration) a cell of interest and conveniently deposit it into an Eppendorf tube for further processing with any number of molecular biology techniques. Our protocol can be modified for the harvest of dendrites from cell culture or even individual cells from acute slices.We also describe the aRNA amplification method as a major downstream application of single cell isolations. This method was developed previously by our lab as an alternative to other gene expression analysis techniques such as reverse-transcription or real-time polymerase chain reaction (PCR).4,5,6,7,8 This technique provides for linear amplification of the polyadenylated RNA beginning with only femtograms of material and resulting in microgram amounts of antisense RNA. The linearly amplified material provides a more accurate estimation than PCR exponential amplification of the relative abundance of components of the transcriptome of the isolated cell. The basic procedure consists of two rounds of amplification. Briefly, a T7 RNA polymerase promoter site is incorporated into double stranded cDNA created from the mRNA transcripts. An overnight in vitro transcription (IVT) reaction is then performed in which T7 RNA polymerase produces many antisense transcripts from the double stranded cDNA. The second round repeats this process but with some technical differences since the starting material is antisense RNA. It is standard to repeat the second round, resulting in three rounds of amplification. Often, the third round in vitro transcription reaction is performed using biotinylated nucleoside triphosphates so that the antisense RNA produced can be hybridized and detected on a microarray.7,8",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "16",
+      "title": "Smart-seq2 for sensitive full-length transcriptome profiling in single cells",
+      "abstract": "Single-cell gene expression analyses hold promise for characterizing cellular heterogeneity, but current methods compromise on either the coverage, the sensitivity or the throughput. Here, we introduce Smart-seq2 with improved reverse transcription, template switching and preamplification to increase both yield and length of cDNA libraries generated from individual cells. Smart-seq2 transcriptome libraries have improved detection, coverage, bias and accuracy compared to Smart-seq libraries and are generated with off-the-shelf reagents at lower cost.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "16",
+      "title": "Single-cell RNA-seq reveals dynamic, random monoallelic gene expression in mammalian cells",
+      "abstract": "Expression from both alleles is generally observed in analyses of diploid cell populations, but studies addressing allelic expression patterns genome-wide in single cells are lacking. Here, we present global analyses of allelic expression across individual cells of mouse preimplantation embryos of mixed background (CAST/EiJ × C57BL/6J). We discovered abundant (12 to 24%) monoallelic expression of autosomal genes and that expression of the two alleles occurs independently. The monoallelic expression appeared random and dynamic because there was considerable variation among closely related embryonic cells. Similar patterns of monoallelic expression were observed in mature cells. Our allelic expression analysis also demonstrates the de novo inactivation of the paternal X chromosome. We conclude that independent and stochastic allelic transcription generates abundant random monoallelic expression in the mammalian cell.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "16",
+      "title": "Highly parallel genome-wide expression profiling of individual cells using nanoliter droplets",
+      "abstract": "Cells, the basic units of biological structure and function, vary broadly in type and state. Single-cell genomics can characterize cell identity and function, but limitations of ease and scale have prevented its broad application. Here we describe Drop-Seq, a strategy for quickly profiling thousands of individual cells by separating them into nanoliter-sized aqueous droplets, associating a different barcode with each cell’s RNAs, and sequencing them all together. Drop-Seq analyzes mRNA transcripts from thousands of individual cells simultaneously while remembering transcripts’ cell of origin. We analyzed transcriptomes from 44,808 mouse retinal cells and identified 39 transcriptionally distinct cell populations, creating a molecular atlas of gene expression for known retinal cell classes and novel candidate cell subtypes. Drop-Seq will accelerate biological discovery by enabling routine transcriptional profiling at single-cell resolution.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "16",
+      "title": "Validation of noise models for single-cell transcriptomics",
+      "abstract": "Single-cell transcriptomics has recently emerged as a powerful technology to explore gene expression heterogeneity among single cells. Here we identify two major sources of technical variability: sampling noise and global cell-to-cell variation in sequencing efficiency. We propose noise models to correct for this, which we validate using single-molecule FISH. We demonstrate that gene expression variability in mouse embryonic stem cells depends on the culture condition.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "17",
+      "title": "Fast and accurate long-read alignment with Burrows–Wheeler transform",
+      "abstract": "Many programs for aligning short sequencing reads to a reference genome have been developed in the last 2 years. Most of them are very efficient for short reads but inefficient or not applicable for reads >200 bp because the algorithms are heavily and specifically tuned for short queries with low sequencing error rate. However, some sequencing platforms already produce longer reads and others are expected to become available soon. For longer reads, hashing-based software such as BLAT and SSAHA2 remain the only choices. Nonetheless, these methods are substantially slower than short-read aligners in terms of aligned bases per unit time.We designed and implemented a new algorithm, Burrows-Wheeler Aligner's Smith-Waterman Alignment (BWA-SW), to align long sequences up to 1 Mb against a large sequence database (e.g. the human genome) with a few gigabytes of memory. The algorithm is as accurate as SSAHA2, more accurate than BLAT, and is several to tens of times faster than both.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "18",
+      "title": "STAR: ultrafast universal RNA-seq aligner",
+      "abstract": "Motivation: Accurate alignment of high-throughput RNA-seq data is a challenging and yet unsolved problem because of the non-contiguous transcript structure, relatively short read lengths and constantly increasing throughput of the sequencing technologies. Currently available RNA-seq aligners suffer from high mapping error rates, low mapping speed, read length limitation and mapping biases.Results: To align our large (>80 billon reads) ENCODE Transcriptome RNA-seq dataset, we developed the Spliced Transcripts Alignment to a Reference (STAR) software based on a previously undescribed RNA-seq alignment algorithm that uses sequential maximum mappable seed search in uncompressed suffix arrays followed by seed clustering and stitching procedure. STAR outperforms other aligners by a factor of >50 in mapping speed, aligning to the human genome 550 million 2 × 76 bp paired-end reads per hour on a modest 12-core server, while at the same time improving alignment sensitivity and precision. In addition to unbiased de novo detection of canonical junctions, STAR can discover non-canonical splices and chimeric (fusion) transcripts, and is also capable of mapping full-length RNA sequences. Using Roche 454 sequencing of reverse transcription polymerase chain reaction amplicons, we experimentally validated 1960 novel intergenic splice junctions with an 80–90% success rate, corroborating the high precision of the STAR mapping strategy.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "19",
+      "title": "RNA-SeQC: RNA-seq metrics for quality control and process optimization",
+      "abstract": "Summary: RNA-seq, the application of next-generation sequencing to RNA, provides transcriptome-wide characterization of cellular activity. Assessment of sequencing performance and library quality is critical to the interpretation of RNA-seq data, yet few tools exist to address this issue. We introduce RNA-SeQC, a program which provides key measures of data quality. These metrics include yield, alignment and duplication rates; GC bias, rRNA content, regions of alignment (exon, intron and intragenic), continuity of coverage, 3′/5′ bias and count of detectable transcripts, among others. The software provides multi-sample evaluation of library construction protocols, input materials and other experimental parameters. The modularity of the software enables pipeline integration and the routine monitoring of key measures of data quality such as the number of alignable reads, duplication rates and rRNA contamination. RNA-SeQC allows investigators to make informed decisions about sample inclusion in downstream analysis. In summary, RNA-SeQC provides quality control measures critical to experiment design, process optimization and downstream computational analysis.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "20",
+      "title": "BASiCS: Bayesian Analysis of Single-Cell Sequencing Data",
+      "abstract": "Single-cell mRNA sequencing can uncover novel cell-to-cell heterogeneity in gene expression levels in seemingly homogeneous populations of cells. However, these experiments are prone to high levels of unexplained technical noise, creating new challenges for identifying genes that show genuine heterogeneous expression within the population of cells under study. BASiCS (Bayesian Analysis of Single-Cell Sequencing data) is an integrated Bayesian hierarchical model where: (i) cell-specific normalisation constants are estimated as part of the model parameters, (ii) technical variability is quantified based on spike-in genes that are artificially introduced to each analysed cell’s lysate and (iii) the total variability of the expression counts is decomposed into technical and biological components. BASiCS also provides an intuitive detection criterion for highly (or lowly) variable genes within the population of cells under study. This is formalised by means of tail posterior probabilities associated to high (or low) biological cell-to-cell variance contributions, quantities that can be easily interpreted by users. We demonstrate our method using gene expression measurements from mouse Embryonic Stem Cells. Cross-validation and meaningful enrichment of gene ontology categories within genes classified as highly (or lowly) variable supports the efficacy of our approach.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "21",
+      "title": "Normalization of RNA-seq data using factor analysis of control genes or samples",
+      "abstract": "Normalization of RNA-sequencing (RNA-seq) data has proven essential to ensure accurate inference of expression levels. Here, we show that usual normalization approaches mostly account for sequencing depth and fail to correct for library preparation and other more complex unwanted technical effects. We evaluate the performance of the External RNA Control Consortium (ERCC) spike-in controls and investigate the possibility of using them directly for normalization. We show that the spike-ins are not reliable enough to be used in standard global-scaling or regression-based normalization procedures. We propose a normalization strategy, called remove unwanted variation (RUV), that adjusts for nuisance technical effects by performing factor analysis on suitable sets of control genes (e.g., ERCC spike-ins) or samples (e.g., replicate libraries). Our approach leads to more accurate estimates of expression fold-changes and tests of differential expression compared to state-of-the-art normalization methods. In particular, RUV promises to be valuable for large collaborative projects involving multiple laboratories, technicians, and/or sequencing platforms.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "21",
+      "title": "Mapping and quantifying mammalian transcriptomes by RNA-seq",
+      "abstract": "We have mapped and quantified mouse transcriptomes by deeply sequencing them and recording how frequently each gene is represented in the sequence sample (RNA-Seq). This provides a digital measure of the presence and prevalence of transcripts from known and previously unknown genes. We report reference measurements composed of 41–52 million mapped 25-base-pair reads for poly(A)-selected RNA from adult mouse brain, liver and skeletal muscle tissues. We used RNA standards to quantify transcript prevalence and to test the linear range of transcript detection, which spanned five orders of magnitude. Although >90% of uniquely mapped reads fell within known exons, the remaining data suggest new and revised gene models, including changed or additional promoters, exons and 3′ untranscribed regions, as well as new candidate microRNA precursors. RNA splice events, which are not readily measured by standard gene expression microarray or serial analysis of gene expression methods, were detected directly by mapping splice-crossing sequence reads. We observed 1.45 × 105 distinct splices, and alternative splices were prominent, with 3,500 different genes expressing one or more alternate internal splices.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "21",
+      "title": "RNA-seq gene expression estimation with read mapping uncertainty",
+      "abstract": "Motivation: RNA-Seq is a promising new technology for accurately measuring gene expression levels. Expression estimation with RNA-Seq requires the mapping of relatively short sequencing reads to a reference genome or transcript set. Because reads are generally shorter than transcripts from which they are derived, a single read may map to multiple genes and isoforms, complicating expression analyses. Previous computational methods either discard reads that map to multiple locations or allocate them to genes heuristically.Results: We present a generative statistical model and associated inference methods that handle read mapping uncertainty in a principled manner. Through simulations parameterized by real RNA-Seq data, we show that our method is more accurate than previous methods. Our improved accuracy is the result of handling read mapping uncertainty with a statistical model and the estimation of gene expression levels as the sum of isoform expression levels. Unlike previous methods, our method is capable of modeling non-uniform read distributions. Simulations with our method indicate that a read length of 20–25 bases is optimal for gene-level expression estimation from mouse and maize RNA-Seq data when sequencing throughput is fixed.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "21",
+      "title": "A scaling normalization method for differential expression analysis of RNA-seq data",
+      "abstract": "The fine detail provided by sequencing-based transcriptome surveys suggests that RNA-seq is likely to become the platform of choice for interrogating steady state RNA. In order to discover biologically important changes in expression, we show that normalization continues to be an essential step in the analysis. We outline a simple and effective method for performing normalization and show dramatically improved results for inferring differential expression in simulated and publicly available data sets.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "21",
+      "title": "Differential expression analysis for sequence count data",
+      "abstract": "High-throughput sequencing assays such as RNA-Seq, ChIP-Seq or barcode counting provide quantitative readouts in the form of count data. To infer differential signal in such data correctly and with good statistical power, estimation of data variability throughout the dynamic range and a suitable error model are required. We propose a method based on the negative binomial distribution, with variance and mean linked by local regression and present an implementation, DESeq, as an R/Bioconductor package.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "21",
+      "title": "Normalization, testing, and false discovery rate estimation for RNA-sequencing data",
+      "abstract": "We discuss the identification of genes that are associated with an outcome in RNA sequencing and other sequence-based comparative genomic experiments. RNA-sequencing data take the form of counts, so models based on the Gaussian distribution are unsuitable. Moreover, normalization is challenging because different sequencing experiments may generate quite different total numbers of reads. To overcome these difficulties, we use a log-linear model with a new approach to normalization. We derive a novel procedure to estimate the false discovery rate (FDR). Our method can be applied to data with quantitative, two-class, or multiple-class outcomes, and the computation is fast even for large data sets. We study the accuracy of our approaches for significance calculation and FDR estimation, and we demonstrate that our method has potential advantages over existing methods that are based on a Poisson or negative binomial model. In summary, this work provides a pipeline for the significance analysis of sequencing data.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "21",
+      "title": "Pooling across cells to normalize single-cell RNA sequencing data with many zero counts",
+      "abstract": "Normalization of single-cell RNA sequencing data is necessary to eliminate cell-specific biases prior to downstream analyses. However, this is not straightforward for noisy single-cell data where many counts are zero. We present a novel approach where expression values are summed across pools of cells, and the summed values are used for normalization. Pool-based size factors are then deconvolved to yield cell-based factors. Our deconvolution approach outperforms existing methods for accurate normalization of cell-specific biases in simulated data. Similar behavior is observed in real data, where deconvolution improves the relevance of results of downstream analyses.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "21",
+      "title": "Accounting for technical noise in single-cell RNA-seq experiments",
+      "abstract": "Single-cell RNA-seq can yield valuable insights about the variability within a population of seemingly homogeneous cells. We developed a quantitative statistical method to distinguish true biological variability from the high levels of technical noise in single-cell experiments. Our approach quantifies the statistical significance of observed cell-to-cell variability in expression strength on a gene-by-gene basis. We validate our approach using two independent data sets from Arabidopsis thaliana and Mus musculus.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "21",
+      "title": "Droplet barcoding for single cell transcriptomics applied to embryonic stem cells",
+      "abstract": "It has long been the dream of biologists to map gene expression at the single-cell level. With such data one might track heterogeneous cell sub-populations, and infer regulatory relationships between genes and pathways. Recently, RNA sequencing has achieved single-cell resolution. What is limiting is an effective way to routinely isolate and process large numbers of individual cells for quantitative in-depth sequencing. We have developed a high-throughput droplet-microfluidic approach for barcoding the RNA from thousands of individual cells for subsequent analysis by next-generation sequencing. The method shows a surprisingly low noise profile and is readily adaptable to other sequencing-based assays. We analyzed mouse embryonic stem cells, revealing in detail the population structure and the heterogeneous onset of differentiation after leukemia inhibitory factor (LIF) withdrawal. The reproducibility of these high-throughput single-cell data allowed us to deconstruct cell populations and infer gene expression",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "21",
+      "title": "Computational analysis of cell-to-cell heterogeneity in single-cell RNA-sequencing data reveals hidden subpopulations of cells",
+      "abstract": "Recent technical developments have enabled the transcriptomes of hundreds of cells to be assayed in an unbiased manner, opening up the possibility that new subpopulations of cells can be found. However, the effects of potential confounding factors, such as the cell cycle, on the heterogeneity of gene expression and therefore on the ability to robustly identify subpopulations remain unclear. We present and validate a computational approach that uses latent variable models to account for such hidden factors. We show that our single-cell latent variable model (scLVM) allows the identification of otherwise undetectable subpopulations of cells that correspond to different stages during the differentiation of naive T cells into T helper 2 cells. Our approach can be used not only to identify cellular subpopulations but also to tease apart different sources of gene expression heterogeneity in single-cell transcriptomes.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "22",
+      "title": "The Strategy of the Genes",
+      "abstract": "First published in 1957, this essential classic work bridged the gap between analytical and theoretical biology, thus setting the insights of the former in a context which more sensitively reflects the ambiguities surrounding many of its core concepts and objectives.Specifically, these five essays are concerned with some of the major problems of classical biology: the precise character of biological organisation, the processes which generate it, and the specifics of evolution. With regard to these issues, some thinkers suggest that biological organisms are not merely distinguishable from inanimate ‘things’ in terms of complexity, but are in fact radically different qualitatively: they exemplify some constitutive principle which is not elsewhere manifested.It is the desire to bring such ideas into conformity with our understanding of analytical biology which unifies these essays. They explore the contours of a conceptual framework sufficiently wide to embrace all aspects of living systems",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "23",
+      "title": "Visualizing Data using t-SNE",
+      "abstract": "We present a new technique called “t-SNE” that visualizes high-dimensional data by giving each datapoint a location in a two or three-dimensional map. The technique is a variation of Stochastic Neighbor Embedding (Hinton and Roweis, 2002) that is much easier to optimize, and produces significantly better visualizations by reducing the tendency to crowd points together in the center of the map. t-SNE is better than existing techniques at creating a single map that reveals structure at many different scales. This is particularly important for high-dimensional data that lie on several different, but related, low-dimensional manifolds, such as images of objects from multiple classes seen from multiple viewpoints. For visualizing the structure of very large data sets, we show how t-SNE can use random walks on neighborhood graphs to allow the implicit structure of all of the data to influence the way in which a subset of the data is displayed. We illustrate the performance of t-SNE on a wide variety of data sets and compare it with many other non-parametric visualization techniques, including Sammon mapping, Isomap, and Locally Linear Embedding. The visualizations produced by t-SNE are significantly better than those produced by the other techniques on almost all of the data sets.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "24",
+      "title": "Dimensions of similarity",
+      "abstract": "",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "25",
+      "title": "A Global Geometric Framework for Nonlinear Dimensionality Reduction",
+      "abstract": "Scientists working with large volumes of high-dimensional data, such as global climate patterns, stellar spectra, or human gene distributions, regularly confront the problem of dimensionality reduction: finding meaningful low-dimensional structures hidden in their high-dimensional observations. The human brain confronts the same problem in everyday perception, extracting from its high-dimensional sensory inputs—30,000 auditory nerve fibers or 106 optic nerve fibers—a manageably small number of perceptually relevant features. Here we describe an approach to solving dimensionality reduction problems that uses easily measured local metric information to learn the underlying global geometry of a data set. Unlike classical techniques such as principal component analysis (PCA) and multidimensional scaling (MDS), our approach is capable of discovering the nonlinear degrees of freedom that underlie complex natural observations, such as human handwriting or images of a face under different viewing conditions. In contrast to previous algorithms for nonlinear dimensionality reduction, ours efficiently computes a globally optimal solution, and, for an important class of data manifolds, is guaranteed to converge asymptotically to the true structure.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "25",
+      "title": "Nonlinear dimensionality reduction by locally linear embedding",
+      "abstract": "Many areas of science depend on exploratory data analysis and visualization. The need to analyze large amounts of multivariate data raises the fundamental problem of dimensionality reduction: how to discover compact representations of high-dimensional data. Here, we introduce locally linear embedding (LLE), an unsupervised learning algorithm that computes low-dimensional, neighborhood-preserving embeddings of high-dimensional inputs. Unlike clustering methods for local dimensionality reduction, LLE maps its inputs into a single global coordinate system of lower dimensionality, and its optimizations do not involve local minima. By exploiting the local symmetries of linear reconstructions, LLE is able to learn the global structure of nonlinear manifolds, such as those generated by images of faces or documents of text.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "25",
+      "title": "Comparative study of unsupervised dimension reduction techniques for the visualization of microarray gene expression data",
+      "abstract": "Background Visualization of DNA microarray data in two or three dimensional spaces is an important exploratory analysis step in order to detect quality issues or to generate new hypotheses. Principal Component Analysis (PCA) is a widely used linear method to define the mapping between the high-dimensional data and its low-dimensional representation. During the last decade, many new nonlinear methods for dimension reduction have been proposed, but it is still unclear how well these methods capture the underlying structure of microarray gene expression data. In this study, we assessed the performance of the PCA approach and of six nonlinear dimension reduction methods, namely Kernel PCA, Locally Linear Embedding, Isomap, Diffusion Maps, Laplacian Eigenmaps and Maximum Variance Unfolding, in terms of visualization of microarray data. Results A systematic benchmark, consisting of Support Vector Machine classification, cluster validation and noise evaluations was applied to ten microarray and several simulated datasets. Significant differences between PCA and most of the nonlinear methods were observed in two and three dimensional target spaces. With an increasing number of dimensions and an increasing number of differentially expressed genes, all methods showed similar performance. PCA and Diffusion Maps responded less sensitive to noise than the other nonlinear methods. Conclusions Locally Linear Embedding and Isomap showed a superior performance on all datasets. In very low-dimensional representations and with few differentially expressed genes, these two methods preserve more of the underlying structure of the data than PCA, and thus are favorable alternatives for the visualization of microarray data.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "25",
+      "title": "Classification of low quality cells from single-cell RNA-seq data",
+      "abstract": "Single-cell RNA sequencing (scRNA-seq) has broad applications across biomedical research. One of the key challenges is to ensure that only single, live cells are included in downstream analysis, as the inclusion of compromised cells inevitably affects data interpretation. Here, we present a generic approach for processing scRNA-seq data and detecting low quality cells, using a curated set of over 20 biological and technical features. Our approach improves classification accuracy by over 30 % compared to traditional methods when tested on over 5,000 cells, including CD4+ T cells, bone marrow dendritic cells, and mouse embryonic stem cells.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "25",
+      "title": "Bayesian approach to single-cell differential expression analysis",
+      "abstract": "Single-cell data provide a means to dissect the composition of complex tissues and specialized cellular environments. However, the analysis of such measurements is complicated by high levels of technical noise and intrinsic biological variability. We describe a probabilistic model of expression-magnitude distortions typical of single-cell RNA-sequencing measurements, which enables detection of differential expression signatures and identification of subpopulations of cells in a way that is more tolerant of noise.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "26",
+      "title": "Inferring quantitative models of regulatory networks from expression data",
+      "abstract": "Motivation: Genetic networks regulate key processes in living cells. Various methods have been suggested to reconstruct network architecture from gene expression data. However, most approaches are based on qualitative models that provide only rough approximations of the underlying events, and lack the quantitative aspects that are critical for understanding the proper function of biomolecular systems. Results: We present fine-grained dynamical models of gene transcription and develop methods for reconstructing them from gene expression data within the framework of a generative probabilistic model. Unlike previous works, we employ quantitative transcription rates, and simultaneously estimate both the kinetic parameters that govern these rates, and the activity levels of unobserved regulators that control them. We apply our approach to expression datasets from yeast and show that we can learn the unknown regulator activity profiles, as well as the binding affinity parameters. We also introduce a novel structure learning algorithm, and demonstrate its power to accurately reconstruct the regulatory network from those datasets.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "27",
+      "title": "Reveal, a general reverse engineering algorithm for inference of genetic network architectures",
+      "abstract": "Given the immanent gene expression mapping covering whole genomes during development, health and disease, we seek computational methods to maximize functional inference from such large data sets. Is it possible, in principle, to completely infer a complex regulatory network architecture from input/output patterns of its variables? We investigated this possibility using binary models of genetic networks. Trajectories, or state transition tables of Boolean nets, resemble time series of gene expression. By systematically analyzing the mutual information between input states and output states, one is able to infer the sets of input elements controlling each element or gene in the network. This process is unequivocal and exact for complete state transition tables. We implemented this REVerse Engineering ALgorithm (REVEAL) in a C program, and found the problem to be tractable within the conditions tested so far. For n = 50 (elements) and k = 3 (inputs per element), the analysis of incomplete state transition tables (100 state transition pairs out of a possible 10(15)) reliably produced the original rule and wiring sets. While this study is limited to synchronous Boolean networks, the algorithm is generalizable to include multi-state models, essentially allowing direct application to realistic biological data sets. The ability to adequately solve the inverse problem may enable in-depth analysis of complex dynamic systems in biology and other fields.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "28",
+      "title": "Reverse engineering of regulatory networks in human B cells",
+      "abstract": "Cellular phenotypes are determined by the differential activity of networks linking coregulated genes. Available methods for the reverse engineering of such networks from genome-wide expression profiles have been successful only in the analysis of lower eukaryotes with simple genomes. Using a new method called ARACNe (algorithm for the reconstruction of accurate cellular networks), we report the reconstruction of regulatory networks from expression profiles of human B cells. The results are suggestive a hierarchical, scale-free network, where a few highly interconnected genes (hubs) account for most of the interactions. Validation of the network against available data led to the identification of MYC as a major hub, which controls a network comprising known target genes as well as new ones, which were biochemically validated. The newly identified MYC targets include some major hubs. This approach can be generally useful for the analysis of normal and pathologic networks in mammalian cells.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "29",
+      "title": "Sparse graphical Gaussian modeling of the isoprenoid gene network in Arabidopsis thaliana",
+      "abstract": "We present a novel graphical Gaussian modeling approach for reverse engineering of genetic regulatory networks with many genes and few observations. When applying our approach to infer a gene network for isoprenoid biosynthesis in Arabidopsis thaliana, we detect modules of closely connected genes and candidate genes for possible cross-talk between the isoprenoid pathways. Genes of downstream pathways also fit well into the network. We evaluate our approach in a simulation study and using the yeast galactose network.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "30",
+      "title": "SCODE: an efficient regulatory network inference algorithm from single-cell RNA-Seq during differentiation ",
+      "abstract": "MotivationThe analysis of RNA-Seq data from individual differentiating cells enables us to reconstruct the differentiation process and the degree of differentiation (in pseudo-time) of each cell. Such analyses can reveal detailed expression dynamics and functional relationships for differentiation. To further elucidate differentiation processes, more insight into gene regulatory networks is required. The pseudo-time can be regarded as time information and, therefore, single-cell RNA-Seq data are time-course data with high time resolution. Although time-course data are useful for inferring networks, conventional inference algorithms for such data suffer from high time complexity when the number of samples and genes is large. Therefore, a novel algorithm is necessary to infer networks from single-cell RNA-Seq during differentiation.Results In this study, we developed the novel and efficient algorithm SCODE to infer regulatory networks, based on ordinary differential equations. We applied SCODE to three single-cell RNA-Seq datasets and confirmed that SCODE can reconstruct observed expression dynamics. We evaluated SCODE by comparing its inferred networks with use of a DNaseI-footprint based network. The performance of SCODE was best for two of the datasets and nearly best for the remaining dataset. We also compared the runtimes and showed that the runtimes for SCODE are significantly shorter than for alternatives. Thus, our algorithm provides a promising approach for further single-cell differentiation analyses.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "30",
+      "title": "Functional discovery via a compendium of expression profiles",
+      "abstract": "Ascertaining the impact of uncharacterized perturbations on the cell is a fundamental problem in biology. Here, we describe how a single assay can be used to monitor hundreds of different cellular functions simultaneously. We constructed a reference database or compendium of expression profiles corresponding to 300 diverse mutations and chemical treatments in S. cerevisiae, and we show that the cellular pathways affected can be determined by pattern matching, even among very subtle profiles. The utility of this approach is validated by examining profiles caused by deletions of uncharacterized genes: we identify and experimentally confirm that eight uncharacterized open reading frames encode proteins required for sterol metabolism, cell wall function, mitochondrial respiration, or protein synthesis. We also show that the compendium can be used to characterize pharmacological perturbations by identifying a novel target of the commonly used drug dyclonine.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "30",
+      "title": "GENIES: gene network inference engine based on supervised analysis",
+      "abstract": "Gene network inference engine based on supervised analysis (GENIES) is a web server to predict unknown part of gene network from various types of genome-wide data in the framework of supervised network inference. The originality of GENIES lies in the construction of a predictive model using partially known network information and in the integration of heterogeneous data with kernel methods. The GENIES server accepts any ‘profiles’ of genes or proteins (e.g. gene expression profiles, protein subcellular localization profiles and phylogenetic profiles) or pre-calculated gene–gene similarity matrices (or ‘kernels’) in the tab-delimited file format. As a training data set to learn a predictive model, the users can choose either known molecular network information in the KEGG PATHWAY database or their own gene network data. The user can also select an algorithm of supervised network inference, choose various parameters in the method, and control the weights of heterogeneous data integration. The server provides the list of newly predicted gene pairs, maps the predicted gene pairs onto the associated pathway diagrams in KEGG PATHWAY and indicates candidate genes for missing enzymes in organism-specific metabolic pathways. GENIES (http://www.genome.jp/tools/genies/) is publicly available as one of the genome analysis tools in GenomeNet.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "30",
+      "title": "A Semi-Supervised Method for Predicting Transcription Factor–Gene Interactions in Escherichia coli",
+      "abstract": "While Escherichia coli has one of the most comprehensive datasets of experimentally verified transcriptional regulatory interactions of any organism, it is still far from complete. This presents a problem when trying to combine gene expression and regulatory interactions to model transcriptional regulatory networks. Using the available regulatory interactions to predict new interactions may lead to better coverage and more accurate models. Here, we develop SEREND (SEmi-supervised REgulatory Network Discoverer), a semi-supervised learning method that uses a curated database of verified transcriptional factor–gene interactions, DNA sequence binding motifs, and a compendium of gene expression data in order to make thousands of new predictions about transcription factor–gene interactions, including whether the transcription factor activates or represses the gene. Using genome-wide binding datasets for several transcription factors, we demonstrate that our semi-supervised classification strategy improves the prediction of targets for a given transcription factor. To further demonstrate the utility of our inferred interactions, we generated a new microarray gene expression dataset for the aerobic to anaerobic shift response in E. coli. We used our inferred interactions with the verified interactions to reconstruct a dynamic regulatory network for this response. The network reconstructed when using our inferred interactions was better able to correctly identify known regulators and suggested additional activators and repressors as having important roles during the aerobic–anaerobic shift interface.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "30",
+      "title": "SIRENE: supervised inference of regulatory networks",
+      "abstract": "Motivation: Living cells are the product of gene expression programs that involve the regulated transcription of thousands of genes. The elucidation of transcriptional regulatory networks is thus needed to understand the cell's working mechanism, and can for example, be useful for the discovery of novel therapeutic targets. Although several methods have been proposed to infer gene regulatory networks from gene expression data, a recent comparison on a large-scale benchmark experiment revealed that most current methods only predict a limited number of known regulations at a reasonable precision level. Results: We propose SIRENE (Supervised Inference of Regulatory Networks), a new method for the inference of gene regulatory networks from a compendium of expression data. The method decomposes the problem of gene regulatory network inference into a large number of local binary classification problems, that focus on separating target genes from non-targets for each transcription factor. SIRENE is thus conceptually simple and computationally efficient. We test it on a benchmark experiment aimed at predicting regulations in Escherichia coli, and show that it retrieves of the order of 6 times more known regulations than other state-of-the-art inference methods.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "30",
+      "title": "Cluster analysis and display of genome-wide expression patterns",
+      "abstract": "A system of cluster analysis for genome-wide expression data from DNA microarray hybridization is described that uses standard statistical algorithms to arrange genes according to similarity in pattern of gene expression. The output is displayed graphically, conveying the clustering and the underlying expression data simultaneously in a form intuitive for biologists. We have found in the budding yeast Saccharomyces cerevisiae that clustering gene expression data groups together efficiently genes of known similar function, and we find a similar tendency in human data. Thus patterns seen in genome-wide expression experiments can be interpreted as indications of the status of cellular processes. Also, coexpression of genes of known function with poorly characterized or novel genes may provide a simple means of gaining leads to the functions of many genes for which information is not available currently.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "30",
+      "title": "Probabilistic Boolean Networks: a rule-based uncertainty model for gene regulatory networks",
+      "abstract": "Motivation: Our goal is to construct a model for genetic regulatory networks such that the model class: (i) incorporates rule-based dependencies between genes; (ii) allows the systematic study of global network dynamics; (iii) is able to cope with uncertainty, both in the data and the model selection; and (iv) permits the quantification of the relative influence and sensitivity of genes in their interactions with other genes. Results: We introduce Probabilistic Boolean Networks (PBN) that share the appealing rule-based properties of Boolean networks, but are robust in the face of uncertainty. We show how the dynamics of these networks can be studied in the probabilistic context of Markov chains, with standard Boolean networks being special cases. Then, we discuss the relationship between PBNs and Bayesian networks—a family of graphical models that explicitly represent probabilistic relationships between variables. We show how probabilistic dependencies between a gene and its parent genes, constituting the basic building blocks of Bayesian networks, can be obtained from PBNs. Finally, we present methods for quantifying the influence of genes on other genes, within the context of PBNs. Examples illustrating the above concepts are presented throughout the paper.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "30",
+      "title": "Using Bayesian networks to analyze expression data",
+      "abstract": "DNA hybridization arrays simultaneously measure the expression level for thousands of genes. These measurements provide a snapshot of transcription levels within the cell. A major challenge in computational biology is to uncover, from such measurements, gene/protein interactions and key biological features of cellular systems. In this paper, we propose a new framework for discovering interactions between genes based on multiple expression measurements. This framework builds on the use of Bayesian networks for representing statistical dependencies. A Bayesian network is a graph-based model of joint multivariate probability distributions that captures properties of conditional independence between variables. Such models are attractive for their ability to describe complex stochastic processes and because they provide a clear methodology for learning from (noisy) observations. We start by showing how Bayesian networks can describe interactions between genes. We then describe a method for recovering gene interactions from microarray data using tools for learning Bayesian networks. Finally, we demonstrate this method on the S. cerevisiae cell-cycle measurements of Spellman et al. (1998).",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "30",
+      "title": "Large-sample learning of Bayesian networks is NP-Hard",
+      "abstract": "In this paper, we provide new complexity results for algorithms that learn discrete-variable Bayesian networks from data. Our results apply whenever the learning algorithm uses a scoring criterion that favors the simplest structure for which the model is able to represent the generative distribution exactly. Our results therefore hold whenever the learning algorithm uses a consistent scoring criterion and is applied to a sufficiently large dataset. We show that identifying high-scoring structures is NPhard, even when any combination of one or more of the following hold: the generative distribution is perfect with respect to some DAG containing hidden variables; we are given an independence oracle; we are given an inference oracle; we are given an information oracle; we restrict potential solutions to structures in which each node has at most k parents, for all k ≥ 3. Our proof relies on a new technical result that we establish in the appendices. In particular, we provide a method for constructing the local distributions in a Bayesian network such that the resulting joint distribution is provably perfect with respect to the structure of the network.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "30",
+      "title": "Inferring gene regulatory networks from gene expression data by path consistency algorithm based on conditional mutual information",
+      "abstract": "Motivation: Reconstruction of gene regulatory networks (GRNs), which explicitly represent the causality of developmental or regulatory process, is of utmost interest and has become a challenging computational problem for understanding the complex regulatory mechanisms in cellular systems. However, all existing methods of inferring GRNs from gene expression profiles have their strengths and weaknesses. In particular, many properties of GRNs, such as topology sparseness and non-linear dependence, are generally in regulation mechanism but seldom are taken into account simultaneously in one computational method. Results: In this work, we present a novel method for inferring GRNs from gene expression data considering the non-linear dependence and topological structure of GRNs by employing path consistency algorithm (PCA) based on conditional mutual information (CMI). In this algorithm, the conditional dependence between a pair of genes is represented by the CMI between them. With the general hypothesis of Gaussian distribution underlying gene expression data, CMI between a pair of genes is computed by a concise formula involving the covariance matrices of the related gene expression profiles. The method is validated on the benchmark GRNs from the DREAM challenge and the widely used SOS DNA repair network in Escherichia coli. The cross-validation results confirmed the effectiveness of our method (PCA-CMI), which outperforms significantly other previous methods. Besides its high accuracy, our method is able to distinguish direct (or causal) interactions from indirect associations.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "30",
+      "title": "Decoding the regulatory network for blood development from single-cell gene expression measurements",
+      "abstract": "Reconstruction of the molecular pathways controlling organ development has been hampered by a lack of methods to resolve embryonic progenitor cells. Here we describe a strategy to address this problem that combines gene expression profiling of large numbers of single cells with data analysis based on diffusion maps for dimensionality reduction and network synthesis from state transition graphs. Applying the approach to hematopoietic development in the mouse embryo, we map the progression of mesoderm toward blood using single-cell gene expression analysis of 3,934 cells with blood-forming potential captured at four time points between E7.0 and E8.5. Transitions between individual cellular states are then used as input to develop a single-cell network synthesis toolkit to generate a computationally executable transcriptional regulatory network model of blood development. Several model predictions concerning the roles of Sox and Hox factors are validated experimentally. Our results demonstrate that single-cell analysis of a developing organ coupled with computational approaches can reveal the transcriptional programs that underpin organogenesis.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "30",
+      "title": "Reconstructing gene regulatory dynamics from high-dimensional single-cell snapshot data",
+      "abstract": "Motivation: High-dimensional single-cell snapshot data are becoming widespread in the systems biology community, as a mean to understand biological processes at the cellular level. However, as temporal information is lost with such data, mathematical models have been limited to capture only static features of the underlying cellular mechanisms. Results: Here, we present a modular framework which allows to recover the temporal behaviour from single-cell snapshot data and reverse engineer the dynamics of gene expression. The framework combines a dimensionality reduction method with a cell time-ordering algorithm to generate pseudo time-series observations. These are in turn used to learn transcriptional ODE models and do model selection on structural network features. We apply it on synthetic data and then on real hematopoietic stem cells data, to reconstruct gene expression dynamics during differentiation pathways and infer the structure of a key gene regulatory network.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "30",
+      "title": "Single-cell gene expression analyses of cellular reprogramming reveal a stochastic early and hierarchic late phase",
+      "abstract": "During cellular reprogramming, only a small fraction of cells become induced pluripotent stem cells (iPSCs). Previous analyses of gene expression during reprogramming were based on populations of cells, impeding single-cell level identification of reprogramming events. We utilized two gene expression technologies to profile 48 genes in single cells at various stages during the reprogramming process. Analysis of early stages revealed considerable variation in gene expression between cells in contrast to late stages. Expression of Esrrb, Utf1, Lin28, and Dppa2 is a better predictor for cells to progress into iPSCs than expression of the previously suggested reprogramming markers Fbxo15, Fgf4, and Oct4. Stochastic gene expression early in reprogramming is followed by a late hierarchical phase with Sox2 being the upstream factor in a gene expression hierarchy. Finally, downstream factors derived from the late phase, which do not include Oct4, Sox2, Klf4, c-Myc, and Nanog, can activate the pluripotency circuitry.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "30",
+      "title": "Single-Cell RNA sequencing reveals T helper cells synthesizing steroids de novo to contribute to immune homeostasis",
+      "abstract": "T helper 2 (Th2) cells regulate helminth infections, allergic disorders, tumor immunity, and pregnancy by secreting various cytokines. It is likely that there are undiscovered Th2 signaling molecules. Although steroids are known to be immunoregulators, de novo steroid production from immune cells has not been previously characterized. Here, we demonstrate production of the steroid pregnenolone by Th2 cells in vitro and in vivo in a helminth infection model. Single-cell RNA sequencing and quantitative PCR analysis suggest that pregnenolone synthesis in Th2 cells is related to immunosuppression. In support of this, we show that pregnenolone inhibits Th cell proliferation and B cell immunoglobulin class switching. We also show that steroidogenic Th2 cells inhibit Th cell proliferation in a Cyp11a1 enzyme-dependent manner. We propose pregnenolone as a lymphosteroid, a steroid produced by lymphocytes. We speculate that this de novo steroid production may be an intrinsic phenomenon of Th2-mediated immune responses to actively restore immune homeostasis.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "30",
+      "title": "Studying and modelling dynamic biological processes using time-series gene expression data",
+      "abstract": "Biological processes are often dynamic, thus researchers must monitor their activity at multiple time points. The most abundant source of information regarding such dynamic activity is time-series gene expression data. These data are used to identify the complete set of activated genes in a biological process, to infer their rates of change, their order and their causal effects and to model dynamic systems in the cell. In this Review we discuss the basic patterns that have been observed in time-series experiments, how these patterns are combined to form expression programs, and the computational analysis, visualization and integration of these data to infer models of dynamic biological systems.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "30",
+      "title": "Pseudo-temporal ordering of individual cells reveals dynamics and regulators of cell fate decisions",
+      "abstract": "Defining the transcriptional dynamics of a temporal process such as cell differentiation is challenging owing to the high variability in gene expression between individual cells. Time-series gene expression analyses of bulk cells have difficulty distinguishing early and late phases of a transcriptional cascade or identifying rare subpopulations of cells, and single-cell proteomic methods rely on a priori knowledge of key distinguishing markers. Here we describe Monocle, an unsupervised algorithm that increases the temporal resolution of transcriptome dynamics using single-cell RNA-Seq data collected at multiple time points. Applied to the differentiation of primary human myoblasts, Monocle revealed switch-like changes in expression of key regulatory factors, sequential waves of gene regulation, and expression of regulators that were not known to act in differentiation. We validated some of these predicted regulators in a loss-of function screen. Monocle can in principle be used to recover single-cell gene expression kinetics from a wide array of cellular processes, including differentiation, proliferation and oncogenic transformation.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "30",
+      "title": "Advantages of multilocus sequence analysis for taxonomic studies: a case study using 10 housekeeping genes in the genus Ensifer (including former Sinorhizobium)",
+      "abstract": "There is a need for easy, practical, reliable and robust techniques for the identification and classification of bacterial isolates to the species level as alternatives to 16S rRNA gene sequence analysis and DNA-DNA hybridization. Here, we demonstrate that multilocus sequence analysis (MLSA) of housekeeping genes is a valuable alternative technique. An MLSA study of 10 housekeeping genes (atpD, dnaK, gap, glnA, gltA, gyrB, pnp, recA, rpoB and thrC) was performed on 34 representatives of the genus Ensifer. Genetic analysis and comparison with 16S and 23S rRNA gene sequences demonstrated clear species boundaries and a higher discrimination potential for all housekeeping genes. Comparison of housekeeping gene sequence data with DNA-DNA reassociation data revealed good correlation at the intraspecies level, but indicated that housekeeping gene sequencing is superior to DNA-DNA hybridization for the assessment of genetic relatedness between Ensifer species. Our MLSA data, confirmed by DNA-DNA hybridizations, support the suggestion that Ensifer xinjiangensis is a later heterotypic synonym of Ensifer fredii.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "30",
+      "title": "Natural history and evolutionary principles of gene duplication in fungi",
+      "abstract": "Gene duplication and loss is a powerful source of functional innovation. However, the general principles that govern this process are still largely unknown. With the growing number of sequenced genomes, it is now possible to examine these events in a comprehensive and unbiased manner. Here, we develop a procedure that resolves the evolutionary history of all genes in a large group of species. We apply our procedure to seventeen fungal genomes to create a genome-wide catalogue of gene trees that determine precise orthology and paralogy relations across these species. We show that gene duplication and loss is highly constrained by the functional properties and interacting partners of genes. In particular, stress-related genes exhibit many duplications and losses, whereas growth-related genes show selection against such changes. Whole-genome duplication circumvents this constraint and relaxes the dichotomy, resulting in an expanded functional scope of gene duplication. By characterizing the functional fate of duplicate genes we show that duplicated genes rarely diverge with respect to biochemical function, but typically diverge with respect to regulatory control. Surprisingly, paralogous modules of genes rarely arise, even after whole-genome duplication. Rather, gene duplication may drive the modularization of functional networks through specialization, thereby disentangling cellular systems.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "30",
+      "title": "Reversed graph embedding resolves complex single-cell trajectories",
+      "abstract": "Single-cell trajectories can unveil how gene regulation governs cell fate decisions. However, learning the structure of complex trajectories with multiple branches remains a challenging computational problem. We present Monocle 2, an algorithm that uses reversed graph embedding to describe multiple fate decisions in a fully unsupervised manner. We applied Monocle 2 to two studies of blood development and found that mutations in the genes encoding key lineage transcription factors divert cells to alternative fates.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "30",
+      "title": "Bifurcation analysis of single-cell gene expression data reveals epigenetic landscape",
+      "abstract": "Significance Characterization of cellular heterogeneity and hierarchy are important tasks in developmental biology and may help overcome drug resistance in treatment of cancer and other diseases. Single-cell technologies provide a powerful tool for detecting rare cell types and cell-fate transition events, whereas traditional gene expression profiling methods can be used only to measure the average behavior of a cell population. However, the lack of suitable computational methods for single-cell data analysis has become a bottleneck. Here we present a method with the focuses on automatically detecting multilineage transitions and on modeling the associated changes in gene expression patterns. We show that our method is generally applicable and that its applications provide biological insights into developmental processes. Abstract We present single-cell clustering using bifurcation analysis (SCUBA), a novel computational method for extracting lineage relationships from single-cell gene expression data and modeling the dynamic changes associated with cell differentiation. SCUBA draws techniques from nonlinear dynamics and stochastic differential equation theories, providing a systematic framework for modeling complex processes involving multilineage specifications. By applying SCUBA to analyze two complementary, publicly available datasets we successfully reconstructed the cellular hierarchy during early development of mouse embryos, modeled the dynamic changes in gene expression patterns, and predicted the effects of perturbing key transcriptional regulators on inducing lineage biases. The results were robust with respect to experimental platform differences between RT-PCR and RNA sequencing. We selectively tested our predictions in Nanog mutants and found good agreement between SCUBA predictions and the experimental data. We further extended the utility of SCUBA by developing a method to reconstruct missing temporal-order information from a typical single-cell dataset. Analysis of a hematopoietic dataset suggests that our method is effective for reconstructing gene expression dynamics during human B-cell development. In summary, SCUBA provides a useful single-cell data analysis tool that is well-suited for the investigation of developmental processes.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "30",
+      "title": "Div-Seq: Single-nucleus RNA-Seq reveals dynamics of rare adult newborn neurons",
+      "abstract": "Gene expression can vary greatly within a single cell. Using techniques that they developed for sequencing single nuclei and labeling proliferating cells in vivo, Habib et al. performed RNA sequencing of 1402 single nuclei from the adult mouse hippocampus. Combining this approach with a clustering algorithm for single-cell and -nucleus RNA sequencing data delineated specific cell types during cell differentiation and development. By providing polyadenylated RNA from nuclei alone, as opposed to cytoplasmic RNA, these methods open the application of single-cell transcriptomics to tissues in which individual cells are difficult to isolate.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "30",
+      "title": "Single-cell RNA-Seq with waterfall reveals molecular cascades underlying adult neurogenesis",
+      "abstract": "Somatic stem cells contribute to tissue ontogenesis, homeostasis, and regeneration through sequential processes. Systematic molecular analysis of stem cell behavior is challenging because classic approaches cannot resolve cellular heterogeneity or capture developmental dynamics. Here we provide a comprehensive resource of single-cell transcriptomes of adult hippocampal quiescent neural stem cells (qNSCs) and their immediate progeny. We further developed Waterfall, a bioinformatic pipeline, to statistically quantify singe-cell gene expression along a de novo reconstructed continuous developmental trajectory. Our study reveals molecular signatures of adult qNSCs, characterized by active niche signaling integration and low protein translation capacity. Our analyses further delineate molecular cascades underlying qNSC activation and neurogenesis initiation, exemplified by decreased extrinsic signaling capacity, primed translational machinery, and regulatory switches in transcription factors, metabolism, and energy sources. Our study reveals the molecular continuum underlying adult neurogenesis and illustrates how Waterfall can be used for single-cell omics analyses of various continuous biological processes.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "30",
+      "title": "Diffusion pseudotime robustly reconstructs lineage branching",
+      "abstract": "The temporal order of differentiating cells is intrinsically encoded in their single-cell expression profiles. We describe an efficient way to robustly estimate this order according to diffusion pseudotime (DPT), which measures transitions between cells using diffusion-like random walks. Our DPT software implementations make it possible to reconstruct the developmental progression of cells and identify transient or metastable states, branching decisions and differentiation endpoints.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "30",
+      "title": "Reconstruction of developmental landscapes by optimal-transport analysis of single-cell gene expression sheds light on cellular reprogramming",
+      "abstract": "Understanding the molecular programs that guide differentiation during development is a major challenge. Here, we introduce Waddington-OT, an approach for studying developmental time courses to infer ancestor-descendant fates and model the regulatory programs that underlie them. We apply the method to reconstruct the landscape of reprogramming from 315,000 single-cell RNA sequencing (scRNA-seq) profiles, collected at half-day intervals across 18 days. The results reveal a wider range of developmental programs than previously characterized. Cells gradually adopt either a terminal stromal state or a mesenchymal-to-epithelial transition state. The latter gives rise to populations related to pluripotent, extra-embryonic, and neural cells, with each harboring multiple finer subpopulations. The analysis predicts transcription factors and paracrine signals that affect fates and experiments validate that the TF Obox6 and the cytokine GDF9 enhance reprogramming efficiency. Our approach sheds light on the process and outcome of reprogramming and provides a framework applicable to diverse temporal processes in biology.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "30",
+      "title": "Single-cell trajectory detection uncovers progression and regulatory coordination in human B cell development",
+      "abstract": "Tissue regeneration is an orchestrated progression of cells from an immature state to a mature one, conventionally represented as distinctive cell subsets. A continuum of transitional cell states exists between these discrete stages. We combine the depth of single-cell mass cytometry and an algorithm developed to leverage this continuum by aligning single cells of a given lineage onto a unified trajectory that accurately predicts the developmental path de novo. Applied to human B cell lymphopoiesis, the algorithm (termed Wanderlust) constructed trajectories spanning from hematopoietic stem cells through to naive B cells. This trajectory revealed nascent fractions of B cell progenitors and aligned them with developmentally cued regulatory signaling including IL-7/STAT5 and cellular events such as immunoglobulin rearrangement, highlighting checkpoints across which regulatory signals are rewired paralleling changes in cellular state. This study provides a comprehensive analysis of human B lymphopoiesis, laying a foundation to apply this approach to other tissues and corrupted developmental processes including cancer.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "30",
+      "title": "Wishbone identifies bifurcating developmental trajectories from single-cell data",
+      "abstract": "Recent single-cell analysis technologies offer an unprecedented opportunity to elucidate developmental pathways. Here we present Wishbone, an algorithm for positioning single cells along bifurcating developmental trajectories with high resolution. Wishbone uses multi-dimensional single-cell data, such as mass cytometry or RNA-Seq data, as input and orders cells according to their developmental progression, and it pinpoints bifurcation points by labeling each cell as pre-bifurcation or as one of two post-bifurcation cell fates. Using 30-channel mass cytometry data, we show that Wishbone accurately recovers the known stages of T-cell development in the mouse thymus, including the bifurcation point. We also apply the algorithm to mouse myeloid differentiation and demonstrate its generalization to additional lineages. A comparison of Wishbone to diffusion maps, SCUBA and Monocle shows that it outperforms these methods both in the accuracy of ordering cells and in the correct identification of branch points.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "30",
+      "title": "MATCHER: manifold alignment reveals correspondence between single cell transcriptome and epigenome dynamics",
+      "abstract": "Single cell experimental techniques reveal transcriptomic and epigenetic heterogeneity among cells, but how these are related is unclear. We present MATCHER, an approach for integrating multiple types of single cell measurements. MATCHER uses manifold alignment to infer single cell multi-omic profiles from transcriptomic and epigenetic measurements performed on different cells of the same type. Using scM&T-seq and sc-GEM data, we confirm that MATCHER accurately predicts true single cell correlations between DNA methylation and gene expression without using known cell correspondences. MATCHER also reveals new insights into the dynamic interplay between the transcriptome and epigenome in single embryonic stem cells and induced pluripotent stem cells.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "30",
+      "title": "Single-cell mRNA sequencing identifies subclonal heterogeneity in anti-cancer drug responses of lung adenocarcinoma cells",
+      "abstract": "Intra-tumoral genetic and functional heterogeneity correlates with cancer clinical prognoses. However, the mechanisms by which intra-tumoral heterogeneity impacts therapeutic outcome remain poorly understood. RNA sequencing (RNA-seq) of single tumor cells can provide comprehensive information about gene expression and single-nucleotide variations in individual tumor cells, which may allow for the translation of heterogeneous tumor cell functional responses into customized anti-cancer treatments.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "30",
+      "title": "Single‐cell sequencing maps gene expression to mutational phylogenies in PDGF‐ and EGF‐driven gliomas",
+      "abstract": "Glioblastoma multiforme (GBM) is the most common and aggressive type of primary brain tumor. Epidermal growth factor (EGF) and platelet-derived growth factor (PDGF) receptors are frequently amplified and/or possess gain-of-function mutations in GBM However, clinical trials of tyrosine-kinase inhibitors have shown disappointing efficacy, in part due to intra-tumor heterogeneity. To assess the effect of clonal heterogeneity on gene expression, we derived an approach to map single-cell expression profiles to sequentially acquired mutations identified from exome sequencing. Using 288 single cells, we constructed high-resolution phylogenies of EGF-driven and PDGF-driven GBMs, modeling transcriptional kinetics during tumor evolution. Descending the phylogenetic tree of a PDGF-driven tumor corresponded to a progressive induction of an oligodendrocyte progenitor-like cell type, expressing pro-angiogenic factors. In contrast, phylogenetic analysis of an EGFR-amplified tumor showed an up-regulation of pro-invasive genes. An in-frame deletion in a specific dimerization domain of PDGF receptor correlates with an up-regulation of growth pathways in a proneural GBM and enhances proliferation when ectopically expressed in glioma cell lines. In-frame deletions in this domain are frequent in public GBM data.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "30",
+      "title": "Synthetic recording and in situ readout of lineage information in single cells",
+      "abstract": "Reconstructing the lineage relationships and dynamic event histories of individual cells within their native spatial context is a long-standing challenge in biology. Many biological processes of interest occur in optically opaque or physically inaccessible contexts, necessitating approaches other than direct imaging. Here we describe a synthetic system that enables cells to record lineage information and event histories in the genome in a format that can be subsequently read out of single cells in situ. This system, termed memory by engineered mutagenesis with optical in situ readout (MEMOIR), is based on a set of barcoded recording elements termed scratchpads. The state of a given scratchpad can be irreversibly altered by CRISPR/Cas9-based targeted mutagenesis, and later read out in single cells through multiplexed single-molecule RNA fluorescence hybridization (smFISH). Using MEMOIR as a proof of principle, we engineered mouse embryonic stem cells to contain multiple scratchpads and other recording components. In these cells, scratchpads were altered in a progressive and stochastic fashion as the cells proliferated. Analysis of the final states of scratchpads in single cells in situ enabled reconstruction of lineage information from cell colonies. Combining analysis of endogenous gene expression with lineage reconstruction in the same cells further allowed inference of the dynamic rates at which embryonic stem cells switch between two gene expression states. Finally, using simulations, we show how parallel MEMOIR systems operating in the same cell could enable recording and readout of dynamic cellular event histories. MEMOIR thus provides a versatile platform for information recording and in situ, single-cell readout across diverse biological systems.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "30",
+      "title": "Exponential scaling of single-cell RNA-seq in the past decade",
+      "abstract": "Measurement of the transcriptomes of single cells has been feasible for only a few years, but it has become an extremely popular assay. While many types of analysis can be carried out and various questions can be answered by single-cell RNA-seq, a central focus is the ability to survey the diversity of cell types in a sample. Unbiased and reproducible cataloging of gene expression patterns in distinct cell types requires large numbers of cells. Technological developments and protocol improvements have fueled consistent and exponential increases in the number of cells that can be studied in single-cell RNA-seq analyses. In this Perspective, we highlight the key technological developments that have enabled this growth in the data obtained from single-cell RNA-seq experiments.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "30",
+      "title": "The Human Cell Atlas",
+      "abstract": "The recent advent of methods for high-throughput single-cell molecular profiling has catalyzed a growing sense in the scientific community that the time is ripe to complete the 150-year-old effort to identify all cell types in the human body. The Human Cell Atlas Project is an international collaborative effort that aims to define all human cell types in terms of distinctive molecular profiles (such as gene expression profiles) and to connect this information with classical cellular descriptions (such as location and morphology). An open comprehensive reference map of the molecular state of cells in healthy human tissues would propel the systematic study of physiological states, developmental trajectories, regulatory circuitry and interactions of cells, and also provide a framework for understanding cellular dysregulation in human disease. Here we describe the idea, its potential utility, early proofs-of-concept, and some design considerations for the Human Cell Atlas, including a commitment to open data, code, and community.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "30",
+      "title": "Single-cell transcriptomics reveals bimodality in expression and splicing in immune cells",
+      "abstract": "Recent molecular studies have shown that, even when derived from a seemingly homogenous population, individual cells can exhibit substantial differences in gene expression, protein levels and phenotypic output1,2,3,4,5, with important functional consequences4,5. Existing studies of cellular heterogeneity, however, have typically measured only a few pre-selected RNAs1,2 or proteins5,6 simultaneously, because genomic profiling methods3 could not be applied to single cells until very recently7,8,9,10. Here we use single-cell RNA sequencing to investigate heterogeneity in the response of mouse bone-marrow-derived dendritic cells (BMDCs) to lipopolysaccharide. We find extensive, and previously unobserved, bimodal variation in messenger RNA abundance and splicing patterns, which we validate by RNA-fluorescence in situ hybridization for select transcripts. In particular, hundreds of key immune genes are bimodally expressed across cells, surprisingly even for genes that are very highly expressed at the population average. Moreover, splicing patterns demonstrate previously unobserved levels of heterogeneity between cells. Some of the observed bimodality can be attributed to closely related, yet distinct, known maturity states of BMDCs; other portions reflect differences in the usage of key regulatory circuits. For example, we identify a module of 137 highly variable, yet co-regulated, antiviral response genes. Using cells from knockout mice, we show that variability in this module may be propagated through an interferon feedback circuit, involving the transcriptional regulators Stat2 and Irf7. Our study demonstrates the power and promise of single-cell genomics in uncovering functional diversity between cells and in deciphering cell states and circuits.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "30",
+      "title": "Molecular diversity of midbrain development in mouse, human, and stem cells",
+      "abstract": "Understanding human embryonic ventral midbrain is of major interest for Parkinson’s disease. However, the cell types, their gene expression dynamics, and their relationship to commonly used rodent models remain to be defined. We performed single-cell RNA sequencing to examine ventral midbrain development in human and mouse. We found 25 molecularly defined human cell types, including five subtypes of radial glia-like cells and four progenitors. In the mouse, two mature fetal dopaminergic neuron subtypes diversified into five adult classes during postnatal development. Cell types and gene expression were generally conserved across species, but with clear differences in cell proliferation, developmental timing, and dopaminergic neuron development. Additionally, we developed a method to quantitatively assess the fidelity of dopaminergic neurons derived from human pluripotent stem cells, at a single-cell level. Thus, our study provides insight into the molecular programs controlling human midbrain development and provides a foundation for the development of cell replacement therapies.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    },
+    {
+      "id": "30",
+      "title": "Neuronal subtypes and diversity revealed by single-nucleus RNA sequencing of the human brain",
+      "abstract": "The human brain has enormously complex cellular diversity and connectivities fundamental to our neural functions, yet difficulties in interrogating individual neurons has impeded understanding of the underlying transcriptional landscape. We developed a scalable approach to sequence and quantify RNA molecules in isolated neuronal nuclei from a postmortem brain, generating 3227 sets of single-neuron data from six distinct regions of the cerebral cortex. Using an iterative clustering and classification approach, we identified 16 neuronal subtypes that were further annotated on the basis of known markers and cortical cytoarchitecture. These data demonstrate a robust and scalable method for identifying and categorizing single nuclear transcriptomes, revealing shared genes sufficient to distinguish previously unknown and orthologous neuronal subtypes as well as regional identity and transcriptomic heterogeneity within the human brain.",
+      "venue": "",
+      "year": "",
+      "authors": [
+        {"id": "", "name": ""}
+      ]
+    }
+  ]

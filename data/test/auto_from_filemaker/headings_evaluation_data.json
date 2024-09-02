@@ -1,0 +1,164 @@
+{
+    "headings": [
+        {
+            "heading": "Flexibility",
+            "papers": [
+                "A DIY approach to automating your lab",
+                "Fluent - the effective way to increase productivity - Tecan",
+                "Hamilton Pipetting Technologies and the Hamilton CO-RE Tips | Automated Liquid Handling | Hamilton Company",
+                "Microlab STAR Liquid Handling System | Automated Liquid Handling | Hamilton Company",
+                "Sciclone ® G3 NGSx iQ TM Workstation APPLIED GENOMICS"
+            ]
+        },
+        {
+            "heading": "Overview of technologies",
+            "papers": [
+                "Acoustic Droplet Ejection Technology and Its Application in High-Throughput RNA Interference Screening",
+                "Automatic Liquid Handling for Life Science",
+                "Automation for genomics, part one: preparation for sequencing.",
+                "Flow Sensor Driven Nanodispensing: The Path to More Reliable Liquid Handling Operations",
+                "Fluid level detector and method for use with automated workstation",
+                "Fundamentals of dispensing. [USERGUIDE] No. 19 2015",
+                "Library construction for next-generation sequencing: overviews and challenges.",
+                "Library preparation methods for next-generation sequencing: tone down the bias.",
+                "Mammalian Genotyping Using Acoustic Droplet Ejection for Enhanced Data Reproducibility, Superior Throughput, and Minimized Cross-Contamination",
+                "Precise Dispensing Technology Using Electroformed Tubes for Micro-Volume Blood Diagnosis",
+                "Recent advances in DNA sequencing methods - general principles of sample preparation."
+            ]
+        },
+        {
+            "heading": "Washing and decontamination",
+            "papers": [
+                "Acoustic Droplet Ejection Technology and Its Application in High-Throughput RNA Interference Screening",
+                "ASSIST | Automating Multichannel Pipettes | INTEGRA",
+                "OpenLH: Open Liquid-Handling System for Creative Experimentation with Biology",
+                "Opentrons | Open-source Pipetting Robots for Biologists | Opentrons"
+            ]
+        },
+        {
+            "heading": "Scale of automation",
+            "papers": [
+                "Agilent Automation Solutions Portfolio FLEXIBLE AUTOMATION MADE EASY",
+                "Applications & Solutions - Genomics - NGS sample preparation",
+                "Robotic Microplate Reagent Dispenser & Liquid Handling Robot",
+                "Sciclone ® G3 NGSx iQ TM Workstation APPLIED GENOMICS"
+            ]
+        },
+        {
+            "heading": "Future of automated liquid-handling",
+            "papers": [
+                "An automated approach to prepare tissue-derived spatially barcoded RNA-sequencing libraries",
+                "Automation of Spatial Transcriptomics library preparation to enable rapid and robust insights into spatial organization of tissues",
+                "FusX: A Rapid One-Step Transcription Activator-Like Effector Assembly System for Genome Science",
+                "Improving Reproducibility in Synthetic Biology",
+                "Measuring luteinising hormone pulsatility with a robotic aptamer-enabled electrochemical reader",
+                "Rapid Production and Recovery of Cell Spheroids by Automated Droplet Microfluidics",
+                "Robotic Liquid Handling and Automation in Epigenetics",
+                "Synthetic Genetic Codes Designed to Hinder Evolution"
+            ]
+        },
+        {
+            "heading": "Background",
+            "papers": [
+                "An integrated map of genetic variation from 1,092 human genomes",
+                "Are whole-exome and whole-genome sequencing approaches cost-effective? A systematic review of the literature",
+                "Assessing the Costs and Cost-Effectiveness of Genomic Sequencing",
+                "Automating Procedures for Processing, Cryopreservation, Storage, and Manipulation of Human Peripheral Blood Mononuclear Cells",
+                "Automating the screening process",
+                "Automation for genomics, part one: preparation for sequencing.",
+                "Automation for genomics, part two: sequencers, microarrays, and future trends.",
+                "Automation of an absorbed enzyme immunoassay for the detection of Mycobacterium paratuberculosis antibodies for an eradication program.",
+                "Clinical applicability and cost of a 46-gene panel for genomic analysis of solid tumours: Retrospective validation and prospective audit in the UK National Health Service",
+                "Comparison of Sample Preparation Methods Used for the Next-Generation Sequencing of Mycobacterium tuberculosis",
+                "Current Nucleic Acid Extraction Methods and Their Implications to Point-of-Care Diagnostics",
+                "Fast, accurate sequencing starts here Accelerate your NGS success with automated sample prep",
+                "Fully Automated Laboratory Robotic System for Automating Sample Preparation and Analysis to Reduce Cost and Time in Drug Development Process",
+                "Is the $1000 Genome as Near as We Think? A Cost Analysis of Next-Generation Sequencing.",
+                "Lab automation and robotics: automation on the move",
+                "Liquid handling devices in drug discovery – when, what, why?",
+                "Navigating 2020 and beyond",
+                "Recent developments in genetic/genomic medicine",
+                "Robots in the laboratory: a review of applications",
+                "Sciclone ® G3 NGSx iQ TM Workstation APPLIED GENOMICS",
+                "Sequencing single molecules of DNA.",
+                "The complete costs of genome sequencing: a microcosting study in cancer and rare diseases from a single center in the United Kingdom",
+                "The Cost of Sequencing a Human Genome | NHGRI",
+                "Towards standardized automated immunomonitoring: an automated ELISpot assay for safe and parallelized functionality analysis of immune cells",
+                "Trends in Next-Generation Sequencing and a New Era for Whole Genome Sequencing"
+            ]
+        },
+        {
+            "heading": "Big-deck v/s low-cost robotic liquid handling systems",
+            "papers": [
+                "Are whole-exome and whole-genome sequencing approaches cost-effective? A systematic review of the literature",
+                "DNA-BOT: a low-cost, automated DNA assembly platform for synthetic biology",
+                "Mice Fed an Obesogenic Western Diet, Administered Antibiotics, and Subjected to a Sterile Surgical Procedure Develop Lethal Septicemia with Multidrug-Resistant Pathobionts",
+                "Opentrons API Documentation Opentrons Labworks",
+                "Pipetting Robot - Automated Pipettor Robots for Liquid Handling",
+                "PlasmoTron: an open-source platform for automated culture of malaria parasites",
+                "Reduction of Carry over in Liquid-Handling Systems with a Decontamination Step Integrated in the Washing Procedure"
+            ]
+        },
+        {
+            "heading": "Summary of features on some important liquid-handling workstations or pipetting assisting devices available on the market",
+            "papers": [
+                "Fast, accurate sequencing starts here Accelerate your NGS success with automated sample prep",
+                "Fluent - the effective way to increase productivity - Tecan",
+                "Hamilton Pipetting Technologies and the Hamilton CO-RE Tips | Automated Liquid Handling | Hamilton Company",
+                "Here, there, and everywhere",
+                "Microlab NIMBUS | Automated Liquid Handling | Hamilton Company.",
+                "Opentrons API Documentation Opentrons Labworks",
+                "PIPETMAX® 268 User’s Guide",
+                "Pipetting Robot - Automated Pipettor Robots for Liquid Handling",
+                "Precise Dispensing Technology Using Electroformed Tubes for Micro-Volume Blood Diagnosis",
+                "Reduction of Carry over in Liquid-Handling Systems with a Decontamination Step Integrated in the Washing Procedure",
+                "Sciclone ® G3 NGSx iQ TM Workstation APPLIED GENOMICS"
+            ]
+        },
+        {
+            "heading": "Pipetting channels",
+            "papers": [
+                "Fast, accurate sequencing starts here Accelerate your NGS success with automated sample prep",
+                "Regulatory Concern of Polymerase Chain Reaction (PCR) Carryover Contamination"
+            ]
+        },
+        {
+            "heading": "Precision & accuracy",
+            "papers": [
+                "Fast, accurate sequencing starts here Accelerate your NGS success with automated sample prep",
+                "Fluent - the effective way to increase productivity - Tecan",
+                "Hamilton Pipetting Technologies and the Hamilton CO-RE Tips | Automated Liquid Handling | Hamilton Company",
+                "Microlab STAR Liquid Handling System | Automated Liquid Handling | Hamilton Company"
+            ]
+        },
+        {
+            "heading": "Throughput",
+            "papers": [
+                "Fast, accurate sequencing starts here Accelerate your NGS success with automated sample prep",
+                "Microlab STAR Liquid Handling System | Automated Liquid Handling | Hamilton Company",
+                "Pipetting Robot - Automated Pipettor Robots for Liquid Handling",
+                "Sciclone ® G3 NGSx iQ TM Workstation APPLIED GENOMICS"
+            ]
+        },
+        {
+            "heading": "Durability",
+            "papers": [
+                "Hamilton Pipetting Technologies and the Hamilton CO-RE Tips | Automated Liquid Handling | Hamilton Company"
+            ]
+        },
+        {
+            "heading": "Control centers",
+            "papers": [
+                "Microlab STAR Liquid Handling System | Automated Liquid Handling | Hamilton Company",
+                "Pipetting Robot - Automated Pipettor Robots for Liquid Handling",
+                "Real-time, portable genome sequencing for Ebola surveillance"
+            ]
+        },
+        {
+            "heading": "Size",
+            "papers": [
+                "New Capabilities of EvoBot: A Modular, Open-Source Liquid-Handling Robot"
+            ]
+        }
+    ]
+}
