@@ -21,8 +21,8 @@ def parse_args():
     parser.add_argument("--eval_data_path", type=Path, required=True)
     return parser.parse_args()
 
-def load_papers(papers_path: Path) -> List[Paper]:
-    with open(papers_path, "r") as f:
+def load_input_papers(input_data_path: Path) -> List[Paper]:
+    with open(input_data_path, "r") as f:
         data = json.load(f)
     #    [
     #     {
@@ -60,8 +60,8 @@ def load_papers(papers_path: Path) -> List[Paper]:
     #     ),
     # ]
 
-def load_eval_headings(eval_headings_path: Path) -> List[Dict[str, List[str]]]:
-    with open(eval_headings_path, "r") as f:
+def load_eval_headings(eval_data_path: Path) -> List[Dict[str, List[str]]]:
+    with open(eval_data_path, "r") as f:
         data = json.load(f)
     
     if isinstance(data, dict) and "headings" in data:
@@ -150,11 +150,11 @@ def main():
     args = parse_args()
     
     print("loading papers...")
-    papers = load_papers(args.papers_path)
-    eval_headings = load_eval_headings(args.eval_headings_path)
+    input_papers = load_input_papers(args.input_data_path)
+    eval_headings = load_eval_headings(args.eval_data_path)
 
     print("Generating headings...")
-    structured_papers = generate_headings(papers)
+    structured_papers = generate_headings(input_papers)
     # {
     #     "Single-cell isolation techniques": [
     #         Paper(
