@@ -35,6 +35,13 @@ python src/main.py --title "Laboratory automation" \
   --output_path data
 ```
 
+To run the evaluation function（evaluate_headings.py） from the src directory, use the following command
+```
+python -m gensurv.scripts.evaluate_headings \
+  --input_data_path ../data/test/manual_by_ono/headings_input_data.json \
+  --eval_data_path ../data/test/manual_by_ono/headings_evaluation_data.json
+```
+
 Launching the application (locally)
 ```shell
 gradio src/app.py
