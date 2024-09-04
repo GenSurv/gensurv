@@ -6,7 +6,6 @@ import json
 import networkx as nx
 from typing import List, Dict
 import re
-import random
 
 from .models import Paper
 
