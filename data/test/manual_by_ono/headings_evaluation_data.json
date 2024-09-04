@@ -1,0 +1,127 @@
+{
+    "headings":[
+        {
+            "heading": "Single-cell isolation techniques",
+            "papers": [
+                "Single-cell microbiology: tools, technologies, and applications",
+                "Single-cell multi-omics sequencing of mouse early embryos and embryonic stem cells",
+                "Demonstration that antigen-binding cells are precursors of antibody-producing cells after purification with a fluorescence-activated cell sorter",
+                "Laser capture microscopy coupled with Smart-seq2 for precise spatial transcriptomic profiling",
+                "High-efficiency, two-dimensional separations of protein digests on microfluidic devices",
+                "Integrated system for rapid PCR-based DNA analysis in microfluidic devices",
+                "Single-molecule DNA amplification and analysis in an integrated microfluidic device",
+                "Microfluidic large-scale integration",
+                "Using three-dimensional microfluidic networks for solving computationally hard problems",
+                "Long-term monitoring of bacteria undergoing programmed population control in a microchemostat",
+                "Microfluidic single-cell mRNA isolation and analysis",
+                "Dynamic pattern formation in a vesicle-generating microfluidic device",
+                "Monodisperse double emulsions generated from a microcapillary device"
+            ]
+        },
+        {
+            "heading": "Comparative analysis for scRNA-seq library preparation",
+            "papers": [
+                "Quantitative single-cell RNA-seq with unique molecular identifiers",
+                "Novel mutations in Moloney murine leukemia virus reverse transcriptase increase thermostability through tighter binding to template-primer",
+                "The role of template-primer in protection of reverse transcriptase from thermal inactivation",
+                "mRNA-Seq whole-transcriptome analysis of a single cell",
+                "Quartz-Seq: a highly reproducible and sensitive single-cell RNA sequencing method, reveals non-genetic gene-expression heterogeneity",
+                "Characterization of the single-cell transcriptional landscape by highly multiplex RNA-seq",
+                "Full-Length mRNA-Seq from single cell levels of RNA and individual circulating tumor cells",
+                "CEL-Seq: single-cell RNA-Seq by multiplexed linear amplification",
+                "Massively parallel single cell RNA-Seq for marker-free decomposition of tissues into cell types",
+                "Transcriptome analysis of single cells",
+                "Smart-seq2 for sensitive full-length transcriptome profiling in single cells",
+                "Single-cell RNA-seq reveals dynamic, random monoallelic gene expression in mammalian cells",
+                "Highly parallel genome-wide expression profiling of individual cells using nanoliter droplets",
+                "Validation of noise models for single-cell transcriptomics"
+            ]
+        },
+        {
+            "heading": "Pre-processing the data",
+            "papers": [
+                "Fast and accurate long-read alignment with Burrows–Wheeler transform",
+                "ultrafast universal RNA-seq aligner",
+                "RNA-seq metrics for quality control and process optimization",
+                "BASiCS: Bayesian Analysis of Single-Cell Sequencing Data",
+                "Normalization of RNA-seq data using factor analysis of control genes or samples. Nat. Biotechnol",
+                "Mapping and quantifying mammalian transcriptomes by RNA-seq",
+                "RNA-seq gene expression estimation with read mapping uncertainty",
+                "A scaling normalization method for differential expression analysis of RNA-seq data",
+                "Differential expression analysis for sequence count data",
+                "Normalization, testing, and false discovery rate estimation for RNA-sequencing data",
+                "Pooling across cells to normalize single-cell RNA sequencing data with many zero counts",
+                "Accounting for technical noise in single-cell RNA-seq experiments",
+                "Droplet barcoding for single cell transcriptomics applied to embryonic stem cells",
+                "Computational analysis of cell-to-cell heterogeneity in single-cell RNA-sequencing data reveals hidden subpopulations of cells"
+            ]
+        },
+        {
+            "heading": "Cell type identification",
+            "papers": [
+                "The Strategy of the Genes: A Discussion of Some Aspects of Theoretical Biology",
+                "Visualizing high-dimensional data using t-SNE",
+                "Dimensions of similarity",
+                "A global geometric framework for nonlinear dimensionality reduction",
+                "Nonlinear dimensionality reduction by locally linear embedding",
+                "Comparative study of unsupervised dimension reduction techniques for the visualization of microarray gene expression data",
+                "Classification of low quality cells from single-cell RNA-seq data",
+                "Bayesian approach to single-cell differential expression analysis"
+            ]
+        },
+        {
+            "heading": "Inferring regulatory networks",
+            "papers": [
+                "Inferring quantitative models of regulatory networks from expression data",
+                "Reveal, a general reverse engineering algorithm for inference of genetic network architectures",
+                "Reverse engineering of regulatory networks in human B cells",
+                "Sparse graphical Gaussian modeling of the isoprenoid gene network in Arabidopsis thaliana",
+                "SCODE: an efficient regulatory network inference algorithm from single-cell RNA-Seq during differentiation",
+                "Functional discovery via a compendium of expression profiles",
+                "GENIES: gene network inference engine based on supervised analysis",
+                "A semi-supervised method for predicting transcription factor–gene interactions in Escherichia coli",
+                "SIRENE: supervised inference of regulatory networks",
+                "Cluster analysis and display of genome-wide expression patterns",
+                "Probabilistic Boolean Networks: a rule-based uncertainty model for gene regulatory networks",
+                "Using Bayesian networks to analyze expression data",
+                "Large-sample learning of Bayesian networks is NP-Hard",
+                "Inferring gene regulatory networks from gene expression data by path consistency algorithm based on conditional mutual information",
+                "Decoding the regulatory network for blood development from single-cell gene expression measurements",
+                "Reconstructing gene regulatory dynamics from high-dimensional single-cell snapshot data",
+                "Single-cell gene expression analyses of cellular reprogramming reveal a stochastic early and hierarchic late phase",
+                "Single-Cell RNA sequencing reveals T helper cells synthesizing steroids de novo to contribute to immune homeostasis"
+            ]
+        },
+        {
+            "heading": "Cell hierarchy reconstruction",
+            "papers": [
+                "Studying and modelling dynamic biological processes using time-series gene expression data",
+                "Pseudo-temporal ordering of individual cells reveals dynamics and regulators of cell fate decisions",
+                "Advantages of multilocus sequence analysis for taxonomic studies: a case study using 10 housekeeping genes in the genus Ensifer (including former Sinorhizobium)",
+                "Natural history and evolutionary principles of gene duplication in fungi",
+                "Reversed graph embedding resolves complex single-cell trajectories",
+                "Bifurcation analysis of single-cell gene expression data reveals epigenetic landscape",
+                "Div-Seq: single nucleus RNA-Seq reveals dynamics of rare adult newborn neurons",
+                "Single-cell RNA-Seq with waterfall reveals molecular cascades underlying adult neurogenesis",
+                "Diffusion pseudotime robustly reconstructs lineage branching",
+                "Reconstruction of developmental landscapes by optimal-transport analysis of single-cell gene expression sheds light on cellular reprogramming",
+                "Single-cell trajectory detection uncovers progression and regulatory coordination in human B cell development",
+                "Wishbone identifies bifurcating developmental trajectories from single-cell data",
+                "MATCHER: manifold alignment reveals correspondence between single cell transcriptome and epigenome dynamics"
+            ]
+        },
+        {
+            "heading": "Potential applications and future prospects",
+            "papers": [
+                "Single-cell mRNA sequencing identifies subclonal heterogeneity in anti-cancer drug responses of lung adenocarcinoma cells",
+                "Single‐cell sequencing maps gene expression to mutational phylogenies in PDGF‐ and EGF‐driven gliomas",
+                "Synthetic recording and in situ readout of lineage information in single cells",
+                "Exponential scaling of single-cell RNA-seq in the past decade",
+                "The Human Cell Atlas",
+                "Single-cell transcriptomics reveals bimodality in expression and splicing in immune cells",
+                "Molecular diversity of midbrain development in mouse, human, and stem cells",
+                "Neuronal subtypes and diversity revealed by single-nucleus RNA sequencing of the human brain"
+            ]
+        }
+    ]
+  }
