@@ -82,4 +82,4 @@ if __name__ == "__main__":
 
     # Generate draft
     print("Generating draft...")
-    generate_draft(overview, papers, output_dir)
+    generate_draft(args.title, overview, papers, output_dir)

@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+import re
 import shutil
 import subprocess
 from typing import List, Dict
@@ -32,6 +33,20 @@ def setup_coder(config: Config) -> Coder:
         use_git=False,
         edit_format="diff"
     )
+
+
+def replace_title_in_latex(coder: Coder, title: str) -> None:
+    file_path = list(coder.abs_fnames)[0]
+    with open(file_path, 'r', encoding='utf-8') as f:
+        content = f.read()
+
+    pattern = r'\\title\{TITLE HERE\}'
+    replacement = rf'\\title{{{title}}}'
+    updated_content = re.sub(pattern, replacement, content)
+
+    with open(file_path, 'w', encoding='utf-8') as f:
+        f.write(updated_content)
+    return
 
 
 def add_section_to_latex(coder: Coder, section_title: str, section_content: str) -> None:
@@ -107,13 +122,15 @@ def compile_latex(cwd: str, pdf_file: str, timeout: int = 30) -> None:
         print(f"Error moving PDF: {e}")
 
 
-def generate_draft(overview: Dict[str, str], papers: List[Paper], output_dir: Path, _compile_latex: bool = False) -> None:
+def generate_draft(title: str, overview: Dict[str, str], papers: List[Paper], output_dir: Path, _compile_latex: bool = False) -> None:
     config = Config(
         latex_dir=str(output_dir),
         writeup_file=str(output_dir / "template.tex"),
         pdf_output=str(output_dir / "paper.pdf")
     )
     coder = setup_coder(config)
+
+    replace_title_in_latex(coder, title)
 
     add_bibtex_to_latex(coder, papers)
     for section_title, paragraph in overview.items():
