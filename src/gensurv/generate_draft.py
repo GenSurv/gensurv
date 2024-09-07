@@ -122,7 +122,7 @@ def compile_latex(cwd: str, pdf_file: str, timeout: int = 30) -> None:
         print(f"Error moving PDF: {e}")
 
 
-def generate_draft(title: str, overview: Dict[str, str], papers: List[Paper], output_dir: Path, _compile_latex: bool = False) -> None:
+def generate_draft(title: str, overview: Dict[str, str], papers: List[Paper], output_dir: Path, _compile_latex: bool = True) -> None:
     config = Config(
         latex_dir=str(output_dir),
         writeup_file=str(output_dir / "template.tex"),
