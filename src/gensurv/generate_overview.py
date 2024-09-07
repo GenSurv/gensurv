@@ -1,7 +1,5 @@
 from typing import Dict, List
 
-from openai import OpenAI
-
 from .models import Paper, Author
 from .utils import format_bibtex
 
