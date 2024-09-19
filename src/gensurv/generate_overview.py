@@ -1,66 +1,132 @@
 from typing import Dict, List
 
-from openai import OpenAI
-
 from .models import Paper, Author
 from .utils import format_bibtex
 
-# Constants
-OPENAI_MODEL = "gpt-4o-mini"
+import os
 
-client = OpenAI()
+import anthropic
+
+
+client = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
 
 # Type aliases
 ParagraphDict = Dict[str, str]
 
+# def count_citations_in_paragraph(paragraph: str, papers: List[Paper]) -> int:
+#     citation_count = 0
+#     for paper in papers:
+#         try:
+#             bibtex = paper.citation_styles.get("bibtex", "")
+#             if not bibtex:
+#                 print(f"❌ BibTeX missing for paper: {paper.title}")
+#                 continue
+#             # BibTeXのラベルを抽出
+#             bibtex_label = re.search(r'{(.+?),', bibtex)
+#             if bibtex_label:
+#                 citation_label = bibtex_label.group(1)
+#             else:
+#                 print(f"❌ Failed to extract BibTeX label for paper: {paper.title}")
+#                 continue
+#         except Exception as e:
+#             print(f"❌ Error parsing BibTeX for paper: {paper.title} - {e}")
+#             continue
+
+#         cite_pattern = re.compile(rf"\\cite{{[^}}]*\b{citation_label}\b[^}}]*}}")
+#         if cite_pattern.search(paragraph):
+#             citation_count += 1
+#         else:
+#             print(f"❌ Citation for {citation_label} not found in paragraph.")
+
+#     return citation_count
 
 def create_prompt(section_title: str, papers: List[Paper], title: str) -> str:
     prompt = f"""
-Generate a paragraph of the following section of an academic review paper on the theme of {title}:
-section_title:
-{section_title}
+        Generate a paragraph of the following section of an academic review paper on the theme of {title}:
+        section_title:
+        {section_title}
 
-The paragraph is composed of the research papers that have the following papers.
-You 'must' use \\cite{{...}} to reference papers from bibtex name, do not manually type out author names!
-- Please escape appropriately characters for LaTeX if necessary, e.g. adding two backshalses, two backticks, etc.
-- When making multiple citations, use the `\\cite{{..., ...}}` format instead of the `(\\cite{{...}}; \\cite{{...}})` format.
+        You must reference **all** of the following research papers in the generated paragraph. 
+        Ensure to use the `\\cite{{...}}` format to reference the papers from their BibTeX names, and avoid manually typing author names.
+        It is critical that every listed paper is referenced at least once in the paragraph. Do not skip any papers.
 
-papers:
-"""
+        For multiple citations, use the format `\\cite{{..., ...}}` instead of `\\cite{{...}}; \\cite{{...}}`.
+
+        papers:
+    """
+
     for paper in papers:
         bibtex = paper.citation_styles["bibtex"]
         bibtex_string = "\n".join(bibtex)
         prompt += f"abstract: {paper.abstract}\n"
         prompt += f"bibtex: {bibtex_string}\n\n"
+   
+    # for paper in papers:
+    #     bibtex = paper.citation_styles.get("bibtex", "")
+    #     if not bibtex:
+    #         print(f"❌ Missing BibTeX for paper: {paper.title}")
+    #     else:
+    #         print(f"✔️ BibTeX found for paper: {paper.title}")
+
+    #     prompt += f"abstract: {paper.abstract}\n"
+    #     prompt += f"bibtex: {bibtex}\n\n"
+    
+    # print(f"Generated prompt for section '{section_title}':\n{prompt}")
+    
     return prompt
 
-def generate_paragraph(client: OpenAI, system_message: str, prompt: str) -> str:
+
+def generate_paragraph(client: anthropic.Anthropic, system_message: str, prompt: str, papers: List[Paper]) -> str:
     try:
-        completion = client.chat.completions.create(
-            model=OPENAI_MODEL,
+
+        completion = client.messages.create(
+            
+            model="claude-3-5-sonnet-20240620",
+            max_tokens=2000,
+            system=system_message,
             messages=[
-                {"role": "system", "content": system_message},
                 {"role": "user", "content": prompt}
-            ],
-            max_tokens=1000,
+            ]
         )
-        return completion.choices[0].message.content
+       
+        paragraph = completion.content[0].text
+       
+        # print(f"Generated paragraph:\n{paragraph}")
+        
+        # # Check if citations are included in the generated paragraph
+        # if '\\cite{' not in paragraph:
+        #     print("❌ No citations found in the generated paragraph.")
+        # else:
+        #     print("✔️ Citations found in the generated paragraph.")
+        
+        # # Check if the number of citations matches the number of papers
+        # citation_count = count_citations_in_paragraph(paragraph, papers)
+        # if citation_count != len(papers):
+        #     print(f"❌ Citation count mismatch: Expected {len(papers)}, but found {citation_count}.")
+        # else:
+        #     print(f"✔️ Citation count matches the number of papers: {citation_count}.")
+        
+        return paragraph
+
+
     except Exception as e:
         print(f"Error generating paragraph: {e}")
         return ""
 
 def generate_overview(structured_papers: Dict[str, List[Paper]], title: str) -> ParagraphDict:
     system_message = f"""
-You are a expert researcher in the field of AI. 
-You are writing an academic review paper on the theme of {title}.
-You are tasked with generating a paragraph for the review paper.
-"""
+        You are a expert researcher in the field of AI. 
+        You are writing an academic review paper on the theme of {title}.
+        You are tasked with generating a paragraph for the review paper.
+    """
     paragraphs = {}
 
     for section_title, papers in structured_papers.items():
-        prompt = create_prompt(section_title, papers, title)        
-        paragraph = generate_paragraph(client, system_message, prompt)
+        # print(f"=================Generating paragraph for section '{section_title}'...==================")
+        prompt = create_prompt(section_title, papers, title)
+        paragraph = generate_paragraph(client, system_message, prompt, papers)
         paragraphs[section_title] = paragraph
+        # print("=" * 100)
     return paragraphs
 
 def main():
