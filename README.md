@@ -9,7 +9,7 @@ GenSurv (Generative Survey) is a volunteer initiative aimed at exploring and est
 - Visualizing areas not approached by prior research by vectorizing literature information
 - Developing a system that stores literature information in a vector database and uses it as a basis to answer user questions
 
-For more details about the project, past activities, and how to participate, please check [here](https://gensurv.notion.site/GenSurv-080bd169f48849568ef001a4aa08ca1e?pvs=4).
+For more details about the project, past activities, and how to participate, please check [here](https://gensurv.notion.site/122e79321a0e80bdbc74ea919678da2c?v=122e79321a0e815f8ba6000cf5abcdd7).
 
 ## Requirements
 - Python 3.11.4
