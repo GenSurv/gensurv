@@ -9,7 +9,7 @@ GenSurv (Generative Survey) は生成AIを活用し、文献調査を効率化�
 - 文献情報をベクトル化することで先行研究がアプローチしていない領域の可視化
 - 文献情報をベクトルデータベースに格納し、それらを根拠にユーザーの質問に回答するシステムの開発
 
-プロジェクトの詳細や過去の活動、参加方法については[こちら](https://gensurv.notion.site/GenSurv-080bd169f48849568ef001a4aa08ca1e?pvs=4)をご確認ください。
+プロジェクトの詳細や過去の活動、参加方法については[こちら](https://gensurv.notion.site/122e79321a0e80bdbc74ea919678da2c?v=122e79321a0e815f8ba6000cf5abcdd7)をご確認ください。
 
 ## Requirements
 - Python 3.11.4
