@@ -6,12 +6,43 @@ import json
 import time
 import re
 import base64
+from PIL import Image
+import io
+
+def make_image_transparent(image_path, opacity):
+    img = Image.open(image_path).convert("RGBA")
+    data = img.getdata()
+    new_data = []
+    for item in data:
+        new_data.append(item[:-1] + (int(255 * opacity),))
+    img.putdata(new_data)
+    img_byte_arr = io.BytesIO()
+    img.save(img_byte_arr, format='PNG')
+    img_byte_arr.seek(0)
+    return img_byte_arr
+
+def set_transparent_background(image_path, opacity=0.5):
+    img_byte_arr = make_image_transparent(image_path, opacity)
+    b64_encoded = base64.b64encode(img_byte_arr.getvalue()).decode()
+    style = f"""
+        <style>
+        .stApp {{
+            background-image: url(data:image/png;base64,{b64_encoded});
+            background-size: cover;
+        }}
+        .main .block-container {{
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 10px;
+        }}
+        </style>
+    """
+    st.markdown(style, unsafe_allow_html=True)
 
 def run_command(command):
     process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True, universal_newlines=True)
     output = []
     
-    # Create a progress bar
     progress_bar = st.progress(0)
     status_text = st.empty()
     
@@ -19,18 +50,16 @@ def run_command(command):
         output.append(line.strip())
         status_text.text(f"Processing: {line.strip()}")
         
-        # Update progress bar (assuming 100 total steps, adjust as needed)
         progress = min((i + 1) / 100, 1.0)
         progress_bar.progress(progress)
         
-        time.sleep(0.1)  # Small delay to make the progress visible
+        time.sleep(0.1)
     
     progress_bar.progress(1.0)
     status_text.text("Processing completed!")
     return output
 
 def get_latest_output_dir(base_path, title):
-    # Escape special characters in the title for use in regex
     escaped_title = re.escape(title.replace(' ', '_'))
     pattern = re.compile(f"\\d{{8}}_\\d{{6}}_{escaped_title}")
     
@@ -39,7 +68,6 @@ def get_latest_output_dir(base_path, title):
     if not matching_dirs:
         return None
     
-    # Sort directories by name (which includes the timestamp) in descending order
     latest_dir = max(matching_dirs, key=lambda d: d.name)
     return latest_dir
 
@@ -50,6 +78,12 @@ def display_pdf(pdf_file):
     st.markdown(pdf_display, unsafe_allow_html=True)
 
 def main():
+    # 背景画像の設定（透明度0.5）
+    set_transparent_background('/root/ladec-demo/figs/robots.png', opacity=0.5)
+
+    # タイトル画像の表示
+    st.image('/root/ladec-demo/figs/robots_cropped.png', use_column_width=True)
+
     st.title("GenSurv")
 
     title = st.text_input("Enter the title of your paper:")
@@ -77,23 +111,16 @@ def main():
         if generate_headings:
             command.append("--generate_headings")
 
-        # st.write("Running command:", " ".join(command))
-        
         with st.spinner('Generating survey... This may take a few minutes.'):
             output = run_command(" ".join(command))
 
         st.success("Survey generation completed!")
-        # st.write("Displaying results:")
 
-        # Find the latest output directory
         output_dir = get_latest_output_dir(base_output_path, title)
         if not output_dir:
             st.error(f"Could not find output directory for title '{title}' in {base_output_path}")
             return
 
-        # st.write(f"Found output directory: {output_dir}")
-
-        # Display papers
         papers_file = output_dir / "papers.json"
         if papers_file.exists():
             with open(papers_file, "r") as f:
@@ -102,38 +129,12 @@ def main():
             for paper in papers:
                 st.write(f"- {paper['title']} ({paper['year']})")
 
-        # Display structured papers
-        # structured_papers_file = output_dir / "structured_papers.json"
-        # if structured_papers_file.exists():
-        #     with open(structured_papers_file, "r") as f:
-        #         structured_papers = json.load(f)
-        #     st.subheader("Structured Papers")
-        #     for heading, papers in structured_papers.items():
-        #         st.write(f"### {heading}")
-        #         for paper in papers:
-        #             st.write(f"- {paper}")
-
-        # Display overview
-        # overview_file = output_dir / "overview.json"
-        # if overview_file.exists():
-        #     with open(overview_file, "r") as f:
-        #         overview = json.load(f)
-        #     st.subheader("Overview")
-        #     st.write(overview)
-
-        # Display and provide link to download the generated PDF file
-        # st.write("Searching for PDF file in:", output_dir)
         pdf_files = list(output_dir.glob("*.pdf"))
         if pdf_files:
-            # st.write(f"Found {len(pdf_files)} PDF file(s):")
             for pdf_file in pdf_files:
-                # st.write(f"- {pdf_file.name}")
-                
-                # Display PDF
                 st.subheader(f"Preview of {pdf_file.name}")
                 display_pdf(pdf_file)
                 
-                # Provide download button
                 with open(pdf_file, "rb") as file:
                     btn = st.download_button(
                         label=f"Download {pdf_file.name}",
