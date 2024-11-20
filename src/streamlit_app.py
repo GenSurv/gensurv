@@ -79,10 +79,10 @@ def display_pdf(pdf_file):
 
 def main():
     # 背景画像の設定（透明度0.5）
-    set_transparent_background('/root/ladec-demo/figs/robots.png', opacity=0.5)
+    set_transparent_background('assets/robots.png', opacity=0.5)
 
     # タイトル画像の表示
-    st.image('/root/ladec-demo/figs/robots_cropped.png', use_column_width=True)
+    st.image('assets/robots_cropped.png', use_column_width=True)
 
     st.title("GenSurv")
 
