@@ -75,7 +75,7 @@ jupyterlab==4.2.4
 jupyterlab_pygments==0.3.0
 jupyterlab_server==2.27.3
 kiwisolver==1.4.5
-litellm==1.43.9
+litellm==1.106.2
 markdown-it-py==3.0.0
 MarkupSafe==2.1.5
 matplotlib==3.9.2
