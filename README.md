@@ -1,4 +1,7 @@
 # GenSurv
+
+Security: after environment setup/sync, check Pillow’s bundled Brotli decoder; see [CVE-2026-111497 remediation](docs/BROTLI_SECURITY.md).
+
 - [English](README.md)
 - [日本語](README_ja.md)
 
